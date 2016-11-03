@@ -14,6 +14,7 @@ class CreateColloquiaTable extends Migration
     public function up()
     {
         Schema::create('colloquia', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('title');
             $table->text('description');
@@ -26,7 +27,7 @@ class CreateColloquiaTable extends Migration
             $table->string('company_image');
             $table->string('company_url');
             $table->boolean('approval');
-            $table->string('language',10);
+            $table->integer('language_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -14,6 +14,7 @@ class CreateColloquiumThemesTable extends Migration
     public function up()
     {
         Schema::create('colloquium_themes', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->integer('colloquium_id')->unsigned();
             $table->integer('theme_id')->unsigned();
 

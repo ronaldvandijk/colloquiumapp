@@ -14,6 +14,7 @@ class CreateThemeUsersTable extends Migration
     public function up()
     {
         Schema::create('theme_users', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->integer('theme_id')->unsigned();
             $table->integer('user_id')->unsigned();
 

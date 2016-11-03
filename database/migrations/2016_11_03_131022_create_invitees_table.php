@@ -14,6 +14,7 @@ class CreateInviteesTable extends Migration
     public function up()
     {
         Schema::create('invitees', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('colloquium_id')->unsigned();
             $table->string('email');

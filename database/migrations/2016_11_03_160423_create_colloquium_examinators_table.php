@@ -14,6 +14,7 @@ class CreateColloquiumExaminatorsTable extends Migration
     public function up()
     {
         Schema::create('colloquium_examinators', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->integer('colloquium_id')->unsigned();
             $table->integer('user_id')->unsigned();
 

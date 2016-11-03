@@ -14,6 +14,7 @@ class CreateColloquiumTypesTables extends Migration
     public function up()
     {
         Schema::create('colloquium_types', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
         });

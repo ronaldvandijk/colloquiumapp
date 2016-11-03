@@ -18,6 +18,12 @@ class User extends Model
     {
     	return $this->belongsTo(Role::class);
     }
+
+    public function themes()
+    {
+    	return $this->belongsToMany(Theme::class);
+    }
+
 }
 
 

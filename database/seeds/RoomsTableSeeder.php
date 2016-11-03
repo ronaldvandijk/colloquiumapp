@@ -14,19 +14,19 @@ class RoomsTableSeeder extends Seeder
         DB::table('rooms')->insert([
             'name' => 'A204',
             'capacity' => 24,
-            'location_id' => 1,
+            'building_id' => 1,
         ]);
 
         DB::table('rooms')->insert([
             'name' => 'A224',
             'capacity' => 30,
-            'location_id' => 1,
+            'building_id' => 1,
         ]);
 
         DB::table('rooms')->insert([
             'name' => 'B050',
             'capacity' => 16,
-            'location_id' => 1,
+            'building_id' => 1,
         ]);
     }
 }

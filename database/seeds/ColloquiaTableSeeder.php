@@ -11,6 +11,6 @@ class ColloquiaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Colloquium::class, 10)->create();
+        factory(App\Models\Colloquium::class, 10)->create();
     }
 }

@@ -13,13 +13,13 @@ class BuildingsTableSeeder extends Seeder
     {
         DB::table('buildings')->insert([
             'name' => 'Van dorenveste',
-            'abreviation' => 'TN',
+            'abbreviation' => 'TN',
             'location_id' => 1,
         ]);
 
         DB::table('buildings')->insert([
             'name' => 'Van olstoren',
-            'abreviation' => 'EM',
+            'abbreviation' => 'EM',
             'location_id' => 1,
         ]);
     }

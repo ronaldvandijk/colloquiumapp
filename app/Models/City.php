@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
     public $timestamps = false;
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 }

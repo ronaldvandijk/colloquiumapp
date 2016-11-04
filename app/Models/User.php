@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -33,5 +32,4 @@ class User extends Model
     {
         return $this->belongsToMany(Colloquium::class, 'colloquium_examinators', 'user_id', 'colloquium_id');
     }
-
 }

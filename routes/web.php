@@ -16,8 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/profile', 'UsersController@profile');
+Route::get('/home', 'HomeController@index');
 
 
 Route::group(['prefix' => 'admin'], function($route) {
     Route::get('user/edit/{id}', 'Admin\UserController@edit');
 });
+
+Auth::routes();

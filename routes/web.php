@@ -23,8 +23,8 @@ Route::group(['prefix' => 'admin'], function($route) {
     Route::get('/', 'Admin\HomeController@index');
 
     Route::get('users', 'Admin\UsersController@overview');
-    Route::get('user/edit/{id}', 'Admin\UserController@edit');
-    Route::post('user/update', 'Admin\UserController@edit');
+    Route::get('user/edit/{user}', 'Admin\UsersController@edit');
+    Route::post('user/update', 'Admin\UsersController@edit');
 
     Route::get('templates', 'Admin\TemplatesController@overview');
     Route::get('template/create', 'Admin\TemplatesController@create');

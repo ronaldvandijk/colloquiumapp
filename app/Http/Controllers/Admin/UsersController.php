@@ -2,9 +2,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,6 +19,13 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin/users/edit')->with('user', $user);
+        $roles = Role::all();
+        return view('admin/users/edit', ['user' => $user, 'roles' => $roles]);
+    }
+
+    public function overview()
+    {
+        $allUsers = User::all();
+        return view('admin/users/overview', ['users' => $allUsers]);
     }
 }

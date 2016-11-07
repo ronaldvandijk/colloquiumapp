@@ -34,3 +34,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
     Route::post('template/update', 'Admin\TemplateController@update');
 });
+
+
+Route::get('/mobile', function () {
+    return view('mobile.index');
+});
+Route::get('/mobile/details', function () {
+    return view('mobile.details');
+});

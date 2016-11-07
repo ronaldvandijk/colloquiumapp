@@ -1,0 +1,21 @@
+.schedule-item .well h3{
+    text-align: center;
+    font-weight: bold;
+}
+.schedule-item .well{
+    margin-bottom: 0;
+}
+.schedule-item h4{
+    font-weight: bold;
+}
+.schedule-item:hover{
+    cursor: pointer;
+}
+.deets p{
+    display: inline-block;
+    margin-bottom: 0;
+}
+.presentatie-details img{
+    max-width: 100%;
+    margin-bottom: 15px;
+}

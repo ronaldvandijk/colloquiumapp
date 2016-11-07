@@ -12,7 +12,7 @@
  */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     return [
         'first_name' => $faker->firstNameFemale,
         'insertion' => '',
@@ -46,7 +46,7 @@ $factory->define(App\Models\Colloquium::class, function (Faker\Generator $faker)
     ];
 });
 
-$factory->define(App\Invitee::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Invitee::class, function (Faker\Generator $faker) {
 
     return [
         'colloquium_id' => rand(1, 5),

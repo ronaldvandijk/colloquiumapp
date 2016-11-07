@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Colloquium @ Hanze Hogeschool
                 </div>
 
                 <div class="links">

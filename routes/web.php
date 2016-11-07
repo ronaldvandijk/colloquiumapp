@@ -28,6 +28,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
     Route::post('user/update', 'Admin\UsersController@edit');
 
+    Route::get('{type}', 'Admin\BaseController@overview');
+
     Route::get('templates', 'Admin\TemplatesController@overview');
     Route::get('template/create', 'Admin\TemplatesController@create');
     Route::post('template/create', 'Admin\TemplateController@store');

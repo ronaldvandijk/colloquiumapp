@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,7 +21,7 @@ Route::get('/profile', 'UsersController@profile');
 Route::get('/home', 'HomeController@index');
 
 
-Route::group(['prefix' => 'admin'], function($route) {
+Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function() {
     Route::get('/', 'Admin\HomeController@index');
 
     Route::get('users', 'Admin\UsersController@overview');
@@ -28,21 +30,7 @@ Route::group(['prefix' => 'admin'], function($route) {
 
     Route::get('templates', 'Admin\TemplatesController@overview');
     Route::get('template/create', 'Admin\TemplatesController@create');
-    Route::post('tempalte/create', 'Admin\TemplateController@store');
+    Route::post('template/create', 'Admin\TemplateController@store');
     Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
     Route::post('template/update', 'Admin\TemplateController@update');
-
-    Route::get('colloqiua', 'Admin\ColloquiaController@overview');
-    Route::get('colloqiua/create', 'Admin\ColloquiaController@create');
-    Route::post('colloqiua/create', 'Admin\ColloquiaController@store');
-    Route::get('colloqiua/edit/{id}', 'Admin\ColloquiaController@edit');
-    Route::post('colloqiua/update', 'Admin\ColloquiaController@update');
-
-//    Route::get('colloqiua', 'Admin\ColloquiaController@overview');
-//    Route::get('colloqiua/create', 'Admin\ColloquiaController@create');
-//    Route::post('colloqiua/create', 'Admin\ColloquiaController@store');
-//    Route::get('colloqiua/edit/{id}', 'Admin\ColloquiaController@edit');
-//    Route::post('colloqiua/update', 'Admin\ColloquiaController@update');
 });
-
-Auth::routes();

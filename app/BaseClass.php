@@ -15,7 +15,8 @@ class BaseClass extends Model
 
         foreach ($columnNames as $property)
         {
-            array_push($properties, $property);
+            $type = DB::connection()->getDoctrineColumn('$table', '$property')->getType()->getName();
+            array_push($properties, $property, $type);
         }
 
         //Return the properties of the selected table.

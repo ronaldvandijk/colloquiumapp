@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/profile', 'UsersController@profile');
 Route::get('/home', 'HomeController@index');
-
+Route::get('/test', 'TestController@overview');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function() {
     Route::get('/', 'Admin\HomeController@index');

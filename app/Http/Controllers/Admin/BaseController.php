@@ -8,7 +8,7 @@ class BaseController extends Controller
 
     public function overview($type)
     {
-        $acceptedTypes = ['users', 'colloquia'];
+        $acceptedTypes = ['colloquia', 'locations', 'users'];
         if (in_array($type, $acceptedTypes)) {
             return view('admin/overview', compact('type'));
         } else {

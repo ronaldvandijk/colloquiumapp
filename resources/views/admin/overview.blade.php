@@ -1,41 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            @include('admin/sidenav')
+            <div class="col-md-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Alle {{$type}}?</b></div>
-
+                    <div class="panel-heading">
+                        <b>Alle {{$type}}?</b>
+                    </div>
                     <div class="panel-body">
                         <table class="table">
                             <thead>
                             <tr>
-                                {{--@foreach ($properties as $property)--}}
-                                {{--<th>$property</th>--}}
-                                {{--@endforeach--}}
+                                <?php $cols = DB::getSchemaBuilder()->getColumnListing($type); ?>
+                                <?php foreach ($cols as $col) : ?>
+                                <th><?= $col; ?></th>
+                                <?php endforeach; ?>
                                 <th>Bewerken</th>
                                 <th>Verwijderen</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {{--@foreach ($typeneeded as $type)--}}
+                            <?php $rows = DB::table($type)->get(); ?>
+                            <?php foreach ($rows as $row) : ?>
                             <tr style="margin-top: 50px; margin-bottom: 5em;">
-                                {{--@foreach ($typeProperties as $typeProperty)--}}
-                                {{--<td>{{$type->property}}</td>--}}
-                                {{--@endforeach--}}
+                                <?php foreach ($cols as $col) : ?>
                                 <td>
-                                    {{--<a href="/admin/type/edit/{{$type->id}}" class="btn btn-primary">--}}
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Bewerken
-                                    {{--</a>--}}
+                                    <?= $row->$col; ?>
+                                </td>
+                                <?php endforeach; ?>
+                                <td>
+                                    <a href="/admin/type/edit/{{$row->id}}" class="btn btn-primary">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Bewerken
+                                    </a>
                                 </td>
                                 <td>
-                                    {{--<a href="/admin/type/delete/{{$type->id}}" class="btn btn-danger">--}}
-                                    <i class="fa fa-trash" aria-hidden="true"></i> Verwijderen
-                                    {{--</a>--}}
+                                    <a href="/admin/type/delete/{{$row->id}}" class="btn btn-danger">
+                                        <i class="fa fa-trash" aria-hidden="true"></i> Verwijderen
+                                    </a>
                                 </td>
                             </tr>
-                            {{--@endforeach--}}
+                            <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

@@ -15,7 +15,7 @@
                             <tr>
                                 <?php $cols = DB::getSchemaBuilder()->getColumnListing($type); ?>
                                 <?php foreach ($cols as $col) : ?>
-                                <th><?= $col; ?></th>
+                                <th><?= trans('admin.' . $col); ?></th>
                                 <?php endforeach; ?>
                                 <th>Bewerken</th>
                                 <th>Verwijderen</th>

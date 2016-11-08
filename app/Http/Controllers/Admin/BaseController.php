@@ -16,4 +16,12 @@ class BaseController extends Controller
         }
     }
 
+    public function create($type) {
+        return view('admin/create', compact('type'));
+    }
+
+    public function update($type, $id) {
+        return view('admin/edit', compact('type', 'id'));
+    }
+
 }

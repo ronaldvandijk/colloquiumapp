@@ -31,12 +31,12 @@
                                 </td>
                                 <?php endforeach; ?>
                                 <td>
-                                    <a href="/admin/type/edit/{{$row->id}}" class="btn btn-primary">
+                                    <a href="{{url('/')}}/admin/type/edit/{{$row->id}}" class="btn btn-primary">
                                         <i class="fa fa-pencil" aria-hidden="true"></i> Bewerken
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/admin/type/delete/{{$row->id}}" class="btn btn-danger">
+                                    <a href="{{url('/')}}/admin/type/delete/{{$row->id}}" class="btn btn-danger">
                                         <i class="fa fa-trash" aria-hidden="true"></i> Verwijderen
                                     </a>
                                 </td>

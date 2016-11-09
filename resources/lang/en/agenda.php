@@ -11,6 +11,7 @@
         'duration' => 'Duration',
         'language' => 'Language',
         'location' => 'Location',
-        'description' => 'Description'
+        'description' => 'Description',
+        'people' => 'People'
     ];
 ?>

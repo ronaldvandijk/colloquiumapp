@@ -11,6 +11,7 @@
         'duration' => 'Duur',
         'language' => 'Taal',
         'location' => 'Locatie',
-        'description' => 'Beschrijving'
+        'description' => 'Beschrijving',
+        'people' => 'Personen'
     ];
 ?>

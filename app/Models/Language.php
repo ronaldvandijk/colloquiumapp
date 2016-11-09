@@ -10,6 +10,6 @@ class Language extends Model
 
     public function colloquia()
     {
-        return $this->hasMany(Colloquia::class);
+        return $this->hasMany(Colloquium::class);
     }
 }

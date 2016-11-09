@@ -17,6 +17,17 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+
+    }
+
     public function edit(User $user)
     {
         return view('admin/users/edit', ['user' => $user, 'roles' => Role::all()]);

@@ -11,8 +11,8 @@
     <title>Colloquia</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/app.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/font-awesome.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -83,6 +83,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{ url('/') }}/js/app.js"></script>
 </body>
 </html>

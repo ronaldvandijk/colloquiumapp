@@ -2,8 +2,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Models\Role;
 
 class UsersController extends Controller
 {
@@ -17,6 +18,17 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+
+    }
+
     public function edit(User $user)
     {
         $roles = Role::all();
@@ -25,7 +37,7 @@ class UsersController extends Controller
 
     public function overview()
     {
-        $allUsers = User::all();
-        return view('admin/users/overview', ['users' => $allUsers]);
+        $users = User::all();
+        return view('admin/users/overview')->with('users', $users);
     }
 }

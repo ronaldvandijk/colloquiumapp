@@ -17,6 +17,7 @@
                 <p><b>Type: </b>{{$type->name}}</p>
                 <p><b>Duration: </b>{{date('j M Y H:i', strtotime($colloquium->start_date))}} - {{date('j M Y H:i', strtotime($colloquium->end_date))}}</p>
                 <p><b>Room: </b>{{$room->name}}</p>
+                <p><b>Location: </b>{{$location->name}}, {{$city->name}}</p>
                 <p><b>Language: </b>{{$language->name}}</p>
                 <p><b>Interested: </b>35 People</p>
             </div>

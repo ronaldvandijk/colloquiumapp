@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Colloquium;
 use App\Models\ColloquiumType;
 use App\Models\Language;
+use App\Models\Location;
 use App\Models\Room;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
@@ -30,9 +31,9 @@ class SearchController extends Controller
             $colloquiums = DB::select('select colloquia.*, rooms.name from colloquia , rooms where colloquia.room_id = rooms.id AND DATE(colloquia.start_date) = ?', [$date]);
             // pus the retrieved collquiums to the associated key in the $colloquiumDates array
             $colloquiumDates[$date] = $colloquiums;
-        } 
+        }
 
-        // Sort the $colloquiumDates keys 
+        // Sort the $colloquiumDates keys
         ksort($colloquiumDates);
 
         // Return agenda index view
@@ -56,7 +57,21 @@ class SearchController extends Controller
         // Retrieve the language matching the $colloquium->language_id
         $language = Language::find($colloquium->language_id);
 
+        // Retrieve the location where the $colloquium->location_id matches
+        $location = Location::find($colloquium->location_id);
+
+        // Retrieve the city where the $location->city_id matches
+        $city = City::find($location->city_id);
+
         // return agenda details view
-        return view('agenda.details', ['colloquium' => $colloquium, 'user' => $user, 'type' => $type, 'room' => $room, 'language' => $language]);
+        return view('agenda.details', [
+            'colloquium' => $colloquium,
+            'user'       => $user,
+            'type'       => $type,
+            'room'       => $room,
+            'language'   => $language,
+            'location'   => $location,
+            'city'       => $city
+        ]);
     }
 }

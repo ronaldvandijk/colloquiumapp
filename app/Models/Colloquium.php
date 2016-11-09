@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Colloquium extends Model
 {
+    protected $table = 'colloquia';
+
     use SoftDeletes;
 
     public function user()

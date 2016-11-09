@@ -15,6 +15,6 @@ class Theme extends Model
 
     public function colloquia() 
     {
-    	return $this->belongsToMany(Colloquia::class);
+    	return $this->belongsToMany(Colloquium::class);
     }
 }

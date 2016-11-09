@@ -19,7 +19,7 @@
                 <p><b>{{trans('agenda.room')}}: </b>{{$room->name}}</p>
                 <p><b>{{trans('agenda.location')}}: </b>{{$location->name}}, {{$city->name}}</p>
                 <p><b>{{trans('agenda.language')}}: </b>{{$language->name}}</p>
-                <p><b>{{trans('agenda.interested')}}: </b>{{$interested}} People</p>
+                <p><b>{{trans('agenda.interested')}}: </b>{{$interested}} {{trans('agenda.people')}}</p>
             </div>
         </div>
         <h3><b>{{trans('agenda.description')}}</b></h3>

@@ -1,19 +1,17 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ColloquiumController extends Controller
 {
     public function index()
     {
-        dd("BLA");
+
     }
 
     public function create() {
-        $themes = Coll
-
         return view('user.AddColloquium');
     }
 

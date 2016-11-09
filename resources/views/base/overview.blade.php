@@ -13,7 +13,9 @@
                         <thead>
                             <tr>
                                 @foreach($properties as $property)
-                                    <th>{{$property}}</th>
+                                    @if($property != "id")
+                                        <th>{{$property}}</th>
+                                    @endif
                                 @endforeach
                             </tr>
                         </thead>
@@ -21,9 +23,11 @@
                             @foreach($data as $object)
                              <tr>
                                 @foreach($properties as $property)
-                                    <td>{{$object->$property}}</td>
+                                     @if($property != "id")
+                                        <td>{{$object->$property}}</td>
+                                     @endif
                                 @endforeach
-                                <td><a href="/city/{{ $object->id }}/edit">{{ trans('edit') }}</a></td>
+                                <td><a href="{{ $baseUrl }}{{ $object->id }}/edit">{{ trans('edit') }}</a></td>
                                 <td><a href="#">{{ trans('delete') }}</a></td>
                              </tr>
                             @endforeach

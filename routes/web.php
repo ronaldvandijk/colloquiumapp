@@ -35,10 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::post('template/update', 'Admin\TemplateController@update');
 });
 
-
-Route::get('/mobile', function () {
-    return view('mobile.index');
-});
-Route::get('/mobile/details', function () {
-    return view('mobile.details');
+Route::group(['prefix' => 'mobile'], function() {
+    Route::get('/', 'SearchController@index');
+    Route::get('/details', 'SearchController@details');
 });

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Theme;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Session;
 
 class ThemeController extends Controller
 {
@@ -15,7 +17,7 @@ class ThemeController extends Controller
      */
     public function index()
     {
-        return view('admin/theme/overview', [
+        return view('admin.theme.overview', [
             'themes' => Theme::all(),
         ]);
     }
@@ -27,7 +29,7 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.theme.create');
     }
 
     /**
@@ -38,7 +40,13 @@ class ThemeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, Theme::RULES);
+
+        $theme = new Theme();
+        $theme->name = $request->get('name');
+        $theme->save();
+
+        return redirect()->action('Admin\ThemeController@index');
     }
 
     /**
@@ -49,7 +57,7 @@ class ThemeController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.theme.view', ['theme' => Theme::findOrFail($id)]);
     }
 
     /**
@@ -60,7 +68,7 @@ class ThemeController extends Controller
      */
     public function edit($id)
     {
-        return view('admin/theme/edit', [
+        return view('admin.theme.edit', [
             'theme' => Theme::findOrFail($id),
         ]);
     }
@@ -74,7 +82,17 @@ class ThemeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, Theme::RULES);
+        try {
+            $theme = Theme::findOrFail($id);
+            $theme->name = $request['name'];
+            $theme->save();
+            Session::set('message', 'Theme updated');
+        } catch (ModelNotFoundException $e) {
+            Session::set('message', 'Theme not found');
+        }
+
+        return redirect()->action('Admin\ThemeController@index');
     }
 
     /**
@@ -85,6 +103,13 @@ class ThemeController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        try{
+            Theme::findOrFail($id)->delete();
+            Session::flash('message', 'Successfully deleted the theme!');
+        } catch (ModelNotFoundException $e) {
+            // mmm... yeah just nothing
+        }
+
+        return redirect()->action('Admin\ThemeController@index');
     }
 }

@@ -8,7 +8,7 @@
                     <div class="panel-heading"><b>Gebruiker bewerken</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/user/update">
+                        <form method="post" action="/admin/user">
                             {{ csrf_field() }}
                             <div class="col-md-6">
                                 <div class="form-group">

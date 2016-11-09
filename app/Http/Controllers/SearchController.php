@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Colloquium;
 use App\Models\ColloquiumType;
+use App\Models\Language;
 use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;

@@ -10,17 +10,21 @@
                         <b>{{$type}} maken</b>
                     </div>
                     <div class="panel-body">
-                        <table class="table">
-                            <?php $cols = DB::getSchemaBuilder()->getColumnListing($type); ?>
-                            <?php foreach ($cols as $col) : ?>
-                            <tr>
-                                <td><?= trans('admin.' . $col); ?></td>
-                                <td>
-                                    <input type="text" value="leeg"/>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </table>
+                        <form method="post" action="{{url('/')}}/admin/{{$type}}/store">
+                            {{ csrf_field() }}
+                            <table class="table">
+                                <?php $cols = DB::getSchemaBuilder()->getColumnListing($type); ?>
+                                <?php foreach ($cols as $col) : ?>
+                                <tr>
+                                    <td><?= trans('admin.' . $col); ?></td>
+                                    <td>
+                                        <input type="text" name="{{$col}}" value="leeg"/>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            <button type="submit" class="btn btn-primary">Maken</button>
+                        </form>
                     </div>
                 </div>
             </div>

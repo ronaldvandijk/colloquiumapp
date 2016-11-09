@@ -12,17 +12,20 @@
                         <b>{{$editing->title}} bewerken</b>
                     </div>
                     <div class="panel-body">
-                        <table class="table">
-                            <?php $cols = DB::getSchemaBuilder()->getColumnListing($type); ?>
-                            <?php foreach ($cols as $col) : ?>
-                            <tr>
-                                <td><?= trans('admin.' . $col); ?></td>
-                                <td>
-                                    <input type="text" value="{{$editing->$col}}"/>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </table>
+                        <form method="post" action="{{url('/')}}/admin/{{$type}}/update">
+                            <table class="table">
+                                <?php $cols = DB::getSchemaBuilder()->getColumnListing($type); ?>
+                                <?php foreach ($cols as $col) : ?>
+                                <tr>
+                                    <td><?= trans('admin.' . $col); ?></td>
+                                    <td>
+                                        <input type="text" value="{{$editing->$col}}"/>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            <button type="submit" class="btn btn-primary">Opslaan</button>
+                        </form>
                     </div>
                 </div>
             </div>

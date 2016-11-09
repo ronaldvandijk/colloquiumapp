@@ -42,5 +42,5 @@ Route::group(['prefix' => 'colloquium'], function () {
 
 Route::group(['prefix' => 'mobile'], function() {
     Route::get('/', 'SearchController@index');
-    Route::get('/details', 'SearchController@details');
+    Route::get('/details/{id}', 'SearchController@details');
 });

@@ -37,7 +37,7 @@
                         <h4><b>{{$colloquium->title}}</b> <p class="pull-right">{{$colloquium->name}}</p></h4>
                         <div class="deets">
                             <p>{{date('H:i', strtotime($colloquium->start_date))}} - {{date('H:i', strtotime($colloquium->end_date))}}</p>
-                            <a href="mobile/details" class="btn btn-sm btn-primary pull-right">Details</a>
+                            <a href="mobile/details/{{$colloquium->id}}" class="btn btn-sm btn-primary pull-right">Details</a>
                         </div>
                     </div>
                 </div>

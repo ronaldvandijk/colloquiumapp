@@ -19,7 +19,7 @@
                 <p><b>Room: </b>{{$room->name}}</p>
                 <p><b>Location: </b>{{$location->name}}, {{$city->name}}</p>
                 <p><b>Language: </b>{{$language->name}}</p>
-                <p><b>Interested: </b>35 People</p>
+                <p><b>Interested: </b>{{$interested}} People</p>
             </div>
         </div>
         <h3><b>Description</b></h3>

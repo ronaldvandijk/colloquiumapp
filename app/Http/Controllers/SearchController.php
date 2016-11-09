@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\Colloquium;
 use App\Models\ColloquiumType;
+use App\Models\Invitee;
 use App\Models\Language;
 use App\Models\Location;
 use App\Models\Room;
@@ -63,6 +64,11 @@ class SearchController extends Controller
         // Retrieve the city where the $location->city_id matches
         $city = City::find($location->city_id);
 
+        // Retrieve the invitees where the $collquium_id matches
+        $invitees = Invitee::where('colloquium_id', '=', $colloquium->id)->get();
+        // Get the amount of invitees
+        $interested = count($invitees);
+
         // return agenda details view
         return view('agenda.details', [
             'colloquium' => $colloquium,
@@ -71,7 +77,8 @@ class SearchController extends Controller
             'room'       => $room,
             'language'   => $language,
             'location'   => $location,
-            'city'       => $city
+            'city'       => $city,
+            'interested' => $interested
         ]);
     }
 }

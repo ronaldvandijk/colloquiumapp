@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ColloquiumTypesTableSeeder::class);
         $this->call(ColloquiaTableSeeder::class);
+        $this->call(ColloquiumThemesSeeder::class);
 
     }
 

@@ -21,9 +21,9 @@ class SearchController extends Controller
         }
 
         foreach ($colloquiumDates as $date => $colloquium) {
-            $colloquiums = DB::select('select * from colloquia, rooms where colloquia.room_id = rooms.id AND DATE(colloquia.start_date) = ?', [$date]);
+            $colloquiums = DB::select('select colloquia.*, rooms.name from colloquia , rooms where colloquia.room_id = rooms.id AND DATE(colloquia.start_date) = ?', [$date]);
             $colloquiumDates[$date] = $colloquiums;
-        }
+        } 
 
         return view('mobile.index', ['colloquiumDates' => $colloquiumDates]);
     }

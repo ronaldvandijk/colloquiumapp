@@ -11,9 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Truncate the tables when a db:seed is run
-        $this->truncateTables();
-
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
 
@@ -29,17 +26,5 @@ class DatabaseSeeder extends Seeder
         $this->call(ColloquiaTableSeeder::class);
         $this->call(ColloquiumThemesSeeder::class);
 
-    }
-
-    private function truncateTables() {
-        DB::statement('SET foreign_key_checks = 0');
-        // Truncate all tables, except migrations
-        $tables = Schema::getConnection()->getDoctrineSchemaManager()->listTableNames();
-        foreach ($tables as $table) {
-            if ($table !== 'migrations') {
-                DB::table($table)->truncate();
-            }
-        }
-        DB::statement('SET foreign_key_checks = 1');
     }
 }

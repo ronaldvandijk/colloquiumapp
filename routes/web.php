@@ -34,3 +34,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
     Route::post('template/update', 'Admin\TemplateController@update');
 });
+
+
+Route::group(['prefix' => 'colloquium'], function () {
+    Route::get('create', 'colloquiumController@index');
+    Route::post('create', 'colloquiumController@create');
+});

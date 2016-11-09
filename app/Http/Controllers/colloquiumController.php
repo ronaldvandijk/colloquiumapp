@@ -36,8 +36,10 @@ class colloquiumController extends Controller
         return view('user.colloquiaPlanner', compact('colloquia'));
     }
 
-    public function update(Request $request) {
-        DB::table('colloquia')->where('id', $request->id)->update(['approval' => $request->approval]);
+    public function update(Request $request)
+    {
+        $colluquium = Colloquium::where('id', $request->id)
+            ->update(['approval' => $request->approval]);
         return back();
     }
 }

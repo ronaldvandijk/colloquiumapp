@@ -28,13 +28,13 @@
                                 <tr>
                                     <td>{{ $colloquium->title }}</td>
                                     <td>
-                                        <a href="{{ url('/') }}/user/{{ $colloquium->user_id }}">{{ DB::table('users')->where('id', $colloquium->user_id)->pluck('last_name') }}</a>
+                                        <a href="{{ url('/') }}/user/{{ $colloquium->user_id }}">{{ DB::table('users')->where('id', $colloquium->user_id)->value('last_name') }}</a>
                                     </td>
                                     <td>
-                                        <a href="{{ url('/') }}/room/{{ $colloquium->room_id }}">{{ DB::table('rooms')->where('id', $colloquium->room_id)->pluck('name') }}</a>
+                                        <a href="{{ url('/') }}/room/{{ $colloquium->room_id }}">{{ DB::table('rooms')->where('id', $colloquium->room_id)->value('name') }}</a>
                                     </td>
                                     <td>
-                                        <a href="{{ url('/') }}/type/{{ $colloquium->type_id }}">{{ DB::table('colloquium_types')->where('id', $colloquium->type_id)->pluck('name') }}</a>
+                                        <a href="{{ url('/') }}/type/{{ $colloquium->type_id }}">{{ DB::table('colloquium_types')->where('id', $colloquium->type_id)->value('name') }}</a>
                                     </td>
                                     <td>{{ $colloquium->start_date }}</td>
                                     <td>{{ $colloquium->end_date }}</td>

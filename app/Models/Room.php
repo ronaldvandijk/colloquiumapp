@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 
+
+class Room extends BaseModel
 /**
  * App\Models\Room
  *
@@ -19,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Room whereBuildingId($value)
  * @mixin \Eloquent
  */
-class Room extends Model
 {
     public $timestamps = false;
 

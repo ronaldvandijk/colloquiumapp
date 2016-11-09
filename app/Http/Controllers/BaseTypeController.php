@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use InvalidArgumentException;
 
@@ -24,13 +25,11 @@ class BaseTypeController extends Controller
     {
         $model = new $this->modelClass;
         $this->properties = $this->getProperties($model->getTable());
-        $this->className = $this->getClassName($model);
+        $this->className = strtolower($this->getClassName($model));
     }
 
     public function index()
     {
-        // return a view
-
         $data = [
             'properties' => $this->properties,
             'data' => $this->modelClass::all(),
@@ -64,9 +63,21 @@ class BaseTypeController extends Controller
 
     }
 
-    public function update($model)
+    public function update(Request $request, $id)
     {
-        dd($model);
+        $model = $this->modelClass::where('id', $request->input('id'))->firstOrFail();
+
+        $newData = [];
+
+        foreach ($request->input() as $key => $item) {
+            if(in_array($key, $this->properties) && $key != 'id') {
+                $newData[$key] = $item;
+            }
+        }
+
+        $model->update($newData);
+
+        return redirect(action($this->getClassNameController()."@index"));
     }
 
     public function destory($model)
@@ -87,7 +98,13 @@ class BaseTypeController extends Controller
     private function getClassName($obj)
     {
         $array = explode("\\", get_class($obj));
-        return strtolower($array[count($array) -1]);
+        return $array[count($array) -1];
+    }
+
+    private function getClassNameController()
+    {
+        $array = explode("\\", get_class($this));
+        return $array[count($array) -2] . "\\" . $array[count($array) -1];
     }
 
     private function getProperties($tableName)

@@ -1,7 +1,8 @@
-@extends('layouts.mobile')
+@extends('layouts.app')
 
 @section('content')
-    <div class="presentatie-details">
+    <div class="container-fluid">
+        <div class="presentatie-details">
         <h2><b>{{$colloquium->title}}</b></h2>
         <hr>
         <div class="row">
@@ -25,4 +26,6 @@
         <br>
         <br>
     </div>
+    </div>
 @endsection
+

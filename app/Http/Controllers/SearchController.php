@@ -24,4 +24,9 @@ class SearchController extends Controller
 
         return view('mobile.index', ['colloquiumDates' => $colloquiumDates]);
     }
+
+    public function details($id)
+    {
+        
+    }
 }

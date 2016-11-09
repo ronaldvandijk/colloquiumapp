@@ -10,7 +10,7 @@
                             <h4><b>{{date('D', strtotime($date))}}</b></h4>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{date('j M Y', strtotime($date))}} <span class="label label-default pull-right">{{count($colloquiums)}} Events</span></h4>
+                            <h4>{{date('j M Y', strtotime($date))}} <span class="label label-default pull-right">{{count($colloquiums)}} {{trans('agenda.events')}}</span></h4>
                         </div>
                     </div>
                 </div>
@@ -33,9 +33,9 @@
                             <h4><b>{{$colloquium->title}}</b> <span class="pull-right"></span></h4>
                             <div class="deets">
                                 <p>
-                                    <b>Room: </b>{{$colloquium->name}}
+                                    <b>{{trans('agenda.room')}}: </b>{{$colloquium->name}}
                                     <br>
-                                    <b>Time: </b>{{date('H:i', strtotime($colloquium->start_date))}} - {{date('H:i', strtotime($colloquium->end_date))}}
+                                    <b>{{trans('agenda.time')}}: </b>{{date('H:i', strtotime($colloquium->start_date))}} - {{date('H:i', strtotime($colloquium->end_date))}}
                                     <a href="agenda/details/{{$colloquium->id}}" class="btn btn-sm btn-primary pull-right">Details</a>
                                 </p>
                                 

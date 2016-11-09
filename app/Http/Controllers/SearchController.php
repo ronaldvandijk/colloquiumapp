@@ -10,6 +10,7 @@ use App\Models\Language;
 use App\Models\Location;
 use App\Models\Room;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller

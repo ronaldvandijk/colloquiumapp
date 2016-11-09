@@ -43,6 +43,7 @@ $factory->define(App\Models\Colloquium::class, function (Faker\Generator $faker)
         'invite_email' => $faker->realText($maxNbChars = 200, $indexSize = 2),
         'company_image' => $faker->imageUrl(100, 200, 'cats'),
         'company_url' => $faker->url,
+        'location_id' => 1,
     ];
 });
 

@@ -4,7 +4,7 @@
         'room' => 'Room',
         'time' => 'Time',
         'details' => 'Details',
-        'back' => 'Terug',
+        'back' => 'Back',
         'interested' => 'Interested',
         'speaker' => 'Speaker',
         'type' => 'Type',

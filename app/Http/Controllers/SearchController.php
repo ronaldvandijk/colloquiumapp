@@ -52,7 +52,10 @@ class SearchController extends Controller
         // Retrieve the room that matches the $colloquium->room_id
         $room = Room::find($colloquium->room_id);
 
+        // Retrieve the language matching the $colloquium->language_id
+        $language = Language::find($colloquium->language_id);
+
         // return agenda details view
-        return view('agenda.details', ['colloquium' => $colloquium, 'user' => $user, 'type' => $type, 'room' => $room]);
+        return view('agenda.details', ['colloquium' => $colloquium, 'user' => $user, 'type' => $type, 'room' => $room, 'language' => $language]);
     }
 }

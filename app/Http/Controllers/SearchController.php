@@ -25,7 +25,7 @@ class SearchController extends Controller
             $colloquiumDates[$date] = $colloquiums;
         } 
 
-        return view('mobile.index', ['colloquiumDates' => $colloquiumDates]);
+        return view('agenda.index', ['colloquiumDates' => $colloquiumDates]);
     }
 
     public function details($id)
@@ -35,6 +35,6 @@ class SearchController extends Controller
         $type = ColloquiumType::find($colloquium->type_id);
         $room = Room::find($colloquium->room_id);
 
-        return view('mobile.details', ['colloquium' => $colloquium, 'user' => $user, 'type' => $type, 'room' => $room]);
+        return view('agenda.details', ['colloquium' => $colloquium, 'user' => $user, 'type' => $type, 'room' => $room]);
     }
 }

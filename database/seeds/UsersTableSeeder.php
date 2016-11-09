@@ -11,6 +11,35 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 10)->create();
+        // Create a default  "admin" account!
+        \App\Models\User::create([
+            'first_name' => 'Admin',
+            'insertion' => '',
+            'last_name' => 'istrator',
+            'email' => 'admin@colloquium.app',
+            'password' => bcrypt('123123123'),
+            'verified' => '1',
+            'role_id' => '4',
+            'enabled' => '1',
+            'prefered_language' => 'nl',
+            'image' => ''
+        ]);
+
+
+        // Create a default "user" account!
+        \App\Models\User::create([
+            'first_name' => 'User',
+            'insertion' => '',
+            'last_name' => 'Normal User',
+            'email' => 'user@colloquium.app',
+            'password' => bcrypt('123123123'),
+            'verified' => '1',
+            'role_id' => '1',
+            'enabled' => '1',
+            'prefered_language' => 'nl',
+            'image' => ''
+        ]);
+
+        factory(App\Models\User::class, 10)->create();
     }
 }

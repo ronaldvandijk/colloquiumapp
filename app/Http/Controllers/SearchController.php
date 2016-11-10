@@ -13,8 +13,7 @@ class SearchController extends Controller
      */
     public function index()
     {
-        $colloquiumCollection = collect(Colloquium::selectRaw('*, DATE(start_date) as start_date')->get()->toArray())->groupBy('start_date');
-        dd($colloquiumCollection);
+        $colloquiumCollection = collect(Colloquium::selectRaw('*, DATE(start_date) as sort_date')->get()->toArray())->groupBy('sort_date');
         return view('agenda.index', ['colloquiumCollection' => $colloquiumCollection]);
     }
 

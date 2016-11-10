@@ -11,12 +11,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Colloquium[] $colloquia
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Theme whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Theme whereName($value)
+ * @method static Builder|Theme whereId($value)
+ * @method static Builder|Theme whereName($value)
  * @mixin \Eloquent
  */
 class Theme extends Model
 {
+    const RULES = [
+        'name' => 'required|unique:themes',
+    ];
     public $timestamps = false;
 
     public function users() 

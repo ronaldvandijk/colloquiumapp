@@ -10,6 +10,6 @@ class UserPresenter
      */
     public function full_name()
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name . ' ' . $this->insertion . ' ' . $this->last_name;
     }
 }

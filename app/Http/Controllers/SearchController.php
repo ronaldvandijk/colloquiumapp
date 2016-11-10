@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colloquium;
+use App\Models\Location;
+use App\Models\User;
 
 class SearchController extends Controller
 {
@@ -14,7 +16,9 @@ class SearchController extends Controller
     public function index()
     {
         $colloquiumCollection = collect(Colloquium::selectRaw('*, DATE(start_date) as sort_date')->orderBy('start_date', 'asc')->get()->toArray())->groupBy('sort_date');
-        return view('agenda.index', ['colloquiumCollection' => $colloquiumCollection]);
+        $locations = Location::all();
+        $users = User::all();
+        return view('agenda.index', ['colloquiumCollection' => $colloquiumCollection,'locations' => $locations, 'users' => $users]);
     }
 
     /**

@@ -5,13 +5,9 @@
         <form action="" method="POST">
             <div class="input-group">
                 <select class="selectpicker" data-selected-text-format="count > 1" data-width="25%" Title="Klassen" name="Klassen" multiple>
-                    <!-- TODO: Klassen dynamisch vullen. -->
-                    <option>ITV1J</option>
-                    <option>ITV1A</option>
-                    <option>ITV1B</option>
-                    <option>ITV1c</option>
-                    <option>ITV1d</option>
-                    <option>ITV1e</option>
+                    @foreach($users as $user)
+                        <option>{{ $user->last_name }}</option>
+                    @endforeach
                 </select>
                 <select class="selectpicker" data-selected-text-format="count > 1" data-width="25%" Title="Locaties" name="Klassen" multiple>
                     <!-- TODO: Locaties dynamisch vullen. -->

@@ -15,7 +15,7 @@
             <div class="col-xs-7">
                 <p><b>{{ trans('agenda.speaker') }}: </b>{{ $colloquium->user->first_name }} {{ $colloquium->user->insertion }} {{ $colloquium->user->last_name }}</p>
                 <p><b>{{ trans('agenda.type') }}: </b>{{ $colloquium->type->name }}</p>
-                <p><b>{{ trans('agenda.duration') }}: </b>{{ date('j M Y H:i', strtotime($colloquium->start_date)) }} - {{ date('j M Y H:i', strtotime($colloquium->end_date)) }}</p>
+                <p><b>{{ trans('agenda.duration') }}: </b>{{ format('j M Y H:i', $colloquium->start_date) }} - {{ format('j M Y H:i', $colloquium->end_date) }}</p>
                 <p><b>{{ trans('agenda.room') }}: </b>{{ $colloquium->room->building->name }}, {{ $colloquium->room->name }}</p>
                 <p><b>{{ trans('agenda.location') }}: </b>{{ $colloquium->room->building->location->name }}, {{ $colloquium->room->building->location->city->name }}</p>
                 <p><b>{{ trans('agenda.language') }}: </b>{{ $colloquium->language->name }}</p>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Building;
 use App\Models\City;
 use App\Models\Colloquium;
 use App\Models\ColloquiumType;
@@ -59,8 +60,14 @@ class SearchController extends Controller
         // Retrieve the language matching the $colloquium->language_id
         $language = Language::find($colloquium->language_id);
 
-        // Retrieve the location where the $colloquium->location_id matches
-        $location = Location::find($colloquium->location_id);
+        // Retrieve the room where the room_id matches
+        $room = Room::find($colloquium->room_id);
+
+        // Retrieve building where building_id matches
+        $building = Building::find($room->building_id);
+
+        // Retrive location where location_id matches
+        $location = Location::find($building->location_id);
 
         // Retrieve the city where the $location->city_id matches
         $city = City::find($location->city_id);
@@ -79,7 +86,9 @@ class SearchController extends Controller
             'language'   => $language,
             'location'   => $location,
             'city'       => $city,
-            'interested' => $interested
+            'interested' => $interested,
+            'room'       => $room,
+            'building'   => $building
         ]);
     }
 }

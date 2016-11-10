@@ -16,7 +16,7 @@
                 <p><b>{{trans('agenda.speaker')}}: </b>{{$user->first_name}} {{$user->insertion}} {{$user->last_name}}</p>
                 <p><b>{{trans('agenda.type')}}: </b>{{$type->name}}</p>
                 <p><b>{{trans('agenda.duration')}}: </b>{{date('j M Y H:i', strtotime($colloquium->start_date))}} - {{date('j M Y H:i', strtotime($colloquium->end_date))}}</p>
-                <p><b>{{trans('agenda.room')}}: </b>{{$room->name}}</p>
+                <p><b>{{trans('agenda.room')}}: </b>{{$building->name}}, {{$room->name}}</p>
                 <p><b>{{trans('agenda.location')}}: </b>{{$location->name}}, {{$city->name}}</p>
                 <p><b>{{trans('agenda.language')}}: </b>{{$language->name}}</p>
                 <p><b>{{trans('agenda.interested')}}: </b>{{$interested}} {{trans('agenda.people')}}</p>

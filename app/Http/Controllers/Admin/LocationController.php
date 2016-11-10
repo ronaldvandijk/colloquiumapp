@@ -40,7 +40,23 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate input data
+        $this->validate($request,[
+            'name' => 'required|unique:locations',
+            'city' => 'required|numeric',
+        ]);
+
+        // Saving new location
+        $location = new Location();
+        $location->name = $request->input('name');
+        $location->city_id = $request->input('city');
+        $location->save();
+
+        // Set success message for new request
+        $request->session()->flash('success', 'The new location "'.$location->name.'" is successfully saved!');
+
+        // Redirect to location overview
+        return redirect('/admin/location');
     }
 
     /**
@@ -62,7 +78,7 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.locations.edit', ['location' => Location::find($id)]);
     }
 
     /**
@@ -74,7 +90,23 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validate input data
+        $this->validate($request,[
+            'name' => 'required|unique:locations',
+            'city' => 'required|numeric',
+        ]);
+
+        // Saving new location
+        $location = Location::find($id);
+        $location->name = $request->input('name');
+        $location->city_id = $request->input('city');
+        $location->save();
+
+        // Set success message for new request
+        $request->session()->flash('success', 'The location "'.$location->name.'" is successfully saved!');
+
+        // Redirect to location overview
+        return redirect('/admin/location');
     }
 
     /**
@@ -85,6 +117,13 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $location = Location::find($id);
+        $location->delete();
+
+        // Set success message for new request
+        request()->session()->flash('remove', 'The location "'.$location->name.'" is successfully deleted!');
+
+        // Redirect to location overview
+        return redirect('/admin/location');
     }
 }

@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 
     Route::get('users', 'Admin\UsersController@overview');
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
+    Route::get('user/delete/{userId}', 'Admin\UsersController@delete');
     Route::post('user/update', 'Admin\UsersController@edit');
 
 //    Route::get('{type}', 'Admin\BaseController@overview');

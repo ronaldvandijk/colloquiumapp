@@ -60,19 +60,14 @@ class BaseTypeController extends Controller
 
     public function edit($id)
     {
-        try {
 
-            $data = [
-                'properties' => $this->properties,
-                'data' => $this->modelClass::findOrFail($id),
-                'baseUrl' => $this->baseUrl
-            ];
+        $data = [
+            'properties' => $this->properties,
+            'data' => $this->modelClass::findOrFail($id),
+            'baseUrl' => $this->baseUrl
+        ];
 
-            return $this->createView($this->editView, $data);
-
-        } catch(ModelNotFoundException $e) {
-            return abort(404);
-        }
+        return $this->createView($this->editView, $data);
 
     }
 

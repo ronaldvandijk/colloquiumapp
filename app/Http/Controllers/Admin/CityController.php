@@ -7,7 +7,7 @@ class CityController extends BaseTypeController
 {
     protected $modelClass = 'App\Models\City';
 
-    protected $baseUrl = '/admin/city/';
+    protected $baseUrl = '/admin/city';
 
     protected $overviewView = 'admin/city/list';
 

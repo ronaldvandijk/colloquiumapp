@@ -2,12 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
-use InvalidArgumentException;
 
-class BaseTypeController extends Controller
+abstract class BaseTypeController extends Controller
 {
     protected $modelClass = 'App\Models\BaseModel';
 
@@ -36,7 +34,7 @@ class BaseTypeController extends Controller
             'properties' => $this->properties,
             'data' => $model->all(),
             'baseUrl' => $this->baseUrl,
-            'controllerName' => $this->getClassNameController()
+            'controllerName' => $this->getClassNameController(),
         ];
 
         return $this->createView($this->overviewView, $data);
@@ -48,14 +46,14 @@ class BaseTypeController extends Controller
         $model = new $this->modelClass;
         $model->create($request->input());
 
-        return redirect(action($this->getClassNameController()."@index"));
+        return redirect(action($this->getClassNameController() . "@index"));
     }
 
     public function create()
     {
         $data = [
             'properties' => $this->properties,
-            'baseUrl' => $this->baseUrl
+            'baseUrl' => $this->baseUrl,
         ];
 
         return $this->createView($this->createView, $data);
@@ -67,8 +65,8 @@ class BaseTypeController extends Controller
 
         $data = [
             'properties' => $this->properties,
-            'data' => $this->findOrFail($id),
-            'baseUrl' => $this->baseUrl
+            'data' => $model->findOrFail($id),
+            'baseUrl' => $this->baseUrl,
         ];
 
         return $this->createView($this->editView, $data);
@@ -78,11 +76,11 @@ class BaseTypeController extends Controller
     public function update(Request $request, $id)
     {
         $model = new $this->modelClass();
-        $model = $model->findOrFail($request->input('id'));
+        $model = $model->findOrFail($id);
 
         $model->update($request->input());
 
-        return redirect(action($this->getClassNameController()."@index"));
+        return redirect(action($this->getClassNameController() . "@index"));
     }
 
     public function destroy($id)
@@ -90,15 +88,14 @@ class BaseTypeController extends Controller
         $model = new $this->modelClass();
         $model = $model->findOrFail($id)->delete();
 
-        return redirect(action($this->getClassNameController()."@index"));
+        return redirect(action($this->getClassNameController() . "@index"));
     }
-
 
     private function createView($viewName, $data = [])
     {
         try {
             return view($viewName, $data);
-        } catch(InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             return view('base.' . $viewName, $data);
         }
     }
@@ -106,13 +103,13 @@ class BaseTypeController extends Controller
     private function getClassName($obj)
     {
         $array = explode("\\", get_class($obj));
-        return $array[count($array) -1];
+        return $array[count($array) - 1];
     }
 
     private function getClassNameController()
     {
         $array = explode("\\", get_class($this));
-        return $array[count($array) -2] . "\\" . $array[count($array) -1];
+        return $array[count($array) - 2] . "\\" . $array[count($array) - 1];
     }
 
     private function getProperties($tableName)

@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Models\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

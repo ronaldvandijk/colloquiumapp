@@ -11,7 +11,8 @@ class ColloquiumController extends Controller
         dd("BLA");
     }
 
-    public function create() {
+    public function create()
+    {
         $themes = Coll
 
         return view('user.AddColloquium');

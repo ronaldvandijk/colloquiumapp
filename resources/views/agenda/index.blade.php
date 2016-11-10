@@ -33,12 +33,12 @@
                             <h4><b>{{$colloquium->title}}</b> <span class="pull-right"></span></h4>
                             <div class="deets">
                                 <p>
-                                    <b>{{trans('agenda.room')}}: </b>{{$colloquium->name}}
+                                    <b>{{ trans('agenda.room') }}: </b>{{ $colloquium->name }}
                                     <br>
-                                    <b>{{trans('agenda.time')}}: </b>{{date('H:i', strtotime($colloquium->start_date))}} - {{date('H:i', strtotime($colloquium->end_date))}}
+                                    <b>{{ trans('agenda.time') }}: </b>{{ $colloquium->start_date->format('Y-m-d') }} - {{ $colloquium->end_date->format('Y-m-d')}}
                                     <a href="agenda/details/{{$colloquium->id}}" class="btn btn-sm btn-primary pull-right">Details</a>
                                 </p>
-                                
+
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-push-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Theme bewerken</b></div>
+                    <div class="panel-heading"><a class="btn btn-primary" href="{{action('Admin\ThemeController@index')}}"><i class="fa fa-arrow-left"></i> {{ trans('common.overview') }}</a> <b>{{ trans('common.modelupdate', ['modelName' => trans('admin/theme.modelname')]) }}</b></div>
 
                     <div class="panel-body">
                         <form method="post" action="/admin/themes/{{ $theme->id }}">
@@ -13,7 +13,7 @@
                             {{ csrf_field() }}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ trans('admin.theme.name') }}</label>
+                                    <label>{{ trans('admin/theme.name') }}</label>
                                     <input name="name" type="text" class="form-control" placeholder="Naam van thema" value="{{ $theme->name }}">
                                 </div>
                             </div>

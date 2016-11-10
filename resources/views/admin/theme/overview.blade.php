@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <a class="btn btn-success" href="{{ action('Admin\ThemeController@create') }}">Create a Theme</a>
+        <a class="btn btn-success" href="{{ action('Admin\ThemeController@create') }}">{{ trans('common.modelcreate', ['modelName' => trans('admin/theme.modelname')]) }}</a>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -15,8 +15,8 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
+                                <th>{{ trans('common.id') }}</th>
+                                <th>{{ trans('admin/theme.name') }}</th>
                             </tr>
                             </thead>
                             <tbody>

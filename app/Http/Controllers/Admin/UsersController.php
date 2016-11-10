@@ -35,6 +35,7 @@ class UsersController extends Controller
 
     public function overview()
     {
-        return view('admin/users/overview', ['users' => User::all()]);
+        $users = User::all();
+        return view('admin.users.overview')->with('users', $users);
     }
 }

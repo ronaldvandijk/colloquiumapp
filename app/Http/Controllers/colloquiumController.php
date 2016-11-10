@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Colloquium;
-
 class colloquiumController extends Controller
 {
     /**
@@ -16,7 +13,6 @@ class colloquiumController extends Controller
     {
         //  $this->middleware('auth');
     }
-
     /**
      *
      */
@@ -24,7 +20,6 @@ class colloquiumController extends Controller
     {
         return view('user.AddColloquium');
     }
-
     public function plannerView(Request $request)
     {
         if ($request->approval != null) {
@@ -34,7 +29,6 @@ class colloquiumController extends Controller
         }
         return view('user.colloquiaPlanner', compact('colloquia'));
     }
-
     public function update(Request $request)
     {
         $colluquium = Colloquium::where('id', $request->id)

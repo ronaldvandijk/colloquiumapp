@@ -90,7 +90,7 @@ class BaseTypeController extends Controller
     private function createView($viewName, $data = [])
     {
         try {
-            return view($this->className . "." . $viewName, $data);
+            return view($viewName, $data);
         } catch(InvalidArgumentException $e) {
             return view('base.' . $viewName, $data);
         }

@@ -84,4 +84,9 @@ class Colloquium extends Model
         return $this->belongsToMany(Colloquium::class);
     }
 
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
+
 }

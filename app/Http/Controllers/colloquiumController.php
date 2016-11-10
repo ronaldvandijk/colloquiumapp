@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Colloquium;
-use Illuminate\Support\Facades\DB;
 
 class colloquiumController extends Controller
 {

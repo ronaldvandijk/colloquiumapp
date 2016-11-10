@@ -17,8 +17,8 @@
                             <thead>
                             <th>Titel</th>
                             <th>Auteur</th>
-                            <th>Type</th>
                             <th>Kamer</th>
+                            <th>Type</th>
                             <th>Datum</th>
                             <th>t/m</th>
                             <th>Status</th>
@@ -28,13 +28,13 @@
                                 <tr>
                                     <td>{{ $colloquium->title }}</td>
                                     <td>
-                                        <a href="/user/{{ $colloquium->user_id }}">{{ DB::table('users')->where('id', $colloquium->user_id)->value('last_name') }}</a>
+                                        <a href="/user/{{ $colloquium->user_id }}">{{ $colloquium->user->last_name }}</a>
                                     </td>
                                     <td>
-                                        <a href="/room/{{ $colloquium->room_id }}">{{ DB::table('rooms')->where('id', $colloquium->room_id)->value('name') }}</a>
+                                        <a href="/room/{{ $colloquium->room_id }}">{{ $colloquium->room->name }}</a>
                                     </td>
                                     <td>
-                                        <a href="/type/{{ $colloquium->type_id }}">{{ DB::table('colloquium_types')->where('id', $colloquium->type_id)->value('name') }}</a>
+                                        <a href="/type/{{ $colloquium->type_id }}">{{ $colloquium->type->name }}</a>
                                     </td>
                                     <td>{{ $colloquium->start_date }}</td>
                                     <td>{{ $colloquium->end_date }}</td>

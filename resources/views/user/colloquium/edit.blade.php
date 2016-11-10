@@ -14,19 +14,19 @@
                             {{ csrf_field() }}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Titel</label>
+                                    <label>{{ trans('user/colloquium/edit.title') }}</label>
                                     <input type="text" class="form-control" value="{{ $colloquium->title }}" name="title">
                                 </div>
                                 <div class="form-group">
-                                    <label>Omschrijving</label>
+                                    <label>{{ trans('user/colloquium/edit.description') }}</label>
                                     <textarea type="text" class="form-control" name="description">{{ $colloquium->description }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Company Image</label>
+                                    <label>{{ trans('user/colloquium/edit.company_image') }}</label>
                                     <input type="text" class="form-control" value="{{ $colloquium->company_image }}" name="company_image">
                                 </div>
                                 <div class="form-group">
-                                    <label>Company URL</label>
+                                    <label>{{ trans('user/colloquium/edit.company_url') }}</label>
                                     <input type="text" class="form-control" value="{{ $colloquium->company_url }}" name="company_url">
                                 </div>
                                 <div class="form-group">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-success pull-right">Wijzigingen opslaan</button>
+                                    <button type="submit" class="btn btn-success pull-right">{{ trans('common.modelupdate', ['modelName' =>trans('user/colloquium/general.modelName')]) }}</button>
                                 </div>
                             </div>
                         </form>

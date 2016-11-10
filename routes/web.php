@@ -40,9 +40,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::post('template/update', 'Admin\TemplateController@update');
 
     Route::resource('themes', 'Admin\ThemeController');
+    Route::resource('city', 'Admin\CityController');
 });
 
-Route::resource('/city', 'Admin\CityController');
 
 Route::group(['prefix' => 'colloquium'], function () {
     Route::get('/', 'ColloquiumController@index');

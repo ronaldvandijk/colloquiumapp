@@ -11,7 +11,7 @@ class MyColloquiaController
 
     public function index()
     {
-        $colloquia = Colloquium::where('user_id', Auth::user()->id)->get();
+        $colloquia = Auth::user()->colloquia;
 
         return view('user.colloquium.overview', ['colloquia' => $colloquia]);
     }

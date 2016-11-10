@@ -7,6 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <b>Lorum ipsum</b>
+                    <a href="{{ $baseUrl }}create" class="pull-right">Create</a>
                 </div>
                 <div class="panel-body">
                     <table>
@@ -27,8 +28,14 @@
                                         <td>{{$object->$property}}</td>
                                      @endif
                                 @endforeach
-                                <td><a href="{{ $baseUrl }}{{ $object->id }}/edit">{{ trans('edit') }}</a></td>
-                                <td><a href="#">{{ trans('delete') }}</a></td>
+                                <td><a href="{{ $baseUrl }}{{ $object->id }}/edit" class="btn btn-success">{{ trans('edit') }}</a></td>
+                                <td>
+                                    <form action="{{ action($controllerName . '@destroy', ['id' => $object->id]) }} " method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" value="{{ trans('common.delete') }}" class="btn btn-danger"></button>
+                                    </form>
+                                </td>
                              </tr>
                             @endforeach
                         </tbody>

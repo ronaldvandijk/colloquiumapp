@@ -33,7 +33,8 @@ class BaseTypeController extends Controller
         $data = [
             'properties' => $this->properties,
             'data' => $this->modelClass::all(),
-            'baseUrl' => $this->baseUrl
+            'baseUrl' => $this->baseUrl,
+            'controllerName' => $this->getClassNameController()
         ];
 
         return $this->createView($this->overviewView, $data);
@@ -42,7 +43,19 @@ class BaseTypeController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+        $this->modelClass::create($request->input());
+
+        return redirect(action($this->getClassNameController()."@index"));
+    }
+
+    public function create()
+    {
+        $data = [
+            'properties' => $this->properties,
+            'baseUrl' => $this->baseUrl
+        ];
+
+        return $this->createView($this->createView, $data);
     }
 
     public function edit($id)
@@ -80,9 +93,10 @@ class BaseTypeController extends Controller
         return redirect(action($this->getClassNameController()."@index"));
     }
 
-    public function destory($model)
+    public function destroy($id)
     {
-        dd($model);
+        $this->modelClass::where('id', $id)->delete();
+        return redirect(action($this->getClassNameController()."@index"));
     }
 
 

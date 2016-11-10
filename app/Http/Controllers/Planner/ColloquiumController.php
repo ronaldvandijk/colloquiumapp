@@ -36,4 +36,9 @@ class colloquiumController extends Controller
             ->update(['approval' => $request->approval]);
         return back();
     }
+
+    public function destroy ($colloquia){
+        $colloquia->softDeletes();
+        return view('user.colloquiaPlanner', compact('colloquia'));
+    }
 }

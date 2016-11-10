@@ -10,23 +10,23 @@
         <hr>
         <div class="row">
             <div class="col-xs-5">
-                <img src="{{ $colloquium->user()->image}}" alt="" />
+                <img src="{{ $colloquium->user->image}}" alt="" />
             </div>
             <div class="col-xs-7">
-                <p><b>{{trans('agenda.speaker')}}: </b>{{$user->first_name}} {{$user->insertion}} {{$user->last_name}}</p>
-                <p><b>{{trans('agenda.type')}}: </b>{{$type->name}}</p>
-                <p><b>{{trans('agenda.duration')}}: </b>{{date('j M Y H:i', strtotime($colloquium->start_date))}} - {{date('j M Y H:i', strtotime($colloquium->end_date))}}</p>
-                <p><b>{{trans('agenda.room')}}: </b>{{$building->name}}, {{$room->name}}</p>
-                <p><b>{{trans('agenda.location')}}: </b>{{$location->name}}, {{$city->name}}</p>
-                <p><b>{{trans('agenda.language')}}: </b>{{$language->name}}</p>
-                <p><b>{{trans('agenda.interested')}}: </b>{{$interested}} {{trans('agenda.people')}}</p>
+                <p><b>{{ trans('agenda.speaker') }}: </b>{{ $colloquium->user->first_name }} {{ $colloquium->user->insertion }} {{ $colloquium->user->last_name }}</p>
+                <p><b>{{ trans('agenda.type') }}: </b>{{ $colloquium->type->name }}</p>
+                <p><b>{{ trans('agenda.duration') }}: </b>{{ date('j M Y H:i', strtotime($colloquium->start_date)) }} - {{ date('j M Y H:i', strtotime($colloquium->end_date)) }}</p>
+                <p><b>{{ trans('agenda.room') }}: </b>{{ $colloquium->room->building->name }}, {{ $colloquium->room->name }}</p>
+                <p><b>{{trans('agenda.location')}}: </b>{{$colloquium->room->building->location->name}}</p>
+                <p><b>{{ trans('agenda.language') }}: </b>{{ $colloquium->language->name }}</p>
+                <p><b>{{ trans('agenda.interested') }}: </b>{{ $colloquium->invitees->count() }} {{ trans('agenda.people') }}</p>
             </div>
         </div>
-        <h3><b>{{trans('agenda.description')}}</b></h3>
+        <h3><b>{{ trans('agenda.description') }}</b></h3>
         <p>
-            {{$colloquium->description}}
+            {{ $colloquium->description }}
         </p>
-        <img src="{{$colloquium->company_image}}" alt="" />
+        <img src="{{ $colloquium->company_image }}" alt="" />
     </div>
     </div>
 @endsection

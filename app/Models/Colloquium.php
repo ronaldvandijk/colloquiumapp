@@ -54,6 +54,15 @@ class Colloquium extends Model
 
     use SoftDeletes;
 
+    public $dates = [
+        'start_date',
+        'end_date'
+    ];
+
+    protected $fillable = [
+        'start_date',
+    ];
+
     public function room()
     {
         return $this->belongsTo(Room::class);

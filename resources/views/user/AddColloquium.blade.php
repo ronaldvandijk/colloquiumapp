@@ -1,42 +1,75 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('addColloquium.panel-heading') }}</div>
-
                 <div class="panel-body">
                     <form method="POST" action="">
-                        {{ trans('addColloquium.title') }}<input type="text" name="title"><br/>
-                        {{ trans('addColloquium.description') }} <input type="textbox" name="description"><br/>
-                        {{ trans('addColloquium.type')  }}<select name="type">
-                            <option>Auditorium</option>
-                            <option>Exam</option>
-                        </select>
-                        {{ trans('addColloquium.theme') }}<div style="overflow-y: scroll; width:400px; height: 250px;">
-                            <input type="checkbox"><label>lorum</label>
-                            <input type="checkbox"><label>ipsum</label>
-                            <input type="checkbox"><label>dolor</label>
+                        <div class="form-group">
+                            <label>{{ trans('addColloquium.title') }}</label>
+                            <input type="text" class="form-control" name="title">
                         </div>
-                        {{ trans('addColloquium.email') }}<a class="btn btn-default">{{ trans('addColloquium.composeEmailBtn') }}</a><br/>
-                        {{ trans('addColloquium.date') }}<input type="date" name="date"/><br/>
-                        {{ trans('addColloquium.time') }}<input type="time" name="timeStart"/><input type="time" name="timeEnd"/><br/>
-                        {{ trans('addColloquium.location') }}<br/>
-                        <select name="City">
-                            <option>Groningen</option>
-                            <option>Assen</option>
-                        </select>
-                        <select name="Building">
-                            <option>Van DoorenVeste</option>
-                            <option>De Appel</option>
-                        </select>
-                        <select name="Room">
-                            <option>a123</option>
-                            <option>a124</option>
-                            <option>b144</option>
-                        </select>
+                        <div class="form-group">
+                            <label>{{ trans('addColloquium.description') }}</label>
+                            <textarea name="description" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>{{ trans('addColloquium.type') }}</label>
+                            <select class="form-control" name="type">
+                              <option>Auditorium</option>
+                              <option>Exam</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>{{ trans('addColloquium.theme') }}</label>
+                            <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" value="option1">
+                                  Lorem
+                                </label>
+                                <label>
+                                  <input type="checkbox" value="option1">
+                                  Ipsum
+                                </label>
+                                <label>
+                                  <input type="checkbox" value="option1">
+                                  Dolor
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{{ trans('addColloquium.email') }}</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <!-- {{ trans('addColloquium.email') }}<a class="btn btn-default">{{ trans('addColloquium.composeEmailBtn') }}</a><br/>-->
+                        <div class="form-group">
+                            <label>{{ trans('addColloquium.date') }}</label>
+                            <input type="date" class="form-control" name="date">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label>{{ trans('addColloquium.time') }}</label>
+                            <input type="time" class="form-control" name="timeStart"> {{ trans('addColloquium.untill') }} <input type="time" class="form-control" name="timeEnd">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label>{{ trans('addColloquium.location') }}</label>
+                            <select class="form-control" name="city">
+                              <option>Groningen</option>
+                              <option>Assen</option>
+                            </select>
+                            <select class="form-control" name="building">
+                              <option>Van DoorenVeste</option>
+                              <option>Assen</option>
+                            </select>
+                            <select class="form-control" name="room">
+                              <option>a123</option>
+                              <option>a124</option>
+                              <option>b144</option>
+                            </select>
+                        </div>
                         <button class="btn btn-default pull-right" type="confirm"> {{trans('addColloquium.confirm')}}</button>
                     </form>
                 </div>

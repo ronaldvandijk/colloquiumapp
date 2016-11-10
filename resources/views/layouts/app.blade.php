@@ -11,8 +11,11 @@
     <title>Colloquia</title>
 
     <!-- Styles -->
+     @yield('styles')
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
+
+
 
     <!-- Scripts -->
     <script>
@@ -81,8 +84,8 @@
 
         @yield('content')
     </div>
-
     <!-- Scripts -->
+    @yield('scripts')
     <script src="/js/app.js"></script>
 </body>
 </html>

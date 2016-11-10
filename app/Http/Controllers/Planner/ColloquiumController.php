@@ -48,4 +48,9 @@ class ColloquiumController extends Controller
         $colloquium->save();
         return back();
     }
+
+    public function destroy ($colloquia){
+        $colloquia->softDeletes();
+        return view('user.colloquiaPlanner', compact('colloquia'));
+    }
 }

@@ -24,17 +24,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('home');
-
+        return view('admin/users/overview', ['users' => User::all()]);
     }
 
     public function edit(User $user)
     {
         return view('admin/users/edit', ['user' => $user, 'roles' => Role::all()]);
-    }
-
-    public function overview()
-    {
-        return view('admin/users/overview', ['users' => User::all()]);
     }
 }

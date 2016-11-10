@@ -17,14 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile', 'Admin\UsersController@profile');
 Route::get('/home', 'HomeController@index');
 Route::get('/test', 'TestController@overview');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function() {
     Route::get('/', 'Admin\HomeController@index');
 
-    Route::get('users', 'Admin\UsersController@overview');
+    Route::get('/profile', 'Admin\UsersController@profile');
+
+    Route::get('users', 'Admin\UsersController@index');
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
     Route::post('user/update', 'Admin\UsersController@edit');
 

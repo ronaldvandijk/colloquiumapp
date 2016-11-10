@@ -26,5 +26,9 @@ return [
     'modeldelete' => 'Delete :modelName',
     'modelcreate' => 'Create :modelName',
 
+    'modelupdated' => ':modelName Updated',
+
+    'deleted_msg' => 'Successfully deleted!',
+
     'overview' => 'Overview',
 ];

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Planner;
 
-use Illuminate\Http\Request;
 use App\Models\Colloquium;
 use App\Http\Controllers\Controller;
 
@@ -11,7 +10,6 @@ class ColloquiumController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -35,13 +33,6 @@ class ColloquiumController extends Controller
         return view('planner.colloquia.index', compact('colloquia'));
     }
 
-    /*public function update(Request $request)
-    {
-        Colloquium::where('id', $request->id)
-            ->update(['approved' => $request->approved]);
-        return back();
-    }*/
-
     public function approve(Colloquium $colloquium, $approved)
     {
         $colloquium->approved = $approved;
@@ -49,8 +40,9 @@ class ColloquiumController extends Controller
         return back();
     }
 
-    public function destroy ($colloquia){
-        $colloquia->softDeletes();
-        return view('user.colloquiaPlanner', compact('colloquia'));
+    public function destroy(Colloquium $colloquium)
+    {
+        $colloquium->softDeletes();
+        return back();
     }
 }

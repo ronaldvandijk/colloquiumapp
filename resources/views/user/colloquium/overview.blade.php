@@ -23,8 +23,8 @@
                                 @foreach($colloquia as $colloquium)
                                     <tr>
                                         <td>{{ $colloquium->title }}</td>
-                                        <td>{{ explode(" ",$colloquium->start_date)[0] }}</td>
-                                        <td>{{ explode(" ",$colloquium->start_date)[1] }}</td>
+                                        <td>{{ explode(" ", $colloquium->start_date)[0] }}</td>
+                                        <td>{{ explode(" ", $colloquium->start_date)[1] }}</td>
                                         <td>{{ $colloquium->type()->first()->name }}</td>
                                         <td>{{ $colloquium->language()->first()->name }}</td>
                                         <td>

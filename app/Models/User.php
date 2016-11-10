@@ -70,6 +70,10 @@ class User extends Authenticatable
         return $this->hasMany(Colloquium::class);
     }
 
+    /**
+     * @param $role string The role you want to check as a string
+     * @return bool If user has the role
+     */
     public function hasRole($role)
     {
         return strtolower($this->role()->first()->name) == strtolower($role);

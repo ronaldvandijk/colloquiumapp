@@ -28,11 +28,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
     Route::post('user/update', 'Admin\UsersController@edit');
 
-//    Route::get('{type}', 'Admin\BaseController@overview');
-//    Route::get('{type}/create', 'Admin\BaseController@create');
-//    Route::post('{type}/store', 'Admin\BaseController@store');
-//    Route::get('{type}/edit/{id}', 'Admin\BaseController@update');
-
     Route::get('templates', 'Admin\TemplatesController@overview');
     Route::get('template/create', 'Admin\TemplatesController@create');
     Route::post('template/create', 'Admin\TemplateController@store');
@@ -50,7 +45,7 @@ Route::group(['prefix' => 'colloquium'], function () {
     Route::post('create', 'ColloquiumController@store');
 });
 
-Route::group(['prefix' => 'agenda'], function() {
+Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner'], function() {
     Route::get('/', 'SearchController@index');
     Route::get('/details/{id}', 'SearchController@details');
 });

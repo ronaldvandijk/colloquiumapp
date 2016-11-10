@@ -55,7 +55,6 @@ class Colloquium extends Model
     protected $fillable = [
         'title',
         'description',
-        'user_id',
         'room_id',
         'start_date',
         'end_date',

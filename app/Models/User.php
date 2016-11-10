@@ -77,6 +77,15 @@ class User extends Authenticatable
      */
     public function hasRole($role)
     {
+        if(strpos($role, '|') != 0) {
+            $roles = explode("|", $role);
+            foreach($roles as $tmpRole) {
+                if(strtolower($this->role()->first()->name) == strtolower($tmpRole)) {
+                    return true;
+                }
+            }
+        }
+
         return strtolower($this->role()->first()->name) == strtolower($role);
     }
 

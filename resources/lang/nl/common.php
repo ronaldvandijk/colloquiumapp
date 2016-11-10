@@ -15,7 +15,16 @@ return [
     'id' => 'ID',
 
     /** Messages (Buttons, Flash messages) */
+    /** CRUD Messages */
     'update' => 'Aanpassen',
     'delete' => 'Verwijderen',
     'create' => 'Aanmaken',
+
+    'submit' => 'Versturen',
+
+    'modelupdate' => ':modelName Aanpassen',
+    'modeldelete' => ':modelName Verwijderen',
+    'modelcreate' => ':modelName Aanmaken',
+
+    'overview' => 'Overzicht',
 ];

@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 
     Route::get('users', 'Admin\UsersController@index');
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
+    Route::get('user/delete/{userId}', 'Admin\UsersController@delete');
     Route::post('user/update', 'Admin\UsersController@edit');
 
     Route::get('templates', 'Admin\TemplatesController@overview');
@@ -40,7 +41,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 
 Route::resource('/city', 'Admin\CityController');
 
-Route::group(['prefix' => 'colloquium'], function () {
+Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function() {
+    Route::get('/', 'MyColloquiaController@index');
+    Route::get('/edit/{colloquium}', 'MyColloquiaController@edit');
+    Route::post('/update/{colloquium}', 'MyColloquiaController@update');
+});
+
+Route::group(['prefix' => 'colloquium'], function() {
     Route::get('/', 'ColloquiumController@index');
     Route::get('create', 'ColloquiumController@create');
     Route::post('create', 'ColloquiumController@store');
@@ -48,5 +55,5 @@ Route::group(['prefix' => 'colloquium'], function () {
 
 Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner'], function() {
     Route::get('/', 'SearchController@index');
-    Route::get('/details/{id}', 'SearchController@details');
+    Route::get('/show/{colloquium}', 'SearchController@show');
 });

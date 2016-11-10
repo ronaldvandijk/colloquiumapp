@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Models\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -56,7 +57,7 @@ class User extends Authenticatable
         'enabled',
         'prefered_language',
         'image',
-        'password'
+        'password',
     ];
 
     protected $hidden = [
@@ -97,5 +98,10 @@ class User extends Authenticatable
     public function examinates()
     {
         return $this->belongsToMany(Colloquium::class, 'colloquium_examinators', 'user_id', 'colloquium_id');
+    }
+
+    public function present()
+    {
+        return new UserPresenter($this);
     }
 }

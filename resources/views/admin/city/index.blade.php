@@ -2,14 +2,9 @@
 
 @section('content')
     <div class="container">
-        @if(request()->session()->has('success'))
-            <div class="alert alert-success">
-             {{ request()->session()->get('success') }}
-            </div>
-        @endif
-        @if(request()->session()->has('remove'))
-            <div class="alert alert-danger">
-                {{ request()->session()->get('remove') }}
+        @if(request()->session()->has('custom_error'))
+            <div class="alert alert-{{ request()->session()->get('custom_error')['type'] }}">
+                {{ request()->session()->get('custom_error')['message'] }}
             </div>
         @endif
         <div class="row">

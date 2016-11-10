@@ -30,8 +30,7 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
-        $roles = Role::all();
-        return view('admin.users.edit', ['user' => $user, 'roles' => $roles]);
+        return view('admin/users/edit', ['user' => $user, 'roles' => Role::all()]);
     }
 
     public function overview()

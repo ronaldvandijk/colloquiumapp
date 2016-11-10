@@ -25,10 +25,8 @@ class SearchController extends Controller
      */
     public function show(Colloquium $colloquium)
     {
-        // return agenda details view
         return view('agenda.details', [
             'colloquium' => $colloquium,
-
         ]);
     }
 }

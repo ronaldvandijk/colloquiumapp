@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="container-fluid">
-        <a href="{{url('agenda')}}" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{trans('agenda.back')}}</a>
-        <button class="btn btn-success pull-right">{{trans('agenda.interested')}}</button>
+        <a href="{{ url('agenda') }}" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ trans('agenda.back') }}</a>
+        <button class="btn btn-success pull-right">{{ trans('agenda.interested') }}</button>
         <hr>
         <div class="presentatie-details">
-        <h1><b>{{$colloquium->title}}</b></h1>
+        <h1><b>{{ $colloquium->title }}</b></h1>
         <hr>
         <div class="row">
             <div class="col-xs-5">
-                <img src="{{$user->image}}" alt="" />
+                <img src="{{ $colloquium->user()->image}}" alt="" />
             </div>
             <div class="col-xs-7">
                 <p><b>{{trans('agenda.speaker')}}: </b>{{$user->first_name}} {{$user->insertion}} {{$user->last_name}}</p>

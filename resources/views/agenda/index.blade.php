@@ -2,6 +2,38 @@
 
 @section('content')
     <div class="container-fluid">
+        <form action="" method="POST">
+            <div class="input-group">
+                <select class="selectpicker" data-selected-text-format="count > 1" data-width="25%" Title="Klassen" name="Klassen" multiple>
+                    <!-- TODO: Klassen dynamisch vullen. -->
+                    <option>ITV1J</option>
+                    <option>ITV1A</option>
+                    <option>ITV1B</option>
+                    <option>ITV1c</option>
+                    <option>ITV1d</option>
+                    <option>ITV1e</option>
+                </select>
+                <select class="selectpicker" data-selected-text-format="count > 1" data-width="25%" Title="Locaties" name="Klassen" multiple>
+                    <!-- TODO: Locaties dynamisch vullen. -->
+                    <option>Loc1</option>
+                    <option>loc2</option>
+                    <option>loc3</option>
+                </select>
+
+                <!-- Date Picker -->
+                <div id="sandbox-container">
+                    <input type="text" placeholder="Datum" class="form-control">
+                </div>
+            </div>
+            <div class="input-group">
+
+                <input type="text"  class=" form-control " placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                </span>
+            </div>
+        </form>
+    <script> $('#sandbox-container input').datepicker({ });</script>
         @foreach($colloquiumDates as $date => $colloquiums)
             <div class="panel panel-default">
                 <div class="panel-body schedule-item" data-toggle="modal" data-target="#colloquiumDate-{{$date}}">

@@ -22,9 +22,13 @@ return [
 
     'submit' => 'Submit',
 
+    'edit' => 'Edit',
+
+    'title' => 'title',
+
     'modelupdate' => 'Update :modelName',
     'modeldelete' => 'Delete :modelName',
     'modelcreate' => 'Create :modelName',
 
-    'overview' => 'Overview',
+    'overview' => 'Overview'
 ];

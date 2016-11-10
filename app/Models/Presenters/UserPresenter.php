@@ -2,7 +2,7 @@
 
 namespace App\Models\Presenters;
 
-class UserPresenter
+class UserPresenter extends Presenter
 {
     /**
      * Returns the full user name

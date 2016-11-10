@@ -36,8 +36,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 });
 
 Route::group(['prefix' => 'planner', 'middleware' => 'role:planner'], function() {
-    Route::get('colloquium', 'ColloquiumController@index');
-    Route::get('colloquium/update', 'ColloquiumController@update');
+    Route::get('colloquia', 'Planner\ColloquiumController@index');
+    Route::get('colloquia/{approved}', 'Planner\ColloquiumController@index');
+    Route::get('colloquium/{colloquium}/{approved}', 'Planner\ColloquiumController@approve');
 });
 
 Route::group(['prefix' => 'colloquium'], function () {

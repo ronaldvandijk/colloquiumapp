@@ -24,15 +24,15 @@ return [
 
     'edit' => 'Edit',
 
-    'title' => 'title',
-    'name' => 'name',
-    'capacity' => 'capacity',
-    'building' => 'building',
-    'room' => 'room',
-
+    'title' => 'Title',
+    'name' => 'Name',
+    'capacity' => 'Capacity',
+    'building' => 'Building',
+    'room' => 'Room',
     'modelupdate' => 'Update :modelName',
     'modeldelete' => 'Delete :modelName',
     'modelcreate' => 'Create :modelName',
-
+    'modelupdated' => ':modelName Updated',
+    'deleted_msg' => 'Successfully deleted!',
     'overview' => 'Overview',
 ];

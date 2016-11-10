@@ -17,14 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile', 'Admin\UsersController@profile');
 Route::get('/home', 'HomeController@index');
 Route::get('/test', 'TestController@overview');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
     Route::get('/', 'Admin\HomeController@index');
 
-    Route::get('users', 'Admin\UsersController@overview');
+    Route::get('/profile', 'Admin\UsersController@profile');
+
+    Route::get('users', 'Admin\UsersController@index');
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
     Route::get('user/delete/{userId}', 'Admin\UsersController@delete');
     Route::post('user/update', 'Admin\UsersController@edit');
@@ -36,8 +37,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::post('room/update/{id}', 'Admin\RoomController@update');
     Route::get('room/create', 'Admin\RoomController@create');
 
-    // Route::resource('rooms', 'Admin\RoomController');
-
     //    Route::get('{type}', 'Admin\BaseController@overview');
     //    Route::get('{type}/create', 'Admin\BaseController@create');
     //    Route::post('{type}/store', 'Admin\BaseController@store');
@@ -48,6 +47,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     // Route::post('template/create', 'Admin\TemplateController@store');
     // Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
     // Route::post('template/update', 'Admin\TemplateController@update');
+    Route::get('templates', 'Admin\TemplatesController@overview');
+    Route::get('template/create', 'Admin\TemplatesController@create');
+    Route::post('template/create', 'Admin\TemplateController@store');
+    Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
+    Route::post('template/update', 'Admin\TemplateController@update');
 
     Route::resource('themes', 'Admin\ThemeController');
 });
@@ -66,7 +70,11 @@ Route::group(['prefix' => 'colloquium'], function () {
     Route::post('create', 'ColloquiumController@store');
 });
 
+<<  << <<< HEAD
 Route::group(['prefix' => 'agenda'], function () {
+=======
+Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator'], function() {
+>>>>>>> master
     Route::get('/', 'SearchController@index');
     Route::get('/show/{colloquium}', 'SearchController@show');
 });

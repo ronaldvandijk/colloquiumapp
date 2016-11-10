@@ -13,7 +13,6 @@
                             <thead>
                                 <th>Titel</th>
                                 <th>Startdatum</th>
-                                <th>Duur</th>
                                 <th>Type</th>
                                 <th>Taal</th>
                                 <th>Status</th>
@@ -24,7 +23,6 @@
                                     <tr>
                                         <td>{{ $colloquium->title }}</td>
                                         <td>{{ $colloquium->start_date }}</td>
-                                        <td>{{ $colloquium->end_date }}</td>
                                         <td>{{ $colloquium->type()->first()->name }}</td>
                                         <td>{{ $colloquium->language()->first()->name }}</td>
                                         <td>{{ $colloquium->approval }}</td>

@@ -18,4 +18,7 @@ return [
     'update' => 'Update',
     'delete' => 'Delete',
     'create' => 'Create',
+    'edit' => 'Edit',
+
+    'title' => 'title'
 ];

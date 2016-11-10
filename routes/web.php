@@ -42,6 +42,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::resource('themes', 'Admin\ThemeController');
 });
 
+Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function() {
+    Route::get('/', 'MyColloquiaController@index');
+    Route::get('/edit', 'MyColloquiaController@edit');
+});
+
 Route::group(['prefix' => 'colloquium'], function () {
     Route::get('/', 'ColloquiumController@index');
     Route::get('create', 'ColloquiumController@create');

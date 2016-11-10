@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -18,9 +18,6 @@
                             <th>Titel</th>
                             <th>Spreker</th>
                             <th>Locatie</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
                             <th>Type</th>
                             <th>Datum</th>
                             <th>t/m</th>
@@ -30,14 +27,9 @@
                             @foreach($colloquia as $colloquium)
                                 <tr>
                                     <td>{{ $colloquium->title }}</td>
-                                    <td>{{ $colloquium->user->last_name }}</td>
-                                    <td>{{ $colloquium->room->name }}</td>
-                                    <td>{{ $colloquium->room->building->abbreviation }}</td>
-                                    <td>{{ $colloquium->room->building->location->name }}</td>
-                                    <td>{{ $colloquium->room->building->location->city->name }}</td>
-                                    <td>
-                                        <a href="/type/{{ $colloquium->type_id }}">{{ $colloquium->type->name }}</a>
-                                    </td>
+                                    <td>{{ $colloquium->user->last_name }}, {{ $colloquium->user->first_name }} {{ $colloquium->user->insertion }}</td>
+                                    <td>{{ $colloquium->room->building->location->city->name }}, {{ $colloquium->room->building->location->name }}, {{ $colloquium->room->building->abbreviation }} {{ $colloquium->room->name }}</td>
+                                    <td>{{ $colloquium->type->name }}</td>
                                     <td>{{ $colloquium->start_date }}</td>
                                     <td>{{ $colloquium->end_date }}</td>
                                     <td>

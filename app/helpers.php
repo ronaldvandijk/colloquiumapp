@@ -1,6 +1,6 @@
 <?php
     /**
-     * Convert string to date objects
+     * Format date 
      * 
      * @param   String $format
      * @param   String $date

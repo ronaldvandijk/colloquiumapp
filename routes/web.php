@@ -48,7 +48,7 @@ Route::group(['prefix' => 'colloquium'], function () {
     Route::post('create', 'ColloquiumController@store');
 });
 
-Route::group(['prefix' => 'mobile'], function() {
+Route::group(['prefix' => 'agenda'], function() {
     Route::get('/', 'SearchController@index');
     Route::get('/details/{id}', 'SearchController@details');
 });

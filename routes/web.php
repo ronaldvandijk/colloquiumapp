@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Auth::routes();
 
@@ -21,7 +21,7 @@ Route::get('/profile', 'Admin\UsersController@profile');
 Route::get('/home', 'HomeController@index');
 Route::get('/test', 'TestController@overview');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
     Route::get('/', 'Admin\HomeController@index');
 
     Route::get('users', 'Admin\UsersController@overview');
@@ -50,7 +50,7 @@ Route::group(['prefix' => 'colloquium'], function () {
     Route::post('create', 'ColloquiumController@store');
 });
 
-Route::group(['prefix' => 'agenda'], function() {
+Route::group(['prefix' => 'agenda'], function () {
     Route::get('/', 'SearchController@index');
-    Route::get('/details/{id}', 'SearchController@details');
+    Route::get('/show/{colloquium}', 'SearchController@show');
 });

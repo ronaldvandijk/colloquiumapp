@@ -11,21 +11,31 @@
                     <div class="panel-body">
                         <table class="table">
                             <thead>
-                                <th>Titel</th>
-                                <th>Startdatum</th>
-                                <th>Type</th>
-                                <th>Taal</th>
-                                <th>Status</th>
-                                <th>EDIT</th>
+                                <th>{{ trans('user/colloquium/edit.title') }}</th>
+                                <th>{{ trans('user/colloquium/edit.start_date') }}</th>
+                                <th>{{ trans('user/colloquium/edit.start_time') }}</th>
+                                <th>{{ trans('user/colloquium/edit.type') }}</th>
+                                <th>{{ trans('user/colloquium/edit.language') }}</th>
+                                <th>{{ trans('user/colloquium/edit.status') }}</th>
+                                <th>{{ trans('common.edit') }}</th>
                             </thead>
                             <tbody>
                                 @foreach($colloquia as $colloquium)
                                     <tr>
                                         <td>{{ $colloquium->title }}</td>
-                                        <td>{{ $colloquium->start_date }}</td>
+                                        <td>{{ explode(" ",$colloquium->start_date)[0] }}</td>
+                                        <td>{{ explode(" ",$colloquium->start_date)[1] }}</td>
                                         <td>{{ $colloquium->type()->first()->name }}</td>
                                         <td>{{ $colloquium->language()->first()->name }}</td>
-                                        <td>{{ $colloquium->approval }}</td>
+                                        <td>
+                                            @if($colloquium->approval === null)
+                                                {{ trans('user/colloquium/edit.colloquia_await_approval') }}
+                                            @elseif($colloquium->approval == 1)
+                                                {{ trans('user/colloquium/edit.colloquia_accepted') }}
+                                            @else
+                                                {{ trans('user/colloquium/edit.colloquia_not_approved') }}
+                                            @endif
+                                        </td>
                                         <td><a href="/mycolloquia/edit/{{ $colloquium->id }}" class="btn btn-success"><i class="fa fa-pencil"></i> {{ trans('common.edit') }}</a></td>
                                     </tr>
                                 @endforeach

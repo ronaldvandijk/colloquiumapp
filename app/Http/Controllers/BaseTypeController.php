@@ -64,7 +64,7 @@ class BaseTypeController extends Controller
 
             $data = [
                 'properties' => $this->properties,
-                'data' => $this->modelClass::findOrFail('id', $id),
+                'data' => $this->modelClass::findOrFail($id),
                 'baseUrl' => $this->baseUrl
             ];
 
@@ -78,7 +78,7 @@ class BaseTypeController extends Controller
 
     public function update(Request $request, $id)
     {
-        $model = $this->modelClass::findOrFail('id', $request->input('id'));
+        $model = $this->modelClass::findOrFail($request->input('id'));
 
         $model->update($request->input());
 
@@ -87,7 +87,7 @@ class BaseTypeController extends Controller
 
     public function destroy($id)
     {
-        $this->modelClass::findOrFail('id', $id)->delete();
+        $this->modelClass::findOrFail($id)->delete();
         return redirect(action($this->getClassNameController()."@index"));
     }
 

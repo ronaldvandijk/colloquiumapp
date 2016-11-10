@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseTypeController;
+use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class RoomController extends BaseTypeController
 {
@@ -21,29 +23,13 @@ class RoomController extends BaseTypeController
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+            'name' => 'required',
+            'capacity' => 'required|numeric|min:0',
+            'building_id' => 'required|exists:buildings,id',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Room $room)
-    {
-        return view('admin.room.show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('adminroom.edit');
+        return parent::store($request);
     }
 
     /**
@@ -55,17 +41,30 @@ class RoomController extends BaseTypeController
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'capacity' => 'required|numeric|min:0',
+            'building_id' => 'required|exists:buildings,id',
+        ]);
 
+        return parent::update($request, $id);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
+        if (Room::findOrFail($id)->colloquia()->count() != 0) {
+            Session::flash('message', trans('common.stillhascolloquia'));
+            return back();
+        }
 
+        return parent::destroy($id);
     }
+
 }

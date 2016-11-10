@@ -25,10 +25,14 @@ return [
     'edit' => 'Edit',
 
     'title' => 'title',
+    'name' => 'name',
+    'capacity' => 'capacity',
+    'building' => 'building',
+    'room' => 'room',
 
     'modelupdate' => 'Update :modelName',
     'modeldelete' => 'Delete :modelName',
     'modelcreate' => 'Create :modelName',
 
-    'overview' => 'Overview'
+    'overview' => 'Overview',
 ];

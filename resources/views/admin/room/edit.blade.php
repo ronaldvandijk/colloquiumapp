@@ -14,26 +14,26 @@
                             </div>
                         @endforeach
 
-                        <form method="post" action="/admin/room/update">
+                        <form method="post" action="{{ url('/admin/room/update/' . $data->id) }}">
                             {{ csrf_field() }}
-                            <input type="hidden" name="room_id" value="{{ $room->id }}" />
+                            <input type="hidden" name="room_id" value="{{ $data->id }}" />
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="A204" name="name" value="{{ $room->name }}">
+                                    <label>{{ trans('common.name') }}</label>
+                                    <input type="text" class="form-control" placeholder="A204" name="name" value="{{ $data->name }}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Capacity</label>
-                                    <input type="number" class="form-control" placeholder="25" name="capacity" value="{{ $room->capacity }}">
+                                    <label>{{ trans('common.capacity') }}</label>
+                                    <input type="number" class="form-control" placeholder="25" name="capacity" value="{{ $data->capacity }}">
                                 </div>
                             </div>
                             <div class="col-md-6 col-md-push-1">
                                 <div class="input-group pull-left">
-                                    <label>Building</label>
+                                    <label>{{ trans('common.building') }}</label>
                                     <select class="form-control" name="building_id">
-                                        @foreach($buildings as $building)
-                                            @if($building->id === $room->building_id)
+                                        @foreach(App\Models\Building::all() as $building)
+                                            @if($building->id === $data->building_id)
                                                 <option value="{{ $building->id }}" selected>{{ $building->name }}</option>
                                             @else
                                                 <option value="{{ $building->id }}">{{ $building->name }}</option>

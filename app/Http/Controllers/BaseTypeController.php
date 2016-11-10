@@ -3,8 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
-class BaseTypeController extends Controller
+abstract class BaseTypeController extends Controller
 {
     protected $modelClass = 'App\Models\BaseModel';
 
@@ -64,7 +65,7 @@ class BaseTypeController extends Controller
 
         $data = [
             'properties' => $this->properties,
-            'data' => $this->findOrFail($id),
+            'data' => $model->findOrFail($id),
             'baseUrl' => $this->baseUrl,
         ];
 
@@ -75,7 +76,7 @@ class BaseTypeController extends Controller
     public function update(Request $request, $id)
     {
         $model = new $this->modelClass();
-        $model = $model->findOrFail($request->input('id'));
+        $model = $model->findOrFail($id);
 
         $model->update($request->input());
 

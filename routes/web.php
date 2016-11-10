@@ -29,18 +29,25 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::get('user/delete/{userId}', 'Admin\UsersController@delete');
     Route::post('user/update', 'Admin\UsersController@edit');
 
-    Route::resource('rooms', 'Admin\RoomController');
+    Route::get('rooms', 'Admin\RoomController@index');
+    Route::post('rooms', 'Admin\RoomController@store');
+    Route::get('room/edit/{id}', 'Admin\RoomController@edit');
+    Route::delete('room/destroy/{id}', 'Admin\RoomController@destroy');
+    Route::post('room/update/{id}', 'Admin\RoomController@update');
+    Route::get('room/create', 'Admin\RoomController@create');
+
+    // Route::resource('rooms', 'Admin\RoomController');
 
     //    Route::get('{type}', 'Admin\BaseController@overview');
     //    Route::get('{type}/create', 'Admin\BaseController@create');
     //    Route::post('{type}/store', 'Admin\BaseController@store');
     //    Route::get('{type}/edit/{id}', 'Admin\BaseController@update');
 
-    Route::get('templates', 'Admin\TemplatesController@overview');
-    Route::get('template/create', 'Admin\TemplatesController@create');
-    Route::post('template/create', 'Admin\TemplateController@store');
-    Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
-    Route::post('template/update', 'Admin\TemplateController@update');
+    // Route::get('templates', 'Admin\TemplatesController@overview');
+    // Route::get('template/create', 'Admin\TemplatesController@create');
+    // Route::post('template/create', 'Admin\TemplateController@store');
+    // Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
+    // Route::post('template/update', 'Admin\TemplateController@update');
 
     Route::resource('themes', 'Admin\ThemeController');
 });

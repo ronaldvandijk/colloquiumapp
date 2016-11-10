@@ -30,9 +30,11 @@ class BaseTypeController extends Controller
 
     public function index()
     {
+        $model = new $this->modelClass;
+
         $data = [
             'properties' => $this->properties,
-            'data' => $this->modelClass::all(),
+            'data' => $model->all(),
             'baseUrl' => $this->baseUrl,
             'controllerName' => $this->getClassNameController()
         ];
@@ -43,7 +45,8 @@ class BaseTypeController extends Controller
 
     public function store(Request $request)
     {
-        $this->modelClass::create($request->input());
+        $model = new $this->modelClass;
+        $model->create($request->input());
 
         return redirect(action($this->getClassNameController()."@index"));
     }
@@ -60,10 +63,11 @@ class BaseTypeController extends Controller
 
     public function edit($id)
     {
+        $model = new $this->modelClass();
 
         $data = [
             'properties' => $this->properties,
-            'data' => $this->modelClass::findOrFail($id),
+            'data' => $this->findOrFail($id),
             'baseUrl' => $this->baseUrl
         ];
 
@@ -73,7 +77,8 @@ class BaseTypeController extends Controller
 
     public function update(Request $request, $id)
     {
-        $model = $this->modelClass::findOrFail($request->input('id'));
+        $model = new $this->modelClass();
+        $model = $model->findOrFail($request->input('id'));
 
         $model->update($request->input());
 
@@ -82,7 +87,9 @@ class BaseTypeController extends Controller
 
     public function destroy($id)
     {
-        $this->modelClass::findOrFail($id)->delete();
+        $model = new $this->modelClass();
+        $model = $model->findOrFail($id)->delete();
+
         return redirect(action($this->getClassNameController()."@index"));
     }
 

@@ -52,6 +52,11 @@ class Colloquium extends Model
 {
     protected $table = 'colloquia';
 
+    protected $fillable = [
+        'title',
+        
+    ];
+
     use SoftDeletes;
 
     public function user()
@@ -82,6 +87,11 @@ class Colloquium extends Model
     public function interested()
     {
         return $this->belongsToMany(Colloquium::class);
+    }
+
+    public function isOwner(User $user)
+    {
+        return $user->id === $this->user_id;
     }
 
 }

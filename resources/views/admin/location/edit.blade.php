@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="input-group">
                                     <label>{{ trans('admin/location.city') }}</label>
-                                    <select class="form-control" name="city">
+                                    <select class="form-control" name="city_id">
                                         <option>{{ trans('admin/location.select_city') }}</option>
                                         @foreach(\App\Models\City::all() as $city)
                                             @if($location->city_id == $city->id)

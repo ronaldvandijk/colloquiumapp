@@ -1,44 +1,48 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Planner;
 
-use Illuminate\Http\Request;
 use App\Models\Colloquium;
+use App\Http\Controllers\Controller;
 
-class colloquiumController extends Controller
+class ColloquiumController extends Controller
 {
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function index(Request $request)
+    public function index($approved = 2)
     {
-        if ($request->approval != null) {
-            $colloquia = Colloquium::where('approval', $request->approval)
+        if ($approved == 'null') {
+            $colloquia = Colloquium::whereNull('approved')
+                ->orderBy('start_date', 'asc')
+                ->get();
+        } else if ($approved == 0 || $approved == 1) {
+            $colloquia = Colloquium::where('approved', $approved)
                 ->orderBy('start_date', 'asc')
                 ->get();
         } else {
             $colloquia = Colloquium::orderBy('start_date', 'asc')
                 ->get();
         }
-        return view('user.colloquiaPlanner', compact('colloquia'));
+        return view('planner.colloquia.index', compact('colloquia'));
     }
 
-    public function update(Request $request)
+    public function approve(Colloquium $colloquium, $approved)
     {
-        Colloquium::where('id', $request->id)
-            ->update(['approval' => $request->approval]);
+        $colloquium->approved = $approved;
+        $colloquium->save();
         return back();
     }
 
-    public function destroy ($colloquia){
-        $colloquia->softDeletes();
-        return view('user.colloquiaPlanner', compact('colloquia'));
+    public function destroy(Colloquium $colloquium)
+    {
+        $colloquium->softDeletes();
+        return back();
     }
 }

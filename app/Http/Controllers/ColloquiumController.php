@@ -10,7 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ColloquiumController2 extends Controller
+class ColloquiumController extends Controller
 {
 
     public function __construct()
@@ -115,8 +115,10 @@ class ColloquiumController2 extends Controller
             'deleted_at' => 'null',
             'approved' => 'null',
         ]);*/
-        $colloquium->update($request);
-        //return redirect(action("ColloquiumController@index"));
+        $colloquium->start_date = $request->start_date . " " . $request->end_time;
+        $colloquium->end_date = $request->end_date . " " . $request->end_time;
+        $colloquium->room_id = $request->room_id;
+        return back();
     }
 
     public function delete(Colloquium $colloquium)

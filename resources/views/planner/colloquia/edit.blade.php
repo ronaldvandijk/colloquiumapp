@@ -59,7 +59,7 @@
                             @endif
                             <div class="form-group">
                                 <label>{{ trans('addColloquium.date') }}</label>
-                                <input type="date" class="form-control" name="date" value="{{ $startDate }}">
+                                <input type="date" class="form-control" name="startDate" value="{{ $startDate }}">
                             </div>
                             <div class="form-group form-inline">
                                 <label>{{ trans('addColloquium.time') }}</label>

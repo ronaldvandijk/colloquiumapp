@@ -35,7 +35,7 @@ class BuildingController extends Controller
      */
     public function index()
     {
-        return view('admin.buildings.list', ['buildings' => Building::all()]);
+        return view('admin.building.list', ['buildings' => Building::all()]);
     }
 
     /**
@@ -45,7 +45,7 @@ class BuildingController extends Controller
      */
     public function create()
     {
-        return view('admin.buildings.create', ['locations' =>  Location::all()]);
+        return view('admin.building.create', ['locations' =>  Location::all()]);
     }
 
     /**
@@ -57,7 +57,7 @@ class BuildingController extends Controller
     public function store(BuildingRequest $request)
     {
         Building::create($request->all());
-        return view('admin.buildings.list', ['buildings' => Building::all()]);
+        return view('admin.building.list', ['buildings' => Building::all()]);
     }
 
     /**
@@ -80,7 +80,7 @@ class BuildingController extends Controller
     public function edit($id)
     {
         try {
-            return view('admin.buildings.edit', [
+            return view('admin.building.edit', [
                 'building' => Building::findOrFail($id),
                 'locations' => Location::all(),
             ]);

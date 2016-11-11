@@ -10,7 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ColloquiumController extends Controller
+class ColloquiumController2 extends Controller
 {
 
     public function __construct()
@@ -84,6 +84,7 @@ class ColloquiumController extends Controller
         $rooms = Room::all();
         $startDate = explode(' ', $colloquium->start_date)[0];
         $startTime = explode(' ', $colloquium->end_date)[1];
+        $endTime = explode(' ', $colloquium->end_date)[1];
         if (Auth::user()->hasRole("Administrator")) {
             $users = User::all();
             $langs = Language::all();
@@ -94,9 +95,10 @@ class ColloquiumController extends Controller
         }
     }
 
-    public function update(Colloquium $colloquium, Request $request)
+    public function update($id, Request $request)
     {
-        $this->validate($request, [
+        $colloquium = Colloquium::where('id', $id)->get()->first();
+        /*$this->validate($request, [
             'title' => 'required',
             'description' => 'required',
             'user_id' => 'required|exists:users,id',
@@ -112,7 +114,7 @@ class ColloquiumController extends Controller
             'updated_at' => 'required|date',
             'deleted_at' => 'null',
             'approved' => 'null',
-        ]);
+        ]);*/
         $colloquium->update($request);
         return redirect(action("ColloquiumController@index"));
     }

@@ -8,7 +8,7 @@
                     <div class="panel-heading">
                         <b>{{ trans('addColloquium.edit-colloquium') }} {{ $colloquium->title }}</b></div>
                     <div class="panel-body">
-                        <form method="POST" action="">
+                        <form method="POST" action="/planner/colloquia/update/{{ $colloquium->id }}">
                             @if (Auth::user()->hasRole("administrator"))
                                 <div class="form-group">
                                     <label>{{ trans('addColloquium.title') }}</label>
@@ -58,14 +58,14 @@
                             @endif
                             <div class="form-group">
                                 <label>{{ trans('addColloquium.date') }}</label>
-                                <input type="date" class="form-control" name="date" value="{{ $date }}">
+                                <input type="date" class="form-control" name="date" value="{{ $startDate }}">
                             </div>
                             <div class="form-group form-inline">
                                 <label>{{ trans('addColloquium.time') }}</label>
                                 <input type="time" class="form-control"
-                                       name="timeStart"> {{ trans('addColloquium.untill') }} <input type="time"
+                                       name="timeStart" value="{{ $startTime }}"> {{ trans('addColloquium.untill') }} <input type="time"
                                                                                                     class="form-control"
-                                                                                                    name="timeEnd">
+                                                                                                    name="timeEnd" value="{{ $endTime }}">
                             </div>
                             <div class="form-group form-inline">
                                 <label>{{ trans('addColloquium.location') }}</label>
@@ -77,8 +77,6 @@
                                             <option value="{{ $room->id }}">{{ $room->building->location->city->name }}, {{ $room->building->location->name }}, {{ $room->building->abbreviation }} {{ $room->name }}</option>
                                         @endif
                                     @endforeach
-                                    <option>Groningen</option>
-                                    <option>Assen</option>
                                 </select>
                             </div>
                             <button class="btn btn-default pull-right"

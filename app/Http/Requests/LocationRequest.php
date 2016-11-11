@@ -25,7 +25,7 @@ class LocationRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:locations',
-            'city' => 'required|numeric',
+            'city_id' => 'required|numeric',
         ];
     }
 }

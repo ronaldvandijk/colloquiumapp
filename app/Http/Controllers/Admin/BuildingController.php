@@ -79,14 +79,10 @@ class BuildingController extends Controller
      */
     public function edit($id)
     {
-        try {
-            return view('admin.building.edit', [
-                'building' => Building::findOrFail($id),
-                'locations' => Location::all(),
-            ]);
-        } catch(ModelNotFoundException $e) {
-            return abort(404);
-        }
+        return view('admin.building.edit', [
+            'building' => Building::findOrFail($id),
+            'locations' => Location::all(),
+        ]);
     }
 
     /**
@@ -98,23 +94,19 @@ class BuildingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            $building = Building::findOrFail($id);
+        $building = Building::findOrFail($id);
 
-            $this->validate($request, [
-                'name' => 'required|unique:buildings,id,'.$building->id,
-                'abbreviation' => 'required|unique:buildings,abbreviation,'.$building->abbreviation,
-            ]);
+        $this->validate($request, [
+            'name' => 'required|unique:buildings,id,'.$building->id,
+            'abbreviation' => 'required|unique:buildings,abbreviation,'.$building->abbreviation,
+        ]);
 
-            $building->name = $request->get('name');
-            $building->abbreviation = $request->get('abbreviation');
-            $building->location_id = $request->get('location_id');
-            $building->save();
+        $building->name = $request->get('name');
+        $building->abbreviation = $request->get('abbreviation');
+        $building->location_id = $request->get('location_id');
+        $building->save();
 
-            return redirect()->action('Admin\BuildingController@index');
-        } catch(ModelNotFoundException $e) {
-            return abort(404);
-        }
+        return redirect()->action('Admin\BuildingController@index');
     }
 
     /**
@@ -125,12 +117,7 @@ class BuildingController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            Building::findOrFail($id)->delete();
-
-            return redirect()->back();
-        } catch(ModelNotFoundException $e) {
-            return abort(404);
-        }
+        Building::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

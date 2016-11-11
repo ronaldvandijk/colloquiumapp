@@ -34,6 +34,26 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
     Route::post('template/update', 'Admin\TemplateController@update');
 
+    Route::group(['prefix' => 'colloquia'], function () {
+        Route::get('/', 'ColloquiumController@index');
+        Route::get('create', 'ColloquiumController@create');
+        Route::get('edit/{id}', 'ColloquiumController@edit');
+        Route::post('insert', 'ColloquiumController@insert');
+        Route::post('update', 'ColloquiumController@update');
+        Route::post('delete', 'ColloquiumController@delete');
+    });
 });
 
-?>
+Route::group(['prefix' => 'planner/colloquia', 'middleware' => 'role:planner'], function () {
+    Route::get('/', 'ColloquiumController@index');
+    Route::get('edit/{id}', 'ColloquiumController@edit');
+    Route::post('update', 'ColloquiumController@update');
+});
+
+
+Route::get('/mobile', function () {
+    return view('mobile.index');
+});
+Route::get('/mobile/details', function () {
+    return view('mobile.details');
+});

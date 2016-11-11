@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
- */
+*/
 
 Auth::routes();
 
@@ -20,7 +20,13 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index');
 Route::get('/test', 'TestController@overview');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
+// TV Screen
+Route::get('/tv', function () {
+    return view('tv');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function() {
+
     Route::get('/', 'Admin\HomeController@index');
 
     Route::get('/profile', 'Admin\UsersController@profile');
@@ -53,6 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
     Route::post('template/update', 'Admin\TemplateController@update');
 
+    Route::resource('location', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
 });
 
@@ -70,7 +77,7 @@ Route::group(['prefix' => 'colloquium'], function () {
     Route::post('create', 'ColloquiumController@store');
 });
 
-Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator'], function() {
+Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|user'], function() {
     Route::get('/', 'SearchController@index');
     Route::get('/show/{colloquium}', 'SearchController@show');
 });

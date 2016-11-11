@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Theme;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Models\Building;
 use App\Models\Location;
@@ -56,7 +57,14 @@ class BuildingController extends Controller
      */
     public function store(BuildingRequest $request)
     {
-        Building::create($request->all());
+        try {
+            Building::create($request->all());
+        } catch (QueryException $exception) {
+            if ($exception->getCode() == 23000) {
+                $request->session()->flash('uniqueError', 'There already exists a combination with this name and abbreviation.');
+                return redirect()->action('Admin\BuildingController@create');
+            }
+        }
         return view('admin.building.list', ['buildings' => Building::all()]);
     }
 
@@ -92,20 +100,20 @@ class BuildingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BuildingRequest $request, $id)
     {
-        $building = Building::findOrFail($id);
-
-        $this->validate($request, [
-            'name' => 'required|unique:buildings,id,'.$building->id,
-            'abbreviation' => 'required|unique:buildings,abbreviation,'.$building->abbreviation,
-        ]);
-
-        $building->name = $request->get('name');
-        $building->abbreviation = $request->get('abbreviation');
-        $building->location_id = $request->get('location_id');
-        $building->save();
-
+        try {
+            $building = Building::findOrFail($id);
+            $building->name = $request->get('name');
+            $building->abbreviation = $request->get('abbreviation');
+            $building->location_id = $request->get('location_id');
+            $building->save();
+        }catch (QueryException $exception) {
+            if ($exception->getCode() == 23000) {
+                $request->session()->flash('error', 'The combination of name and abbreviation was no unique.');
+                //redirect()->back();
+            }
+        }
         return redirect()->action('Admin\BuildingController@index');
     }
 

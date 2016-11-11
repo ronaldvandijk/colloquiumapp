@@ -23,10 +23,27 @@ class BuildingRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|unique:buildings,name',
-            'abbreviation' => 'required|unique:buildings,abbreviation',
-            'location_id' => 'integer|exists:locations,id'
-        ];
+        /*switch($this->method())
+        {
+            case "PATCH":
+            {
+                return [
+                    'name' => 'required|unique:buildings,name,' . $this->id,
+                    'abbreviation' => 'required|unique:buildings,abbreviation, ',
+                    'location_id' => 'required|integer|exists:locations,id'
+                ];
+            }
+            case "POST":
+            {
+                return [
+                    'name' => 'required|unique:buildings,name',
+                    'abbreviation' => 'required|unique:buildings,abbreviation',
+                    'location_id' => 'required|integer|exists:locations,id'
+                ];
+            }
+
+
+        }*/
+        return [];
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Models\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -56,7 +57,7 @@ class User extends Authenticatable
         'enabled',
         'prefered_language',
         'image',
-        'password'
+        'password',
     ];
 
     protected $hidden = [
@@ -70,8 +71,21 @@ class User extends Authenticatable
         return $this->hasMany(Colloquium::class);
     }
 
+    /**
+     * @param $role string The role you want to check as a string
+     * @return bool If user has the role
+     */
     public function hasRole($role)
     {
+        if(strpos($role, '|') != 0) {
+            $roles = explode("|", $role);
+            foreach($roles as $tmpRole) {
+                if(strtolower($this->role()->first()->name) == strtolower($tmpRole)) {
+                    return true;
+                }
+            }
+        }
+
         return strtolower($this->role()->first()->name) == strtolower($role);
     }
 
@@ -93,5 +107,10 @@ class User extends Authenticatable
     public function examinates()
     {
         return $this->belongsToMany(Colloquium::class, 'colloquium_examinators', 'user_id', 'colloquium_id');
+    }
+
+    public function present()
+    {
+        return new UserPresenter($this);
     }
 }

@@ -1,0 +1,13 @@
+#admin-page a {
+    text-decoration: none;
+}
+
+.panel-admin {
+    font-size: 28px;
+    text-align: center;
+    padding: 40px;
+}
+
+.panel-activity-stream {
+    padding: 5px;
+}

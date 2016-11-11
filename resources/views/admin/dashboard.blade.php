@@ -1,14 +1,30 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link href="{{ url('/') }}/css/admin.css" rel="stylesheet">
+@endsection
+
 @section('content')
-    <div class="container">
+    <div id="admin-page" class="container">
         <div class="row">
-            @include('admin/sidenav')
-            <div class="col-md-9">
+            <div class="col-sm-12 col-md-6">
+                <a href="{{-- action('Admin\LocationController@index') --}}" ><div class="panel panel-default panel-admin"><i class="fa fa-globe"></i> {{ trans('admin/dashboard.locations') }}</div></a>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <a href="{{ action('Admin\UsersController@index') }}" ><div class="panel panel-default panel-admin"><i class="fa fa-users"></i> {{ trans('admin/dashboard.users') }}</div></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <a href="{{ action('Admin\ThemeController@index') }}" ><div class="panel panel-default panel-admin"><i class="fa fa-pencil-square"></i> {{ trans('admin/dashboard.themes') }}</div></a>
+            </div>
+            <div class="col-sm-12 col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Administrator Dashboard</b></div>
+                    <div class="panel-heading">
+                        <div><i class="fa fa-rss"></i> {{ trans('admin/dashboard.activity_stream') }}</div>
+                    </div>
                     <div class="panel-body">
-                        Low hanging fruit startup network effects twitter hypotheses. Creative stealth partner network freemium handshake success advisor venture gen-z product management interaction design customer. Business-to-business technology business model canvas branding angel investor crowdfunding seed round. Entrepreneur backing metrics business model canvas agile development accelerator partner network crowdsource ecosystem A/B testing funding. Release return on investment infrastructure supply chain rockstar bandwidth network effects interaction design research & development. Non-disclosure agreement ramen mass market angel investor handshake release business-to-consumer marketing technology investor seed round value proposition validation. Validation startup creative deployment stock influencer. Partnership iPad seed round responsive web design. Seed money freemium agile development customer network effects gamification low hanging fruit monetization. Gen-z first mover advantage ecosystem infographic infrastructure pivot funding validation buzz success value proposition supply chain monetization alpha.
+                         {{-- TODO: Activity Stream --}}
                     </div>
                 </div>
             </div>

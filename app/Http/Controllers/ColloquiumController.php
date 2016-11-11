@@ -18,20 +18,6 @@ class ColloquiumController extends Controller
         $this->middleware('auth');
     }
 
-    public function checkUser()
-    {
-        if (Auth::user()->role->name == 'Administrator')
-        {
-            return view('admin.colloquia');
-        }elseif(Auth::user()->role->name == 'Planner')
-        {
-            return view('planner.colloquia');
-        }else
-        {
-            return view('user.colloquia');
-        }
-    }
-
     public function index($approved = 2)
     {
         $colloquia = Colloquium::orderBy('start_date', 'asc')
@@ -94,9 +80,18 @@ class ColloquiumController extends Controller
 
     public function edit($id)
     {
-        $colloquium = Colloquium::where('id', $id)
-            ->get();
-        return view('planner.colloquia.edit', compact('colloquium'));
+        $colloquium = Colloquium::where('id', $id)->get()->first();
+        $rooms = Room::all();
+        $startDate = explode(' ', $colloquium->start_date)[0];
+        $startTime = explode(' ', $colloquium->end_date)[1];
+        if (Auth::user()->hasRole("Administrator")) {
+            $users = User::all();
+            $langs = Language::all();
+            $types = ColloquiumType::all();
+            return view('planner.colloquia.edit', compact('colloquium', 'users', 'langs', 'types', 'date', 'time'));
+        } else if (Auth::user()->hasRole("Planner")) {
+            return view('planner.colloquia.edit', compact('colloquium', 'rooms', 'startDate', 'startTime', 'endDate', 'endTime'));
+        }
     }
 
     public function update(Colloquium $colloquium, Request $request)
@@ -122,7 +117,8 @@ class ColloquiumController extends Controller
         return redirect(action("ColloquiumController@index"));
     }
 
-    public function delete(Colloquium $colloquium) {
+    public function delete(Colloquium $colloquium)
+    {
         $colloquium->delete();
         return redirect(action("ColloquiumController@index"));
     }

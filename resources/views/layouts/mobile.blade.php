@@ -14,7 +14,7 @@
       <h1>Hanze Colloquium</h1>
         <form action="" method="POST">
             <div class="input-group">
-                <input type="text" class=" form-control" placeholder="Search for...">
+                <input type="text" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
                     <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
                 </span>

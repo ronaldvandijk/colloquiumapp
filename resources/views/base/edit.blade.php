@@ -8,7 +8,7 @@
                 <div class="panel-heading"><b>Something bewerken</b></div>
 
                 <div class="panel-body">
-                    <form method="post" action="{{ $baseUrl }}update">
+                    <form method="post" action="{{ $baseUrl }}/{{ $data->id }}">
                         {{ method_field('PUT') }}
                         {{ csrf_field() }}
                         <div class="col-md-6">

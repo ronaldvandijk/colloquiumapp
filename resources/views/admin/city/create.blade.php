@@ -8,34 +8,26 @@
             @endforeach
             <div class="col-md-10 col-md-push-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>{{ trans('common.modelupdate', [trans('common.location')]) }}</b></div>
+                    <div class="panel-heading"><b>{{ trans('admin/city.create_title') }}</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/locations">
+                        <form method="post" action="/admin/city">
                             {{ csrf_field() }}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ trans('common.name') }}</label>
+                                    <label>{{ trans('admin/city.name') }}</label>
                                     <input type="text"
                                            class="form-control"
-                                           placeholder="Locatie naam"
+                                           placeholder="{{ trans('admin/city.name') }}"
                                            name="name"
                                            value="{{ request()->old('name') }}"
                                     />
                                 </div>
-                                <div class="input-group pull-left">
-                                    <label>{{ trans('common.city') }}</label>
-                                    <select class="form-control" name="city_id">
-                                        @foreach(\App\Models\City::all() as $city)
-                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12" style="padding: 20px 15px 0 30px;">
-                                    <a class="btn btn-default pull-left" href="{{ url('/admin/locations') }}">{{ trans('admin/location.goback') }}</a>
-                                    <button type="submit" class="btn btn-success pull-right">{{ trans('admin/location.save') }}</button>
+                                    <a class="btn btn-default pull-left" href="{{ url('/admin/city') }}">{{ trans('admin/city.goback') }}</a>
+                                    <button type="submit" class="btn btn-success pull-right">{{ trans('admin/city.save') }}</button>
                                 </div>
                             </div>
                         </form>

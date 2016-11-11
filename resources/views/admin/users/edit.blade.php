@@ -13,27 +13,19 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Voornaam</label>
-                                    <input type="text" class="form-control" placeholder="Voornaam" value="{{ $user->first_name}}">
+                                    <input type="text" class="form-control" placeholder="{{ trans('admin.placeholder_firstname') }}" value="{{ $user->first_name}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Tussenvoegsel</label>
-                                    <input type="text" class="form-control" placeholder="" value="{{ $user->insertion}}">
+                                    <input type="text" class="form-control" value="{{ $user->insertion}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Achternaam</label>
-                                    <input type="text" class="form-control" placeholder="Achternaam" value="{{ $user->last_name}}">
+                                    <input type="text" class="form-control" placeholder="{{ trans('admin.placeholder_lastname') }}" value="{{ $user->last_name}}">
                                 </div>
                                 <div class="form-group">
                                     <label>E-mail</label>
-                                    <input type="email" class="form-control" placeholder="Email" value="{{ $user->email }}">
-                                </div>
-                                <div class="form-group">
-                                    <label>Update wachtwoord</label>
-                                    <input type="password" class="form-control" placeholder="" value="">
-                                </div>
-                                <div class="form-group">
-                                    <label>Wachtwoord verificatie</label>
-                                    <input type="password" class="form-control" placeholder="" value="">
+                                    <input type="email" class="form-control" placeholder="{{ trans('admin.placeholder_mail') }}" value="{{ $user->email }}">
                                 </div>
                             </div>
                             <div class="col-md-6 col-md-push-1">

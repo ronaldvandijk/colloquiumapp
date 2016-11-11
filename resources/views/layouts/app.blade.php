@@ -51,7 +51,7 @@
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
-                            @if(Auth::user()->hasRole('User'))
+                            @if(Auth::user()->hasRole('user'))
                                 <li><a href="{{url('/mycolloquia')}}">Mijn Colloquia</a></li>
                             @endif
                             <li><a href="{{ url('/agenda') }}">Agenda</a></li>
@@ -86,5 +86,6 @@
 
     <!-- Scripts -->
     <script src="{{ url('/') }}/js/app.js"></script>
+    @yield('scripts')
 </body>
 </html>

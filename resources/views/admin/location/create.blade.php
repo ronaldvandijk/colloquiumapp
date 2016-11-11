@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="input-group pull-left">
                                     <label>City</label>
-                                    <select class="form-control" name="city">
+                                    <select class="form-control" name="city_id">
                                         <option selected>Selecteer een city</option>
                                         @foreach(\App\Models\City::all() as $city)
                                             <option value="{{ $city->id }}">{{ $city->name }}</option>

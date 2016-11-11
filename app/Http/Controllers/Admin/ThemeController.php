@@ -83,14 +83,10 @@ class ThemeController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, Theme::RULES);
-        try {
-            $theme = Theme::findOrFail($id);
-            $theme->name = $request['name'];
-            $theme->save();
-            Session::set('message', 'Theme updated');
-        } catch (ModelNotFoundException $e) {
-            Session::set('message', 'Theme not found');
-        }
+        $theme = Theme::findOrFail($id);
+        $theme->name = $request->get('name');
+        $theme->save();
+        $request->session()->flash('message', trans('common.modelupdated', ['modelName' => trans('admin/theme.modelname')]));
 
         return redirect()->action('Admin\ThemeController@index');
     }
@@ -98,18 +94,14 @@ class ThemeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        try{
-            Theme::findOrFail($id)->delete();
-            Session::flash('message', 'Successfully deleted the theme!');
-        } catch (ModelNotFoundException $e) {
-            // mmm... yeah just nothing
-        }
-
+        Theme::findOrFail($id)->delete();
+        $request->session()->flash('message', trans('common.deleted_msg'));
         return redirect()->action('Admin\ThemeController@index');
     }
 }

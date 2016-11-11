@@ -21,6 +21,11 @@ class Location extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = [
+        'name',
+        'city_id',
+    ];
+
     public function buildings() 
     {
     	return $this->hasMany(Building::class);

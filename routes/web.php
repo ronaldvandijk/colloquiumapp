@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Auth::routes();
 
@@ -25,7 +25,7 @@ Route::get('/tv', function () {
     return view('tv');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
 
     Route::get('/', 'Admin\HomeController@index');
 
@@ -53,17 +53,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     // Route::post('template/create', 'Admin\TemplateController@store');
     // Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
     // Route::post('template/update', 'Admin\TemplateController@update');
-    Route::get('templates', 'Admin\TemplatesController@overview');
-    Route::get('template/create', 'Admin\TemplatesController@create');
-    Route::post('template/create', 'Admin\TemplateController@store');
-    Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
-    Route::post('template/update', 'Admin\TemplateController@update');
+    // Route::get('templates', 'Admin\TemplatesController@overview');
+    // Route::get('template/create', 'Admin\TemplatesController@create');
+    // Route::post('template/create', 'Admin\TemplateController@store');
+    // Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
+    // Route::post('template/update', 'Admin\TemplateController@update');
 
-    Route::resource('location', 'Admin\LocationController');
+    Route::resource('locations', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
     Route::resource('city', 'Admin\CityController');
 });
-
 
 Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function () {
     Route::get('/', 'MyColloquiaController@index');
@@ -77,11 +76,11 @@ Route::group(['prefix' => 'colloquium'], function () {
     Route::post('create', 'ColloquiumController@store');
 });
 
-Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|user'], function() {
+Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|user'], function () {
     Route::get('/', 'SearchController@index');
     Route::get('/show/{colloquium}', 'SearchController@show');
 });
 
-Route::group(['prefix' => 'mailtemplates'], function(){
-  Route::get('/', 'MailTemplatesController@overview');
+Route::group(['prefix' => 'mailtemplates'], function () {
+    Route::get('/', 'MailTemplatesController@overview');
 });

@@ -11,7 +11,7 @@
                     <div class="panel-heading"><b>{{ trans('admin/location.delete_title') }}</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/location">
+                        <form method="post" action="/admin/locations">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <div class="col-md-6">

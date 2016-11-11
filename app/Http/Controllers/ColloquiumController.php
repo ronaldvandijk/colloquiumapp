@@ -18,6 +18,20 @@ class ColloquiumController extends Controller
         $this->middleware('auth');
     }
 
+    public function checkUser()
+    {
+        if (Auth::user()->role->name == 'Administrator')
+        {
+            return view('admin.colloquia');
+        }elseif(Auth::user()->role->name == 'Planner')
+        {
+            return view('planner.colloquia');
+        }else
+        {
+            return view('user.colloquia');
+        }
+    }
+
     public function index($approved = 2)
     {
         $colloquia = Colloquium::orderBy('start_date', 'asc')

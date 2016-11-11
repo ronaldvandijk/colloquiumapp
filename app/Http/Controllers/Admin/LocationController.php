@@ -78,7 +78,7 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.location.edit', ['location' => Location::find($id)]);
+        return view('admin.location.edit', ['location' => Location::findOrFail($id)]);
     }
 
     /**
@@ -97,7 +97,7 @@ class LocationController extends Controller
         ]);
 
         // Saving new location
-        $location = Location::find($id);
+        $location = Location::findOrFail($id);
         $location->name = $request->input('name');
         $location->city_id = $request->input('city');
         $location->save();
@@ -117,7 +117,7 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        $location = Location::find($id);
+        $location = Location::findOrFail($id);
         $location->delete();
 
         // Set success message for new request

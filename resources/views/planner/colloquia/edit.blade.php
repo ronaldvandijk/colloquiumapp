@@ -9,6 +9,7 @@
                         <b>{{ trans('addColloquium.edit-colloquium') }} {{ $colloquium->title }}</b></div>
                     <div class="panel-body">
                         <form method="POST" action="/planner/colloquia/update/{{ $colloquium->id }}">
+                            {{ csrf_field() }}
                             @if (Auth::user()->hasRole("administrator"))
                                 <div class="form-group">
                                     <label>{{ trans('addColloquium.title') }}</label>

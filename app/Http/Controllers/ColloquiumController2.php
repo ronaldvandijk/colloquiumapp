@@ -116,7 +116,7 @@ class ColloquiumController2 extends Controller
             'approved' => 'null',
         ]);*/
         $colloquium->update($request);
-        return redirect(action("ColloquiumController@index"));
+        //return redirect(action("ColloquiumController@index"));
     }
 
     public function delete(Colloquium $colloquium)

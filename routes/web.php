@@ -20,11 +20,12 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index');
 Route::get('/test', 'TestController@overview');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function() {
+// TV Screen
+Route::get('/tv', function () {
+    return view('tv');
+});
 
-    Route::get('/tv', function () {
-        return view('admin.tv');
-    });
+Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function() {
 
     Route::get('/', 'Admin\HomeController@index');
 

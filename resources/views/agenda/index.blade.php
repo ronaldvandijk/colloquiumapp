@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         @foreach($colloquiumCollection as $colloquiumCollectionDate => $colloquiums)
-            <div class="panel panel-default" data-toggle="modal" data-target="#colloquiumDate-{{ format('d-m-Y', $colloquiumCollectionDate) }}">
+            <div style="cursor: pointer" class="panel panel-default" data-toggle="modal" data-target="#colloquiumDate-{{ format('d-m-Y', $colloquiumCollectionDate) }}">
                 <div class="panel-body schedule-item">
                     <div class="row">
                         <div class="col-xs-2    ">

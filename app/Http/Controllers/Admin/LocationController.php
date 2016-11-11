@@ -42,10 +42,7 @@ class LocationController extends Controller
     public function store(LocationRequest $request)
     {
         // Saving new location
-        $location          = new Location();
-        $location->name    = $request->input('name');
-        $location->city_id = $request->input('city');
-        $location->save();
+        $location = Location::create($request->all());
 
         // Set success message for new request
         $request->session()->flash(
@@ -89,10 +86,8 @@ class LocationController extends Controller
     public function update(LocationRequest $request, $id)
     {
         // Saving new location
-        $location          = Location::findOrFail($id);
-        $location->name    = $request->input('name');
-        $location->city_id = $request->input('city');
-        $location->save();
+        $location = Location::findOrFail($id);
+        $location->update($request->all());
 
         // Set success message for new request
         $request->session()->flash(

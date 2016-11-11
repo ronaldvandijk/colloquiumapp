@@ -29,6 +29,7 @@
                 </span>
             </div>
         </form>
+
         @foreach($colloquiumCollection as $colloquiumCollectionDate => $colloquiums)
 
             <div class="panel panel-default">

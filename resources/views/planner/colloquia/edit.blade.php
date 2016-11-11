@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('addColloquium.panel-heading') }}</div>
-                <div class="panel-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-push-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>{{ trans('addColloquium.edit-colloquium') }}</b></div>
+                    <div class="panel-body">
                     <form method="POST" action="">
                         <div class="form-group">
                             <label>{{ trans('addColloquium.title') }}</label>
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control" name="title" value="">
                         </div>
                         <div class="form-group">
                             <label>{{ trans('addColloquium.description') }}</label>
@@ -24,9 +23,6 @@
                               <option>Exam</option>
                             </select>
                         </div>
-                        @foreach($foobar as $colloquium)
-                            {{ $colloquium->title }} 
-                        @endforeach
                         <div class="form-group">
                             <label>{{ trans('addColloquium.theme') }}</label>
                             <div class="checkbox">
@@ -65,7 +61,7 @@
                             </select>
                             <select class="form-control" name="building">
                               <option>Van DoorenVeste</option>
-                              <option>Assen</option>
+                              <option>Location 2</option>
                             </select>
                             <select class="form-control" name="room">
                               <option>a123</option>
@@ -76,8 +72,8 @@
                         <button class="btn btn-default pull-right" type="confirm"> {{trans('addColloquium.confirm')}}</button>
                     </form>
                 </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

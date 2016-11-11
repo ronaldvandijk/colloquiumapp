@@ -33,6 +33,23 @@ class ColloquiumController extends Controller
         return view('planner.colloquia.index', compact('colloquia'));
     }
 
+    public function update($approved = 2)
+    {
+        if ($approved == 'null') {
+            $colloquia = Colloquium::whereNull('approved')
+                ->orderBy('start_date', 'asc')
+                ->get();
+        } else if ($approved == 0 || $approved == 1) {
+            $colloquia = Colloquium::where('approved', $approved)
+                ->orderBy('start_date', 'asc')
+                ->get();
+        } else {
+            $colloquia = Colloquium::orderBy('start_date', 'asc')
+                ->get();
+        }
+        return view('planner.colloquia.edit', compact('colloquia'));
+    }
+
     public function approve(Colloquium $colloquium, $approved)
     {
         $colloquium->approved = $approved;

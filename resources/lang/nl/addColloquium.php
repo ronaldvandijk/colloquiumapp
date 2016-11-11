@@ -2,6 +2,8 @@
 
 return [
     'panel-heading' => 'Colloquium Aanmaken',
+    'edit-colloquium' => 'Colloquium Bewerken',
+    'accept-colloquium' => 'Colloquium Accepteren',
     'title' => 'Titel *',
     'description' => 'Beschrijving *',
     'type' => 'Type *',

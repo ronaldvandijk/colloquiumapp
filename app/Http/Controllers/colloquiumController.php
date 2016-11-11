@@ -16,9 +16,14 @@ class colloquiumController extends Controller
     /**
      *
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('user.AddColloquium');
+       if ($request->approval != null) {
+            $foobar = Colloquium::where('approval', $request->approval)->orderBy('start_date', 'asc')->get();
+        } else {
+            $foobar = Colloquium::orderBy('start_date', 'asc')->get()->first();
+        }
+        return view('user.colloquia.create', compact('foobar'));
     }
     public function plannerView(Request $request)
     {
@@ -35,4 +40,5 @@ class colloquiumController extends Controller
             ->update(['approval' => $request->approval]);
         return back();
     }
+
 }

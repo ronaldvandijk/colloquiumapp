@@ -1,7 +1,10 @@
 <?php
 return [
     'panel-heading' => 'Add Colloquium',
+    'edit-colloquium' => 'Edit Colloquium',
+    'accept-colloquium' => 'Accept Colloquium',
     'title' => 'Title *',
+    'speaker' => 'Speaker',
     'description' => 'Description *',
     'type' => 'Type *',
     'theme' => 'Theme *',

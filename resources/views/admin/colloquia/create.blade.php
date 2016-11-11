@@ -24,9 +24,6 @@
                               <option>Exam</option>
                             </select>
                         </div>
-                        @foreach($foobar as $colloquium)
-                            {{ $colloquium->title }} 
-                        @endforeach
                         <div class="form-group">
                             <label>{{ trans('addColloquium.theme') }}</label>
                             <div class="checkbox">
@@ -65,7 +62,7 @@
                             </select>
                             <select class="form-control" name="building">
                               <option>Van DoorenVeste</option>
-                              <option>Assen</option>
+                              <option>Location 2</option>
                             </select>
                             <select class="form-control" name="room">
                               <option>a123</option>

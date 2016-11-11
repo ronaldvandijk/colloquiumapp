@@ -21,6 +21,11 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', 'TestController@overview');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function() {
+
+    Route::get('/tv', function () {
+        return view('admin.tv');
+    });
+
     Route::get('/', 'Admin\HomeController@index');
 
     Route::get('/profile', 'Admin\UsersController@profile');

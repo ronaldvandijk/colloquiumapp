@@ -10,7 +10,10 @@ class CityController extends BaseTypeController
 
     protected $baseUrl = '/admin/city';
 
+    // Views
     protected $overviewView = 'admin/city/index';
+    protected $editView     = 'admin/city/edit';
+    protected $createView   = 'admin/city/create';
 
     public function destroy($id)
     {
@@ -20,7 +23,7 @@ class CityController extends BaseTypeController
             if ($e->getCode() == 23000) {
                 request()->session()->flash('custom_error', [
                     'message' => trans('admin/city.constraint_error'),
-                    'type' => 'danger'
+                    'type'    => 'danger'
                 ]);
                 return redirect('/admin/city');
             }

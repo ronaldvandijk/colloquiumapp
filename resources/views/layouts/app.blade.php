@@ -52,7 +52,7 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             @if(Auth::user()->hasRole('User'))
-                                <li><a href="">Mijn Colloquia</a></li>
+                                <li><a href="{{url('/mycolloquia')}}">Mijn Colloquia</a></li>
                             @endif
                             <li><a href="{{ url('/agenda') }}">Agenda</a></li>
                             <li class="dropdown">

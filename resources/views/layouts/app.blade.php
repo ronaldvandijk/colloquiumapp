@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Colloquia</title>
+    <title>Colloquia - @yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ url('/') }}/css/app.css" rel="stylesheet">

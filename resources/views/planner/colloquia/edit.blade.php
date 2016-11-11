@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-push-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>{{ trans('addColloquium.edit-colloquium') }}</b></div>
+                    <div class="panel-heading"><b>{{ trans('addColloquium.edit-colloquium') }} {{ $colloquium->name }}</b></div>
                     <div class="panel-body">
                     <form method="POST" action="">
                         <div class="form-group">

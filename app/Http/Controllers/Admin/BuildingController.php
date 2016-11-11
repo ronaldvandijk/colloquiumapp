@@ -10,11 +10,13 @@ use Illuminate\Http\Request;
 use App\Models\Building;
 use App\Models\Location;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\BuildingRequest;
 
 class BuildingController extends Controller
 {
 
   //  protected $modelClass = 'App\Models\Building';
+
 
     /**
      * Create a new controller instance.
@@ -52,16 +54,10 @@ class BuildingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BuildingRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:buildings,name',
-            'abbreviation' => 'required|unique:buildings,abbreviation',
-            'location_id' => 'integer|exists:locations,id'
-        ]);
-
-        $building = new Building();
-        $building->name = $request->get('name');
+        Building::create($request->all());
+        return view('admin.buildings.list', ['buildings' => Building::all()]);
     }
 
     /**

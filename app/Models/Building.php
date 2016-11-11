@@ -22,6 +22,12 @@ use Illuminate\Database\Eloquent\Model;
 class Building extends Model
 {
     public $timestamps = false;
+    protected $fillable = [
+        'name',
+        'abbreviation',
+        'location_id',
+    ];
+
 
     public function rooms()
     {

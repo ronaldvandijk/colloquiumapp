@@ -11,7 +11,7 @@
                     <div class="panel-heading"><b>Gebruiker bewerken</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/location/create">
+                        <form method="post" action="/admin/location">
                             {{ csrf_field() }}
                             <div class="col-md-6">
                                 <div class="form-group">

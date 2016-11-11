@@ -16,7 +16,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>{{ trans('admin/location.list_title') }}</b></div>
-                    <div><a class="btn btn-default" href="{{ url('/admin/locations/create') }}">Add location</a></div>
+                    <div><a class="btn btn-default" href="{{ url('/admin/location/create') }}">Add location</a></div>
 
                     <div class="panel-body">
                         <table class="table">

@@ -2,35 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Colloquium;
 use App\Models\Location;
 use App\Models\User;
 
 class SearchController extends Controller
 {
-    /**
-     * Displays a listing of the resource
-     *
-     * @return View
-     */
-    public function index()
+    public function index(Request $request)
     {
-        $colloquiumCollection = collect(Colloquium::selectRaw('*, DATE(start_date) as sort_date')->orderBy('start_date', 'asc')->get()->toArray())->groupBy('sort_date');
-        $locations = Location::all();
-        $users = User::all();
-        return view('agenda.index', ['colloquiumCollection' => $colloquiumCollection,'locations' => $locations, 'users' => $users]);
-    }
 
-    /**
-     * Displays the specified resource
-     *
-     * @param  Colloquium $colloquium
-     * @return View
-     */
-    public function show(Colloquium $colloquium)
-    {
-        return view('agenda.details', [
-            'colloquium' => $colloquium,
-        ]);
+        $query = Colloquium::search($request->input('Searchbar'))
+            ->with(["user", "room.building.location"]);
+        if($request->has('locations')){
+            $query->whereIn("room.building.location.name", $request->input('Locations'));
+        }
+        if($request->has('Date')){
+            $query->where("start_date", $request->input('Date'));
+        }
+
+        $colloquia = $query->get();
+
+        return view('search.index', ['colloquiumCollectionDate' => $colloquia]);
     }
 }

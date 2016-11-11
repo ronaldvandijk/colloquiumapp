@@ -52,6 +52,10 @@ Route::group(['prefix' => 'colloquium'], function () {
 });
 
 Route::group(['prefix' => 'agenda'], function () {
-    Route::get('/', 'SearchController@index');
-    Route::get('/show/{colloquium}', 'SearchController@show');
+    Route::get('/', 'AgendaController@index');
+    Route::get('/show/{colloquium}', 'AgendaController@show');
+});
+
+Route::group(['prefix' => 'search'], function () {
+    Route::post('/', 'SearchController@index');
 });

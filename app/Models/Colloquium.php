@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Sofa\Eloquence\Eloquence;
 
 /**
  * App\Models\Colloquium
@@ -50,9 +51,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Colloquium extends Model
 {
-    protected $table = 'colloquia';
 
     use SoftDeletes;
+    use Eloquence;
+    //protected $searchableColumns = ['title', 'description'];
+    protected $table = 'colloquia';
+    protected $searchableColumns  = [
+
+            'title' => 10,
+            'description' => 5,
+            'user.first_name' => 10,
+            'user.last_name' => 10,
+
+            'room.building.location.name' => 8,
+
+    ];
+
+
+
 
     public function room()
     {
@@ -88,5 +104,7 @@ class Colloquium extends Model
     {
         return $this->belongsToMany(Colloquium::class);
     }
+
+
 
 }

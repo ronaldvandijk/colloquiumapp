@@ -3,14 +3,11 @@
 @section('content')
 
     <div class="container-fluid">
-        <form action="" method="POST">
+        <form action="{{url('/')}}/search" method="POST">
+            {{ csrf_field() }}
             <div class="input-group">
-                <select class="selectpicker" data-selected-text-format="count > 1" data-width="25%" Title="Klassen" name="Klassen" multiple>
-                    @foreach($users as $user)
-                        <option>{{ $user->present()->full_name }}</option>
-                    @endforeach
-                </select>
-                <select class="selectpicker" data-selected-text-format="count > 1" data-width="25%" Title="Locaties" name="Klassen" multiple>
+
+                <select class="selectpicker" data-selected-text-format="count > 1" data-width="25%" Title="Locaties" name="Locations" multiple>
                    @foreach($locations as $location)
                        <option>{{ $location->name }}</option>
                    @endforeach
@@ -23,9 +20,9 @@
             </div>
             <div class="input-group">
 
-                <input type="text"  class=" form-control " placeholder="Search for...">
+                <input type="text" name="Searchbar"  class=" form-control " placeholder="Search for...">
                 <span class="input-group-btn">
-                    <button class="btn btn-default btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                    <button class="btn btn-default btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
                 </span>
             </div>
         </form>

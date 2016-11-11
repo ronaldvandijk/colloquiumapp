@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\LocationRequest;
 use App\Models\Location;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,17 +36,11 @@ class LocationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  LocationRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LocationRequest $request)
     {
-        // Validate input data
-        $this->validate($request, [
-            'name' => 'required|unique:locations',
-            'city' => 'required|numeric',
-        ]);
-
         // Saving new location
         $location          = new Location();
         $location->name    = $request->input('name');
@@ -87,18 +82,12 @@ class LocationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  LocationRequest $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LocationRequest $request, $id)
     {
-        // Validate input data
-        $this->validate($request, [
-            'name' => 'required|unique:locations',
-            'city' => 'required|numeric',
-        ]);
-
         // Saving new location
         $location          = Location::findOrFail($id);
         $location->name    = $request->input('name');

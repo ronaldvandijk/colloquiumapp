@@ -70,7 +70,7 @@ Route::group(['prefix' => 'colloquium'], function () {
     Route::post('create', 'ColloquiumController@store');
 });
 
-Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator'], function() {
+Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|user'], function() {
     Route::get('/', 'SearchController@index');
     Route::get('/show/{colloquium}', 'SearchController@show');
 });

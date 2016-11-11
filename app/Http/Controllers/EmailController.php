@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class NotificationController extends Controller
+class EmailController extends Controller
 {
 
     private $_userid;
-    private $_notificationid;
 
     /**
      * Create a new controller instance.
@@ -23,9 +22,9 @@ class NotificationController extends Controller
      * @param int $notificationID The notification message ID
      * @return boolean
      */
-    public static function push($notificationID) {
+    public static function push($emailId) {
 
-        // Guests can't receive notifications
+        // Guests can't receive emails
         if (Auth::guest())
             return;
 
@@ -45,23 +44,5 @@ class NotificationController extends Controller
             $this->pushtodb($notificationID);
 
         return true;
-    }
-
-    /**
-     * Send an e-mail to the user
-     * @return boolean
-     */
-    private function mail() {
-
-        // send mail
-    }
-
-    /**
-     * Add the notification to the database
-     * @return boolean
-     */
-    private function pushtodb() {
-
-        // add notification
     }
 }

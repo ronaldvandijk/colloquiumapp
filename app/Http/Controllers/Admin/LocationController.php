@@ -35,25 +35,28 @@ class LocationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         // Validate input data
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|unique:locations',
             'city' => 'required|numeric',
         ]);
 
         // Saving new location
-        $location = new Location();
-        $location->name = $request->input('name');
+        $location          = new Location();
+        $location->name    = $request->input('name');
         $location->city_id = $request->input('city');
         $location->save();
 
         // Set success message for new request
-        $request->session()->flash('success', 'The new location "'.$location->name.'" is successfully saved!');
+        $request->session()->flash(
+            'success',
+            trans('admin/location.success_message', ['name' => $location->name])
+        );
 
         // Redirect to location overview
         return redirect('/admin/location');
@@ -62,7 +65,7 @@ class LocationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -73,7 +76,7 @@ class LocationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -84,26 +87,29 @@ class LocationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         // Validate input data
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|unique:locations',
             'city' => 'required|numeric',
         ]);
 
         // Saving new location
-        $location = Location::findOrFail($id);
-        $location->name = $request->input('name');
+        $location          = Location::findOrFail($id);
+        $location->name    = $request->input('name');
         $location->city_id = $request->input('city');
         $location->save();
 
         // Set success message for new request
-        $request->session()->flash('success', 'The location "'.$location->name.'" is successfully saved!');
+        $request->session()->flash(
+            'success',
+            trans('admin/location.success_message', ['name' => $location->name])
+        );
 
         // Redirect to location overview
         return redirect('/admin/location');
@@ -112,7 +118,7 @@ class LocationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -121,7 +127,10 @@ class LocationController extends Controller
         $location->delete();
 
         // Set success message for new request
-        request()->session()->flash('remove', 'The location "'.$location->name.'" is successfully deleted!');
+        request()->session()->flash(
+            'success',
+            trans('admin/location.delete_message', ['name' => $location->name])
+        );
 
         // Redirect to location overview
         return redirect('/admin/location');

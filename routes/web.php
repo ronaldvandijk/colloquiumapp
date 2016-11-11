@@ -61,9 +61,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 
     Route::resource('location', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
+    Route::resource('city', 'Admin\CityController');
 });
 
-Route::resource('/city', 'Admin\CityController');
 
 Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function () {
     Route::get('/', 'MyColloquiaController@index');

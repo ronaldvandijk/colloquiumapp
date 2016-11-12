@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Edit colloquia')
+
+@section('scripts')
+    <script src="https://unpkg.com/axios/dist/axios.min.js" async></script>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -7,37 +13,34 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>{{ trans('addColloquium.edit-colloquium') }}</b></div>
                     <div class="panel-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ url('/admin/colloquia/update') }}">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label>{{ trans('addColloquium.title') }}</label>
-                            <input type="text" class="form-control" name="title" value="">
+                            <input type="text" class="form-control" name="title" value="{{ $colloquium->title }}">
                         </div>
                         <div class="form-group">
                             <label>{{ trans('addColloquium.description') }}</label>
-                            <textarea name="description" class="form-control" rows="3"></textarea>
+                            <textarea name="description" class="form-control" rows="3">{{ $colloquium->description }}</textarea>
                         </div>
+
                         <div class="form-group">
                             <label>{{ trans('addColloquium.type') }}</label>
                             <select class="form-control" name="type">
-                              <option>Auditorium</option>
-                              <option>Exam</option>
+                                @foreach($types as $type)
+                                    <option value="{{ $type->id }}" {{ $colloquium->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>{{ trans('addColloquium.theme') }}</label>
                             <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" value="option1">
-                                  Lorem
-                                </label>
-                                <label>
-                                  <input type="checkbox" value="option1">
-                                  Ipsum
-                                </label>
-                                <label>
-                                  <input type="checkbox" value="option1">
-                                  Dolor
-                                </label>
+                                @foreach($themes as $theme)
+                                    <label>
+                                        <input type="checkbox" value="{{ $theme->id }}" {{ $colloquium->hasTheme($theme) ? 'checked' : '' }}>
+                                        {{ $theme->name }}
+                                    </label>
+                                @endforeach
                             </div>
                         </div>
                         <div class="form-group">
@@ -47,29 +50,50 @@
                         <!-- {{ trans('addColloquium.email') }}<a class="btn btn-default">{{ trans('addColloquium.composeEmailBtn') }}</a><br/>-->
                         <div class="form-group">
                             <label>{{ trans('addColloquium.date') }}</label>
-                            <input type="date" class="form-control" name="date">
+                            <input type="date" class="form-control" name="date" value="{{ explode(' ', $colloquium->start_date)[0] }}">
                         </div>
                         <div class="form-group form-inline">
                             <label>{{ trans('addColloquium.time') }}</label>
-                            <input type="time" class="form-control" name="timeStart"> {{ trans('addColloquium.untill') }} <input type="time" class="form-control" name="timeEnd">
+                            <input type="time" class="form-control" name="time_start" value="{{ explode(' ', $colloquium->start_date)[1] }}"> {{ trans('addColloquium.untill') }} <input type="time" class="form-control" name="time_end" value="{{ explode(' ', $colloquium->end_date)[1] }}">
                         </div>
                         <div class="form-group form-inline">
-                            <label>{{ trans('addColloquium.location') }}</label>
-                            <select class="form-control" name="city">
-                              <option>Groningen</option>
-                              <option>Assen</option>
-                            </select>
-                            <select class="form-control" name="building">
-                              <option>Van DoorenVeste</option>
-                              <option>Location 2</option>
-                            </select>
-                            <select class="form-control" name="room">
-                              <option>a123</option>
-                              <option>a124</option>
-                              <option>b144</option>
-                            </select>
+
+                            {{--If a room isn't set, show some cities and have AJAX handle the rest :) xoxox Sander --}}
+                            @if($colloquium->room_id == NULL)
+                                <select class="form-control" name="city_id" id="cities">
+                                    @foreach($cities as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="form-control" name="building_id" id="buildings">
+                                    @if(count($cities) == 1)
+                                        @foreach($buildings as $building)
+                                            <option value="{{ $building->id }}">{{ $building->name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                <select class="form-control" name="room_id" id="rooms">
+                                </select>
+                            @else
+                                <label>{{ trans('addColloquium.location') }}</label>
+                                <select class="form-control" name="city_id" id="cities">
+                                    @foreach($cities as $city)
+                                        <option value="{{ $city->id }}" {{ $colloquium->room->building->location->city->id == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="form-control" name="building_id" id="buildings">
+                                    @foreach($buildings as $building)
+                                        <option value="{{ $building->id }}" {{ $colloquium->room->building->id == $building->id ? 'selected' : '' }}> {{ $building->name }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="form-control" name="room_id" id="rooms">
+                                    @foreach($rooms as $room)
+                                        <option value="{{ $room->id }}" {{ $colloquium->room_id == $room->id ? 'selected' : '' }}>{{ $room->name }}</option>
+                                    @endforeach
+                                <select>
+                            @endif
                         </div>
-                        <button class="btn btn-default pull-right" type="confirm"> {{trans('addColloquium.confirm')}}</button>
+                        <button class="btn btn-default pull-right" type="submit" id="btn__submit"> {{trans('addColloquium.confirm')}}</button>
                     </form>
                 </div>
                 </div>

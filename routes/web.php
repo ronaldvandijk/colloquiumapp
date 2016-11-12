@@ -46,33 +46,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::resource('themes', 'Admin\ThemeController');
     Route::resource('city', 'Admin\CityController');
 
-    Route::group(['prefix' => 'colloquia'], function () {
-        Route::get('/', 'ColloquiumController2@index');
-        Route::get('/{status}', 'ColloquiumController2@index');
-        Route::get('create', 'ColloquiumController2@create');
-        Route::get('edit/{id}', 'ColloquiumController2@edit');
-        Route::post('insert', 'ColloquiumController2@insert');
-        Route::post('update', 'ColloquiumController2@update');
-        Route::post('delete', 'ColloquiumController2@delete');
+    Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {
+        Route::get('/', 'Admin\ColloquiumController@index');
+        Route::get('/{status}', 'Admin\ColloquiumController@index');
+        Route::get('edit/{id}', 'Admin\ColloquiumController@edit');
+        Route::post('insert', 'Admin\ColloquiumController@insert');
+        Route::post('update/{colloquium}', 'Admin\ColloquiumController@update');
+        Route::get('/approve/{colloquium}', 'Admin\ColloquiumController@approve');
+        Route::get('/deny/{colloquium}', 'Admin\ColloquiumController@deny');
     });
-});
-
-Route::group(['prefix' => 'planner/colloquia', 'middleware' => 'role:planner|administrator'], function () {
-    Route::get('/', 'ColloquiumController2@index');
-    Route::get('edit/{id}', 'ColloquiumController2@edit');
-    Route::post('update/{id}', 'ColloquiumController2@update');
 });
 
 Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function () {
     Route::get('/', 'MyColloquiaController@index');
     Route::get('/edit/{colloquium}', 'MyColloquiaController@edit');
     Route::post('/update/{colloquium}', 'MyColloquiaController@update');
-});
-
-Route::group(['prefix' => 'colloquium'], function () {
-    Route::get('/', 'ColloquiumController@index');
-    Route::get('create', 'ColloquiumController@create');
-    Route::post('create', 'ColloquiumController@store');
 });
 
 Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|user'], function () {

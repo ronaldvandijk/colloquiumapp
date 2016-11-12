@@ -62,7 +62,7 @@ class Colloquium extends Model
         'invite_email',
         'company_image',
         'company_url',
-        'approval',
+        'approved',
         'language_id'
     ];
 

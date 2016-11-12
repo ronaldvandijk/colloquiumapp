@@ -1,7 +1,8 @@
 <?php
+namespace App\Http\Controllers\Admin;
 
-namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ColloquiaUpdateRequest;
 use App\Models\Building;
 use App\Models\City;
 use App\Models\Colloquium;
@@ -13,7 +14,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ColloquiumController2 extends Controller
+class ColloquiumController extends Controller
 {
 
     public function index(Request $request, $status = '')
@@ -82,36 +83,32 @@ class ColloquiumController2 extends Controller
         return view('admin.colloquia.edit', compact('colloquium', 'langs', 'types', 'themes', 'cities', 'buildings', 'rooms'));
     }
 
-    public function update($id, Request $request)
+    public function update(ColloquiaUpdateRequest $request, Colloquium $colloquium)
     {
-        dd($id);
-        $colloquium = Colloquium::where('id', $id)->get()->first();
-        /*$this->validate($request, [
-            'title' => 'required',
-            'description' => 'required',
-            'user_id' => 'required|exists:users,id',
-            'room_id' => 'required|exists:rooms,id',
-            'start_date' => 'required|date|after:tomorrow',
-            'end_date' => 'required|date|after:start_date',
-            'type_id' => 'required|exists:colloquium_themes,id',
-            'invite_email' => 'required',
-            'company_image' => 'null',
-            'company_url' => 'null',
-            'language_id' => 'required|exists:languages,id',
-            'created_at' => 'required|date',
-            'updated_at' => 'required|date',
-            'deleted_at' => 'null',
-            'approved' => 'null',
-        ]);*/
-        $colloquium->start_date = $request->start_date . " " . $request->end_time;
-        $colloquium->end_date = $request->end_date . " " . $request->end_time;
-        $colloquium->room_id = $request->room_id;
-        return back();
+        $colloquium->start_date = str_replace('/', '-', $request->date_start ). " " . $request->time_start;
+        $colloquium->end_date = str_replace('/', '-', $request->date_start ) . " " . $request->time_end;
+        $colloquium->update($request->input());
+
+        return redirect(url('/admin/colloquia'));
     }
 
     public function delete(Colloquium $colloquium)
     {
         $colloquium->delete();
-        return redirect(action("ColloquiumController@index"));
+        return redirect(action("ColloquiumController2@index"));
+    }
+
+    public function approve(Colloquium $colloquium)
+    {
+        $colloquium->approved = 1;
+        $colloquium->update();
+        return redirect(url('/admin/colloquia'));
+    }
+
+    public function deny(Colloquium $colloquium)
+    {
+        $colloquium->approved = 0;
+        $colloquium->update();
+        return redirect(url('/admin/colloquia'));
     }
 }

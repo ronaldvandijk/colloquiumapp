@@ -4,6 +4,7 @@
 
 @section('scripts')
     <script src="https://unpkg.com/axios/dist/axios.min.js" async></script>
+    <script src="{{ url('/js/colloquia_locations.js') }}" async></script>
 @endsection
 
 @section('content')
@@ -92,8 +93,11 @@
                                     @endforeach
                                 <select>
                             @endif
+                            <div id="loading">
+                                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                            </div>
                         </div>
-                        <button class="btn btn-default pull-right" type="submit" id="btn__submit"> {{trans('addColloquium.confirm')}}</button>
+                        <button class="btn btn-success pull-right" type="submit" id="btn__submit"><i class="fa fa-save"></i> {{trans('addColloquium.confirm')}}</button>
                     </form>
                 </div>
                 </div>

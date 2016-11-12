@@ -14,7 +14,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>{{ trans('addColloquium.edit-colloquium') }}</b></div>
                     <div class="panel-body">
-                    <form method="POST" action="{{ url('/admin/colloquia/update') }}">
+                    <form method="POST" action="{{ url('/admin/colloquia/update/' . $colloquium->id) }}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label>{{ trans('addColloquium.title') }}</label>
@@ -51,7 +51,7 @@
                         <!-- {{ trans('addColloquium.email') }}<a class="btn btn-default">{{ trans('addColloquium.composeEmailBtn') }}</a><br/>-->
                         <div class="form-group">
                             <label>{{ trans('addColloquium.date') }}</label>
-                            <input type="date" class="form-control" name="date" value="{{ explode(' ', $colloquium->start_date)[0] }}">
+                            <input type="date" class="form-control" name="date_start" value="{{ explode(' ', $colloquium->start_date)[0] }}">
                         </div>
                         <div class="form-group form-inline">
                             <label>{{ trans('addColloquium.time') }}</label>

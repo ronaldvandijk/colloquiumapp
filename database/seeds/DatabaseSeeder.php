@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Truncate the tables when a db:seed is run
+        // Truncate all tables except 'migrations' when a db:seed is run
         $this->truncateTables();
 
         $this->call(RolesTableSeeder::class);
@@ -28,10 +28,14 @@ class DatabaseSeeder extends Seeder
         $this->call(ColloquiumTypesTableSeeder::class);
         $this->call(ColloquiaTableSeeder::class);
 
+        $this->call(MailtemplateTableSeeder::class);
     }
 
-    private function truncateTables() {
+    private function truncateTables()
+    {
+        // Disable foreign key checks
         DB::statement('SET foreign_key_checks = 0');
+
         // Truncate all tables, except migrations
         $tables = Schema::getConnection()->getDoctrineSchemaManager()->listTableNames();
         foreach ($tables as $table) {
@@ -39,6 +43,8 @@ class DatabaseSeeder extends Seeder
                 DB::table($table)->truncate();
             }
         }
+
+        // Re-enable foreign key checks
         DB::statement('SET foreign_key_checks = 1');
     }
 }

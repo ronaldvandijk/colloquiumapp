@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\DB;
 
 /**
  * App\Models\Colloquium
@@ -53,7 +52,26 @@ class Colloquium extends Model
 {
     protected $table = 'colloquia';
 
+    protected $fillable = [
+        'title',
+        'description',
+        'room_id',
+        'start_date',
+        'end_date',
+        'type_id',
+        'invite_email',
+        'company_image',
+        'company_url',
+        'approval',
+        'language_id'
+    ];
+
     use SoftDeletes;
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 
     public function user()
     {
@@ -85,9 +103,9 @@ class Colloquium extends Model
         return $this->belongsToMany(Colloquium::class);
     }
 
-    public function room()
+    public function isOwner(User $user)
     {
-        return $this->belongsTo(Room::class);
+        return $user->id === $this->user_id;
     }
 
 }

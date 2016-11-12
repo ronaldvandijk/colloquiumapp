@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 
+class Room extends BaseModel
 /**
  * App\Models\Room
  *
@@ -19,17 +21,23 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Room whereBuildingId($value)
  * @mixin \Eloquent
  */
-class Room extends Model
+
 {
+    protected $fillable = [
+        'name',
+        'capacity',
+        'building_id',
+    ];
+
     public $timestamps = false;
 
-    public function colloquia() 
+    public function colloquia()
     {
-    	return $this->hasMany(Colloquium::class);
+        return $this->hasMany(Colloquium::class);
     }
 
-    public function building() 
+    public function building()
     {
-    	return $this->belongsTo(Building::class);
+        return $this->belongsTo(Building::class);
     }
 }

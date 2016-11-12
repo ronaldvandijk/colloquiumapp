@@ -3,25 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colloquium;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class SearchController extends Controller
 {
+    /**
+     * Displays a listing of the resource
+     *
+     * @return View
+     */
     public function index()
     {
-        $colloquiumDates = array();
-        $colloquiums = Colloquium::all();
+        $colloquiumCollection = collect(DB::table('colloquia')
+            ->join('rooms', 'rooms.id', '=', 'colloquia.room_id')
+            ->join('buildings', 'buildings.id', '=', 'rooms.building_id')
+            ->join('locations', 'locations.id', '=', 'buildings.location_id')
+             ->select(DB::raw('colloquia.*, DATE(start_date) as sort_date, rooms.name as room_name, buildings.name as building_name, buildings.abbreviation as building_abbreviation, locations.name as location_name'))
+             ->orderBy('start_date')
+             ->get()->toArray())->groupBy('sort_date');
+        
+        return view('agenda.index', ['colloquiumCollection' => $colloquiumCollection]);
+    }
 
-        foreach ($colloquiums as $colloquium) {
-            $colloquiumDates[strval(date('Y-m-d', strtotime($colloquium->start_date)))] = [];
-        }
-
-        foreach ($colloquiumDates as $date => $colloquium) {
-            $colloquiums = DB::select('select * from colloquia, rooms where colloquia.room_id = rooms.id AND DATE(colloquia.start_date) = ?', [$date]);
-            $colloquiumDates[$date] = $colloquiums;
-        }
-
-        return view('mobile.index', ['colloquiumDates' => $colloquiumDates]);
+    /**
+     * Displays the specified resource
+     *
+     * @param  Colloquium $colloquium
+     * @return View
+     */
+    public function show(Colloquium $colloquium)
+    {
+        return view('agenda.details', [
+            'colloquium' => $colloquium,
+        ]);
     }
 }

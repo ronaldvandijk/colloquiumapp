@@ -2,41 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Building;
+use App\Models\City;
 use App\Models\Colloquium;
 use App\Models\ColloquiumType;
 use App\Models\Language;
 use App\Models\Room;
+use App\Models\Theme;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ColloquiumController extends Controller
+class ColloquiumController2 extends Controller
 {
 
-    public function __construct()
+    public function index(Request $request, $status = '')
     {
-        $this->middleware('auth');
-    }
+        // TODO check this view return view('planner.colloquia.index', compact('colloquia'));
 
-    public function index($approved = 2)
-    {
-        $colloquia = Colloquium::orderBy('start_date', 'asc')
-            ->get();
-        if (Auth::user()->role->name == 'Administrator') {
-            return view('admin.colloquia.index', compact('colloquia'));
-        } else if (Auth::user()->role->name == 'Planner') {
-            if ($approved == 'null') {
-                $colloquia = Colloquium::whereNull('approved')
-                    ->orderBy('start_date', 'asc')
-                    ->get();
-            } else if ($approved == 0 || $approved == 1) {
-                $colloquia = Colloquium::where('approved', $approved)
-                    ->orderBy('start_date', 'asc')
-                    ->get();
-            }
-            return view('planner.colloquia.index', compact('colloquia'));
+        if(!$status) {
+            $colloquia = Colloquium::orderBy('start_date')->get();
+        } else {
+            $colloquia = Colloquium::where('approved', $status)->orderBy('start_date')->get();
         }
-        return null;
+
+        return view('admin.colloquia.index', compact('colloquia'));
     }
 
     public function create()
@@ -81,22 +71,20 @@ class ColloquiumController extends Controller
     public function edit($id)
     {
         $colloquium = Colloquium::where('id', $id)->get()->first();
+        $themes = Theme::all();
+
+        $langs = Language::all();
+        $types = ColloquiumType::all();
+        $cities = City::all();
+        $buildings = Building::all();
         $rooms = Room::all();
-        $startDate = explode(' ', $colloquium->start_date)[0];
-        $startTime = explode(' ', $colloquium->end_date)[1];
-        $endTime = explode(' ', $colloquium->end_date)[1];
-        if (Auth::user()->hasRole("Administrator")) {
-            $users = User::all();
-            $langs = Language::all();
-            $types = ColloquiumType::all();
-            return view('planner.colloquia.edit', compact('colloquium', 'users', 'langs', 'types', 'date', 'time'));
-        } else if (Auth::user()->hasRole("Planner")) {
-            return view('planner.colloquia.edit', compact('colloquium', 'rooms', 'startDate', 'startTime', 'endDate', 'endTime'));
-        }
+
+        return view('admin.colloquia.edit', compact('colloquium', 'langs', 'types', 'themes', 'cities', 'buildings', 'rooms'));
     }
 
     public function update($id, Request $request)
     {
+        dd($id);
         $colloquium = Colloquium::where('id', $id)->get()->first();
         /*$this->validate($request, [
             'title' => 'required',

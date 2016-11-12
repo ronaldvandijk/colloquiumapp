@@ -48,6 +48,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 
     Route::group(['prefix' => 'colloquia'], function () {
         Route::get('/', 'ColloquiumController2@index');
+        Route::get('/{status}', 'ColloquiumController2@index');
         Route::get('create', 'ColloquiumController2@create');
         Route::get('edit/{id}', 'ColloquiumController2@edit');
         Route::post('insert', 'ColloquiumController2@insert');
@@ -56,7 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     });
 });
 
-Route::group(['prefix' => 'planner/colloquia', 'middleware' => 'role:planner'], function () {
+Route::group(['prefix' => 'planner/colloquia', 'middleware' => 'role:planner|administrator'], function () {
     Route::get('/', 'ColloquiumController2@index');
     Route::get('edit/{id}', 'ColloquiumController2@edit');
     Route::post('update/{id}', 'ColloquiumController2@update');

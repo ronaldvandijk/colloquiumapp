@@ -93,7 +93,7 @@
                                     @endforeach
                                 <select>
                             @endif
-                            <div id="loading">
+                            <div id="loading" style="display: none;">
                                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                             </div>
                         </div>

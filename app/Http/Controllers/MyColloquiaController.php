@@ -2,8 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ColloquiumRequest;
+use App\Http\Requests\RequestColloquiaRequest;
 use App\Models\Colloquium;
+use App\Models\ColloquiumType;
 use App\Models\Language;
+use App\Models\Theme;
 use Auth;
 
 class MyColloquiaController
@@ -22,6 +25,21 @@ class MyColloquiaController
     public function update(ColloquiumRequest $request, Colloquium $colloquium)
     {
         $colloquium->update($request->input());
+
+        return redirect(action('MyColloquiaController@index'));
+    }
+
+    public function create()
+    {
+        return view('user.colloquium.create', ['languages' => Language::all(), 'themes' => Theme::all(), 'types' => ColloquiumType::all()]);
+    }
+
+    public function store(RequestColloquiaRequest $request)
+    {
+        $colloquium = new Colloquium();
+        $colloquium->fill($request->input());
+        $colloquium->user_id = Auth::user()->id;
+        $colloquium->save();
 
         return redirect(action('MyColloquiaController@index'));
     }

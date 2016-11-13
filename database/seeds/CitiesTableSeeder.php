@@ -15,7 +15,7 @@ class CitiesTableSeeder extends Seeder
             'name' => 'Groningen',
         ]);
 
-        DB::table('roles')->insert([
+        DB::table('cities')->insert([
             'name' => 'Leuwarden',
         ]);
     }

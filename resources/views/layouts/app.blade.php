@@ -14,8 +14,10 @@
     <link href="{{ url('/') }}/css/app.css" rel="stylesheet">
     <link href="{{ url('/') }}/css/font-awesome.css" rel="stylesheet">
     @yield('styles')
+    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Scripts -->
+
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -51,7 +53,7 @@
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
-                            @if(Auth::user()->hasRole('User'))
+                            @if(Auth::user()->hasRole('user'))
                                 <li><a href="{{url('/mycolloquia')}}">Mijn Colloquia</a></li>
                             @endif
                             <li><a href="{{ url('/agenda') }}">Agenda</a></li>
@@ -86,5 +88,6 @@
 
     <!-- Scripts -->
     <script src="{{ url('/') }}/js/app.js"></script>
+    @yield('scripts')
 </body>
 </html>

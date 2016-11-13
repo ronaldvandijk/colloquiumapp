@@ -25,7 +25,7 @@ class Building extends Model
 
     public function rooms()
     {
-        return $this->hasMany(Building::class);
+        return $this->hasMany(Room::class);
     }
 
     public function location()

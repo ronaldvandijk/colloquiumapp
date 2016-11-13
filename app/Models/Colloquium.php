@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $deleted_at
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Invitee[] $invitees
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Theme[] $themes
  * @property-read \App\Models\ColloquiumType $type
  * @property-read \App\Models\Language $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $examinated
@@ -91,6 +92,10 @@ class Colloquium extends Model
     public function language()
     {
         return $this->belongsTo(Language::class);
+    }
+
+    public function themes() {
+        return $this->belongsToMany(Theme::class, 'colloquium_themes', 'theme_id', 'colloquium_id');
     }
 
     public function examinated()

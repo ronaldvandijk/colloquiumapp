@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+
+@section('styles')
+    <link rel="stylesheet" href="/css/jquery.minicolors.css">
+@endsection
+
+@section('scripts')
+    <script src="/js/jquery.minicolors.min.js"></script>
+    <script>
+        // change all inputs with class 'minicolors' to a minicolors input
+        $('input.minicolors').minicolors();
+    </script>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -14,6 +27,10 @@
                                 <div class="form-group">
                                     <label for="name">{{ trans('admin/theme.name') }}</label>
                                     <input id="name" name="name" required type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="color">{{ trans('admin/theme.color') }}</label>
+                                    <input class="minicolors form-control" id="color" name="color" type="text" required>
                                 </div>
                             </div>
                             <div class="row">

@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 
 /**
  * App\Models\Theme
  *
  * @property integer $id
  * @property string $name
+ * @property string $color
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Colloquium[] $colloquia
  * @method static Builder|Theme whereId($value)
@@ -17,18 +19,53 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Theme extends Model
 {
-    const RULES = [
-        'name' => 'required|unique:themes',
-    ];
     public $timestamps = false;
 
+    /**
+     * Get all users that are subscribed to this theme
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function users() 
     {
     	return $this->belongsToMany(User::class);
     }
 
+    /**
+     * Get all colloquia that belong to this theme
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function colloquia() 
     {
     	return $this->belongsToMany(Colloquium::class);
     }
+
+    /**
+     * This renders the Theme as a bootstrap label
+     * @param null $fontsize The fontsize for the label
+     * @return string The label as html
+     */
+    public function render($fontsize = null) {
+        $fontsize = (is_int($fontsize)) ? 'font-size: '.$fontsize.'px;' : '';
+        return "<div style=\"background-color: {$this->color};{$fontsize}\" class=\"label\">{$this->name}</div>";
+    }
+
+    /**
+     * Gets the rules for this model
+     * @param $ignoreId int The id to ignore when checking for unique columns
+     * @return array rules array
+     */
+    public static function getRules($ignoreId = null) {
+        return [
+            'name' => [
+                'required',
+                (is_numeric($ignoreId)) ? 'unique:themes,name,'.$ignoreId : 'unique:themes,name',
+            ],
+            'color' => [
+                'required',
+                // This regex checks on hex colors
+                'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/'
+            ],
+        ];
+    }
 }
+

@@ -40,6 +40,19 @@ class UsersTableSeeder extends Seeder
             'image' => ''
         ]);
 
+        \App\Models\User::create([
+            'first_name' => 'Planner',
+            'insertion' => '',
+            'last_name' => 'Planner User',
+            'email' => 'planner@colloquium.app',
+            'password' => bcrypt('123123123'),
+            'verified' => '1',
+            'role_id' => '3',
+            'enabled' => '1',
+            'prefered_language' => 'nl',
+            'image' => ''
+        ]);
+
         factory(App\Models\User::class, 10)->create();
     }
 }

@@ -37,7 +37,7 @@ $factory->define(App\Models\Colloquium::class, function (Faker\Generator $faker)
         'start_date' => $faker->dateTimeThisMonth($max = 'now'),
         'end_date' => $faker->dateTimeThisMonth($max = 'now'),
         'type_id' => rand(1, 2),
-        'approval' => rand(0, 1),
+        'approved' => rand(0, 1),
         'language_id' => rand(1, 3),
         'invite_email' => $faker->realText($maxNbChars = 200, $indexSize = 2),
         'company_image' => $faker->imageUrl(100, 200, 'cats'),

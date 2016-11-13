@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends BaseModel
+class Room extends Model
 /**
  * App\Models\Room
  *

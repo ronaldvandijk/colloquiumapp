@@ -14,8 +14,10 @@
     <link href="{{ url('/') }}/css/app.css" rel="stylesheet">
     <link href="{{ url('/') }}/css/font-awesome.css" rel="stylesheet">
     @yield('styles')
+    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Scripts -->
+
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -85,6 +87,7 @@
     </div>
 
     <!-- Scripts -->
+    @yield('scripts')
     <script src="{{ url('/') }}/js/app.js"></script>
     @yield('scripts')
 </body>

@@ -13,10 +13,12 @@ class ThemesTableSeeder extends Seeder
     {
         DB::table('themes')->insert([
             'name' => 'ICT',
+            'color' => '#4286f4',
         ]);
 
         DB::table('themes')->insert([
             'name' => 'AI',
+            'color' => '#f4d942',
         ]);
     }
 }

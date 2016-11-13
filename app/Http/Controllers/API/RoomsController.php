@@ -10,7 +10,7 @@ class RoomsController extends Controller
 
     public function getRoomsBasedOnBuilding(Building $building)
     {
-        return Room::where('building_id', $building->id)->get()->toJson();
+        return $building->rooms;
     }
 
 }

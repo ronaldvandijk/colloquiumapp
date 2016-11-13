@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit colloquia')
+@section('title', trans('admin/colloquia.edit_colloquia'))
 
 @section('scripts')
     <script src="https://unpkg.com/axios/dist/axios.min.js" async></script>
@@ -48,7 +48,6 @@
                             <label>{{ trans('addColloquium.email') }}</label>
                             <input type="email" class="form-control" name="email">
                         </div>
-                        <!-- {{ trans('addColloquium.email') }}<a class="btn btn-default">{{ trans('addColloquium.composeEmailBtn') }}</a><br/>-->
                         <div class="form-group">
                             <label>{{ trans('addColloquium.date') }}</label>
                             <input type="date" class="form-control" name="date_start" value="{{ explode(' ', $colloquium->start_date)[0] }}">

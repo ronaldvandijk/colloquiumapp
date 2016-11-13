@@ -49,7 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {
         Route::get('/', 'Admin\ColloquiumController@index');
         Route::get('/{status}', 'Admin\ColloquiumController@index');
-        Route::get('edit/{id}', 'Admin\ColloquiumController@edit');
+        Route::get('edit/{colloquium}', 'Admin\ColloquiumController@edit');
         Route::post('insert', 'Admin\ColloquiumController@insert');
         Route::post('update/{colloquium}', 'Admin\ColloquiumController@update');
         Route::get('/approve/{colloquium}', 'Admin\ColloquiumController@approve');

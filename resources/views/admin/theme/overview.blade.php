@@ -17,6 +17,7 @@
                             <tr>
                                 <th>{{ trans('common.id') }}</th>
                                 <th>{{ trans('admin/theme.name') }}</th>
+                                <th>{{ trans('admin/theme.preview') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -24,6 +25,7 @@
                                 <tr>
                                     <td>{{$theme->id}}</td>
                                     <td>{{$theme->name}}</td>
+                                    <td>{!! $theme->render() !!}</td>
                                     <td><a href="{{action('Admin\ThemeController@edit',['id' => $theme->id])}}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{ trans('common.update') }}</a></td>
                                     <td>
                                         <form method="post" action="/admin/themes/{{$theme->id}}">

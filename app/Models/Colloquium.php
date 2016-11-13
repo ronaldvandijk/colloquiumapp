@@ -62,7 +62,7 @@ class Colloquium extends Model
         'invite_email',
         'company_image',
         'company_url',
-        'approval',
+        'approved',
         'language_id'
     ];
 
@@ -106,6 +106,11 @@ class Colloquium extends Model
     public function isOwner(User $user)
     {
         return $user->id === $this->user_id;
+    }
+
+    public function hasTheme(Theme $theme)
+    {
+        return count(ColloquiumTheme::where('colloquium_id', $this->id)->where('theme_id', $theme->id)->get()) > 0;
     }
 
 }

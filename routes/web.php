@@ -26,7 +26,6 @@ Route::get('/tv', function () {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
-
     Route::get('/', 'Admin\HomeController@index');
 
     Route::get('/profile', 'Admin\UsersController@profile');
@@ -43,37 +42,25 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::post('room/update/{id}', 'Admin\RoomController@update');
     Route::get('room/create', 'Admin\RoomController@create');
 
-    //    Route::get('{type}', 'Admin\BaseController@overview');
-    //    Route::get('{type}/create', 'Admin\BaseController@create');
-    //    Route::post('{type}/store', 'Admin\BaseController@store');
-    //    Route::get('{type}/edit/{id}', 'Admin\BaseController@update');
-
-    // Route::get('templates', 'Admin\TemplatesController@overview');
-    // Route::get('template/create', 'Admin\TemplatesController@create');
-    // Route::post('template/create', 'Admin\TemplateController@store');
-    // Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
-    // Route::post('template/update', 'Admin\TemplateController@update');
-    // Route::get('templates', 'Admin\TemplatesController@overview');
-    // Route::get('template/create', 'Admin\TemplatesController@create');
-    // Route::post('template/create', 'Admin\TemplateController@store');
-    // Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
-    // Route::post('template/update', 'Admin\TemplateController@update');
-
     Route::resource('locations', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
     Route::resource('city', 'Admin\CityController');
+
+    Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {
+        Route::get('/', 'Admin\ColloquiumController@index');
+        Route::get('/{status}', 'Admin\ColloquiumController@index');
+        Route::get('edit/{colloquium}', 'Admin\ColloquiumController@edit');
+        Route::post('insert', 'Admin\ColloquiumController@insert');
+        Route::post('update/{colloquium}', 'Admin\ColloquiumController@update');
+        Route::get('/approve/{colloquium}', 'Admin\ColloquiumController@approve');
+        Route::get('/deny/{colloquium}', 'Admin\ColloquiumController@deny');
+    });
 });
 
 Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function () {
     Route::get('/', 'MyColloquiaController@index');
     Route::get('/edit/{colloquium}', 'MyColloquiaController@edit');
     Route::post('/update/{colloquium}', 'MyColloquiaController@update');
-});
-
-Route::group(['prefix' => 'colloquium'], function () {
-    Route::get('/', 'ColloquiumController@index');
-    Route::get('create', 'ColloquiumController@create');
-    Route::post('create', 'ColloquiumController@store');
 });
 
 Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|user'], function () {

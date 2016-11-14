@@ -41,7 +41,7 @@ class HomeController extends Controller
             $query->join('rooms', 'rooms.id', '=', 'colloquia.room_id')
                 ->join('buildings', 'buildings.id', '=', 'rooms.building_id')
                 ->join('locations', 'locations.id', '=', 'buildings.location_id')
-                ->where('location.name','=',$location);
+                ->where('locations.name','=',$location);
         };
 
         // Get upcoming colloquia first

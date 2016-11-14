@@ -20,7 +20,10 @@ class SearchController extends Controller
         }
 
         $colloquia = $query->get();
-
+        if($colloquia->count() == 0)
+        {
+            $request->session()->flash("custom_error", ['type' => 'info', 'message' => trans('agenda.notFoundMessage')]);
+        }
         return view('search.index', ['colloquiumCollectionDate' => $colloquia]);
     }
 }

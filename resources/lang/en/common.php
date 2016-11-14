@@ -19,6 +19,7 @@ return [
     'update' => 'Update',
     'delete' => 'Delete',
     'create' => 'Create',
+    'edit' => 'Edit',
 
     'submit' => 'Submit',
 
@@ -29,10 +30,12 @@ return [
     'capacity' => 'Capacity',
     'building' => 'Building',
     'room' => 'Room',
+    'rooms' => 'Rooms',
     'modelupdate' => 'Update :modelName',
     'modeldelete' => 'Delete :modelName',
     'modelcreate' => 'Create :modelName',
     'modelupdated' => ':modelName Updated',
     'deleted_msg' => 'Successfully deleted!',
     'overview' => 'Overview',
+    'houses_people_in' => ':name - Houses :capacity people in :building',
 ];

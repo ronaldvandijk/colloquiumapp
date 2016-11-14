@@ -29,7 +29,6 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Models\Colloquium::class, function (Faker\Generator $faker) {
-
     return [
         'title' => $faker->jobTitle,
         'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
@@ -38,7 +37,7 @@ $factory->define(App\Models\Colloquium::class, function (Faker\Generator $faker)
         'start_date' => $faker->dateTimeThisMonth($max = 'now'),
         'end_date' => $faker->dateTimeThisMonth($max = 'now'),
         'type_id' => rand(1, 2),
-        'approval' => rand(0, 1),
+        'approved' => rand(0, 1),
         'language_id' => rand(1, 3),
         'invite_email' => $faker->realText($maxNbChars = 200, $indexSize = 2),
         'company_image' => $faker->imageUrl(100, 200, 'cats'),
@@ -47,9 +46,16 @@ $factory->define(App\Models\Colloquium::class, function (Faker\Generator $faker)
 });
 
 $factory->define(App\Models\Invitee::class, function (Faker\Generator $faker) {
-
     return [
         'colloquium_id' => rand(1, 5),
         'email' => $faker->safeEmail,
+    ];
+});
+
+$factory->define(App\Models\Mailtemplate::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'subject' => $faker->sentence,
+        'body' => $faker->realText($maxNbChars = 200, $indexSize = 2),
     ];
 });

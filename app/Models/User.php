@@ -77,10 +77,10 @@ class User extends Authenticatable
      */
     public function hasRole($role)
     {
-        if(strpos($role, '|') != 0) {
+        if (strpos($role, '|') != 0) {
             $roles = explode("|", $role);
-            foreach($roles as $tmpRole) {
-                if(strtolower($this->role()->first()->name) == strtolower($tmpRole)) {
+            foreach ($roles as $tmpRole) {
+                if (strtolower($this->role()->first()->name) == strtolower($tmpRole)) {
                     return true;
                 }
             }

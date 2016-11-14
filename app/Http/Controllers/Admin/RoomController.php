@@ -60,7 +60,10 @@ class RoomController extends BaseTypeController
     public function destroy($id)
     {
         if (Room::findOrFail($id)->colloquia()->count() != 0) {
-            Session::flash('message', trans('common.stillhascolloquia'));
+            Session::flash('custom_error', [
+                'type' => 'info',
+                'message' => trans('common.stillhascolloquia'),
+            ]);
             return back();
         }
 

@@ -7,7 +7,11 @@
             @foreach($colloquia as $colloquium)
                 <div class="col-sm-3">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ $colloquium->title }}</div>
+                        <div class="panel-heading">{{ $colloquium->title }}
+                            @foreach($colloquium->themes as $theme)
+                                {!! $theme->render() !!}
+                            @endforeach
+                        </div>
                         <div class="panel-body">{{ $colloquium->description }}</div>
                     </div>
                 </div>

@@ -3,34 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colloquium;
-use App\Models\Location;
-use App\Models\User;
+use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    /**
-     * Displays a listing of the resource
-     *
-     * @return View
-     */
-    public function index()
+    public function index(Request $request)
     {
-        $colloquiumCollection = collect(Colloquium::selectRaw('*, DATE(start_date) as sort_date')->orderBy('start_date', 'asc')->get()->toArray())->groupBy('sort_date');
-        $locations = Location::all();
-        $users = User::all();
-        return view('agenda.index', ['colloquiumCollection' => $colloquiumCollection,'locations' => $locations, 'users' => $users]);
-    }
+        $query = Colloquium::search($request->input('Searchbar'))
+            ->with(["user", "room.building.location"]);
+        if ($request->has('locations')) {
+            $query->whereIn("room.building.location.name", $request->input('Locations'));
+        }
+        if ($request->has('Date')) {
+            $query->whereDate("start_date", '=', date('Y-m-d', strtotime($request->input('Date'))));
+        }
 
-    /**
-     * Displays the specified resource
-     *
-     * @param  Colloquium $colloquium
-     * @return View
-     */
-    public function show(Colloquium $colloquium)
-    {
-        return view('agenda.details', [
-            'colloquium' => $colloquium,
-        ]);
+        $colloquia = $query->get();
+
+        if ($colloquia->count() == 0) {
+            $request->session()->flash("custom_error", ['type' => 'info', 'message' => trans('agenda.notFoundMessage')]);
+        }
+        return view('search.index', ['colloquiumCollectionDate' => $colloquia]);
     }
 }

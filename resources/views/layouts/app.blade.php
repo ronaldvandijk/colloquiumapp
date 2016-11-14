@@ -8,25 +8,21 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Colloquia</title>
+    <title>Colloquia - @yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ url('/') }}/css/app.css" rel="stylesheet">
     <link href="{{ url('/') }}/css/font-awesome.css" rel="stylesheet">
-    
-    <link href="/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
-
     @yield('styles')
+    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+    'csrfToken' => csrf_token(),
+]); ?>
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -44,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Colloquium @ Hanze Hogeschool
+                        Colloquium @ <img src="{{ url('/images/logo.png') }}" alt="Hanzehogeschool Groningen"/>
                     </a>
                 </div>
 
@@ -57,7 +53,7 @@
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
-                            @if(Auth::user()->hasRole('User'))
+                            @if(Auth::user()->hasRole('user'))
                                 <li><a href="{{url('/mycolloquia')}}">Mijn Colloquia</a></li>
                             @endif
                             <li><a href="{{ url('/agenda') }}">Agenda</a></li>
@@ -68,6 +64,9 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/profile') }}">{{ trans('profile.profile') }}</a></li>
+                                    @if (Auth::user()->hasRole('administrator'))
+                                        <li><a href="{{ url('/admin') }}">Dashboard</a></li>
+                                    @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -87,10 +86,24 @@
             </div>
         </nav>
 
+        <div class="container">
+	        <div class="row">
+		        <div class="col-md-12">
+		            @if(request()->session()->has('custom_error'))
+			            <div class="alert alert-{{ request()->session()->get('custom_error')['type'] }}">
+			                {{ request()->session()->get('custom_error')['message'] }}
+			            </div>
+			        @endif
+		        </div>
+	        </div>
+        </div>
+
         @yield('content')
     </div>
 
     <!-- Scripts -->
+    @yield('scripts')
     <script src="{{ url('/') }}/js/app.js"></script>
+
 </body>
 </html>

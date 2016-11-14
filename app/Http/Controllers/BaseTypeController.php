@@ -15,9 +15,9 @@ abstract class BaseTypeController extends Controller
 
     protected $className = '';
 
-    protected $editView = 'edit';
-    protected $createView = 'create';
-    protected $overviewView = 'overview';
+    protected $editView = 'base/edit';
+    protected $createView = 'base/create';
+    protected $overviewView = 'base/overview';
 
     public function __construct()
     {

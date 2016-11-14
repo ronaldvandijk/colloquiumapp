@@ -53,6 +53,8 @@ use Sofa\Eloquence\Eloquence;
  */
 class Colloquium extends Model
 {
+    use SoftDeletes;
+    use Eloquence;
 
     protected $fillable = [
         'title',
@@ -65,23 +67,17 @@ class Colloquium extends Model
         'company_image',
         'company_url',
         'approved',
-        'language_id'
+        'language_id',
     ];
-
-    use SoftDeletes;
-    use Eloquence;
 
     protected $table = 'colloquia';
 
-    protected $searchableColumns  = [
-
-            'title' => 10,
-            'description' => 5,
-            'user.first_name' => 10,
-            'user.last_name' => 10,
-
-            'room.building.location.name' => 8,
-
+    protected $searchableColumns = [
+        'title' => 10,
+        'description' => 5,
+        'user.first_name' => 10,
+        'user.last_name' => 10,
+        'room.building.location.name' => 8,
     ];
 
     public function room()
@@ -109,7 +105,8 @@ class Colloquium extends Model
         return $this->belongsTo(Language::class);
     }
 
-    public function themes() {
+    public function themes()
+    {
         return $this->belongsToMany(Theme::class, 'colloquium_themes', 'theme_id', 'colloquium_id');
     }
 
@@ -132,7 +129,6 @@ class Colloquium extends Model
     {
         return count(ColloquiumTheme::where('colloquium_id', $this->id)->where('theme_id', $theme->id)->get()) > 0;
     }
-
 
     /**
      * Returns a ColloquiumPresenter

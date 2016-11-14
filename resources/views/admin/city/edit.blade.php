@@ -11,7 +11,7 @@
                     <div class="panel-heading"><b>{{ trans('admin/city.edit_title') }}</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/city/{{ $data->id }}">
+                        <form method="post" action="/admin/cities/{{ $data->id }}">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
                             <div class="col-md-6">

@@ -11,7 +11,7 @@
                     <div class="panel-heading"><b>{{ trans('admin/city.create_title') }}</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/city">
+                        <form method="post" action="/admin/cities">
                             {{ csrf_field() }}
                             <div class="col-md-6">
                                 <div class="form-group">

@@ -17,10 +17,12 @@ class ColloquiumController extends Controller
 
     public function index(Request $request, $status = '')
     {
-        if(!$status) {
+        if(strlen($status) == 0) {
             $colloquia = Colloquium::orderBy('start_date')->get();
+        } else if ($status == 'null') {
+            $colloquia = Colloquium::whereNull('approved')->orderBy('start_date')->get();
         } else {
-            $colloquia = Colloquium::where('approved', $status)->orderBy('start_date')->get();
+            $colloquia = Colloquium::whereNotNull('approved')->where('approved', $status)->orderBy('start_date')->get();
         }
 
         return view('admin.colloquia.overview', compact('colloquia'));

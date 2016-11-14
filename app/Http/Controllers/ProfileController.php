@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use \App\Http\Requests\UpdateProfileRequest;
 use \Auth;
+use App\SoftwareLanguages;
 use Illuminate\Foundation\Auth\User;
 
 class ProfileController extends Controller
@@ -35,7 +36,7 @@ class ProfileController extends Controller
      * @return view
      */
     public function settings() {
-        $languages = \DB::table('software_languages')->get();
+        $languages = SoftwareLanguages::all();
         return view('user/settings')->with('languages', $languages);
     }
 
@@ -47,11 +48,11 @@ class ProfileController extends Controller
     public function save(UpdateProfileRequest $request) {
 
         // If we have chosen a language, make sure it exists. If not, use English
-        $language = \DB::table('software_languages')->get();
+        $language = SoftwareLanguages::get()->where('directory', $request['prefered_language']);
         if (count($language) == 0)
-            $_POST['prefered_language'] = 'en';
+            $request['prefered_language'] = 'en';
 
-        // Validate the form
+        // Update the user's profile
         $user = Auth::user();
         $user->update($request->input());
 

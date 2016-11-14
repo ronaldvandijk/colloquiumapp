@@ -8,13 +8,9 @@
                     <div class="panel-heading"><b>Alle gebruikers</b></div>
 
                     <div class="panel-body">
-                        @if (Session::has('failure'))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>{{ Session::get('failure') }}</strong>
-                            </div>
-                        @elseif (Session::has('delete_success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ Session::get('delete_success') }}
+                        @if (request()->session()->has('custom_error'))
+                            <div class="alert alert-{{ request()->session()->get('custom_error')['type'] }}">
+                                {{ request()->session()->get('custom_error')['message'] }}
                             </div>
                         @endif
                         <table class="table">

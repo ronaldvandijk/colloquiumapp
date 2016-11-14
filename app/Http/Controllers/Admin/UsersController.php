@@ -12,26 +12,6 @@ class UsersController extends Controller
     private $_imageExtensions;
     private $_maxSize;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return $this->overview();
-    }
-
     public function edit(User $user)
     {
         return view('admin/users/edit', ['user' => $user, 'roles' => Role::all()]);
@@ -39,26 +19,31 @@ class UsersController extends Controller
 
     /**
      * Delete a user from the database
-     * @param int $userId The ID of the user that should be deleted
+     * @param int $id The ID of the user that should be deleted
      * @return view
      */
-    public function delete($userId) {
+    public function delete($id) {
 
         // Validate the user ID
-        if (!User::where('id', $userId)->exists() || $userId == \Auth::user()->id) {
-            \Session::flash('failure', trans('admin.delete_user_failed'));
+        if (!User::where('id', $id)->exists() || $id == \Auth::user()->id) {
+            \Session::flash('message', trans('admin.delete_user_failed'));
             return \Redirect::back();
         }
+
+        /**
+         * @todo Update to model format and add error message
+         */
+        if ((DB::table('colloquia')->where('user_id', $id)->count()) > 0)
+            return \Redirect::back();
 
         // Delete the user from the database and return to the overview
         try {
-            $result = \DB::table('users')->where('id', $userId)->delete();
+            User::findOrFail($id)->delete();
         }
         catch (\Exception $e) {
-            \Session::flash('failure', trans('admin.delete_user_failed'));
+            \Session::flash('message', trans('admin.delete_user_failed'));
             return \Redirect::back();
         }
-        \Session::flash('delete_success', trans('admin.success'));
         return \Redirect::back();
     }
 

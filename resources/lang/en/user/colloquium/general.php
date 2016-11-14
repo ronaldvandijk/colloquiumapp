@@ -1,4 +1,5 @@
 <?php
 return [
-    'modelName' => 'colloquium'
+    'modelName' => 'colloquium',
+    'colloquium_request' => 'Request colloquium',
 ];

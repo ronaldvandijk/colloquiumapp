@@ -21,7 +21,7 @@
                                            class="form-control"
                                            placeholder="{{ trans('admin/location.name') }}"
                                            name="name"
-                                           value="{{ request()->old('name') ?? $location->name }}"
+                                           value="{{ request()->old('name') ? $location->name : null }}"
                                     />
                                 </div>
                                 <div class="input-group">

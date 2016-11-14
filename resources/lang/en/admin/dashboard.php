@@ -14,4 +14,8 @@ return [
     'users'     => 'Users',
     'themes'    => 'Themes',
     'activity_stream' => 'Activity Stream',
+    'buildings' => 'Buildings',
+    'cities'    => 'Cities',
+    'rooms'     => 'Rooms',
+
 ];

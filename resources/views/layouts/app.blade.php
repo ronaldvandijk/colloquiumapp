@@ -13,29 +13,16 @@
     <!-- Styles -->
     <link href="{{ url('/') }}/css/app.css" rel="stylesheet">
     <link href="{{ url('/') }}/css/font-awesome.css" rel="stylesheet">
-<<<<<<< HEAD
-    <link href="/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet">
-=======
     @yield('styles')
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
-
->>>>>>> master
 
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-<<<<<<< HEAD
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-    <script> $('#sandbox-container input').datepicker({ format: 'dd/mm/yyyy' });</script>
 
-=======
->>>>>>> master
 </head>
 <body>
     <div id="app">
@@ -100,7 +87,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ url('/') }}/js/app.js"></script>
     @yield('scripts')
+    <script src="{{ url('/') }}/js/app.js"></script>
+
 </body>
 </html>

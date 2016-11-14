@@ -124,9 +124,6 @@ class Colloquium extends Model
         return $this->belongsToMany(Colloquium::class);
     }
 
-<<<<<<< HEAD
-
-=======
     public function isOwner(User $user)
     {
         return $user->id === $this->user_id;
@@ -136,6 +133,5 @@ class Colloquium extends Model
     {
         return count(ColloquiumTheme::where('colloquium_id', $this->id)->where('theme_id', $theme->id)->get()) > 0;
     }
->>>>>>> master
 
 }

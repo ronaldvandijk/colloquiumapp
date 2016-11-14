@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('home', [
-            'colloquia' => Colloquium::all()
+            'colloquia' => Colloquium::all(),
         ]);
     }
 }

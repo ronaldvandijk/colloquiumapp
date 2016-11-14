@@ -21,9 +21,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', 'TestController@overview');
 
 // TV Screen
-Route::get('/tv', function () {
-    return view('tv/tv');
-});
+Route::get('/tv/{location_id?}', 'HomeController@tv');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
     Route::get('/', 'Admin\HomeController@index');
@@ -44,7 +42,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 
     Route::resource('locations', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
-    Route::resource('city', 'Admin\CityController');
+
+    Route::resource('cities', 'Admin\CityController');
+
     Route::resource('mailtemplates', 'Admin\MailtemplateController');
 
     Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {

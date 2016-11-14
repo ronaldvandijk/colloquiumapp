@@ -75,7 +75,7 @@ Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator'
     Route::get('/show/{colloquium}', 'SearchController@show');
 });
 
-Route::group(['prefix' => 'profile'], function() {
+Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administrator'], function() {
     Route::get('/', 'ProfileController@index');
     Route::get('/settings', 'ProfileController@settings');
     Route::post('/settings', 'ProfileController@save');

@@ -28,10 +28,6 @@ class ProfileController extends Controller
      * @return view
      */
     public function index() {
-
-        if (Auth::guest())
-            redirect('/home');
-
         return view('user/profile');
     }
 
@@ -59,10 +55,6 @@ class ProfileController extends Controller
      * @return view
      */
     public function settings() {
-
-        if (Auth::guest())
-            redirect('/home');
-
         $this->languages();
         return view('user/settings')->with('languages', $this->_languages);
     }
@@ -74,8 +66,12 @@ class ProfileController extends Controller
      */
     public function save(UpdateProfileRequest $request) {
 
-        if (Auth::guest())
-            redirect('/home');
+        // If we have chosen a language, make sure it exists.
+        if (!empty($_POST['prefered_language'])) {
+            $this->languages();
+            if (!in_array($_POST['prefered_language'], $this->_languages))
+              $_POST['prefered_language'] = 'en';
+        }
 
         // Validate the form
         $user = Auth::user();
@@ -89,10 +85,6 @@ class ProfileController extends Controller
      * @return view
      */
     public function avatar() {
-
-        if (Auth::guest())
-            redirect('/home');
-
         return view('user/avatar');
     }
 
@@ -102,10 +94,7 @@ class ProfileController extends Controller
      * @return boolean
      */
     private function uploadAvatar($avatar) {
-
-        if (Auth::guest())
-            redirect('/home');
-
+        /*
         // The image should have a certain extension
         if (!in_array($avatar->getClientOriginalExtension, $this->_imageExtensions))
             return 'wrong_extension';
@@ -120,6 +109,6 @@ class ProfileController extends Controller
         if (!$moveFile)
             return 'upload_failed';
 
-        return true;
-    }    
+        return true;*/
+    } 
 }

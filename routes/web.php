@@ -44,7 +44,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 
     Route::resource('locations', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
-    Route::resource('city', 'Admin\CityController');
+
+    Route::get('cities', 'Admin\CityController@index');
+    Route::post('city', 'Admin\CityController@store');
+    Route::get('city/create', 'Admin\CityController@create');
+    Route::get('city/{id}/edit', 'Admin\CityController@edit');
+    Route::delete('city/destroy/{id}', 'Admin\CityController@destroy');
+    Route::patch('city/{id}', 'Admin\RoomController@update');
+
     Route::resource('mailtemplates', 'Admin\MailtemplateController');
 
     Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {

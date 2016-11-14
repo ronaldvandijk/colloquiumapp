@@ -34,7 +34,7 @@ class HomeController extends Controller
      */
     public function tv($location = null) {
 
-        $query = Colloquium::getQuery();
+        $query = Colloquium::query();
 
         // If user filled in location then filter on it
         if(!is_null($location)) {

@@ -13,7 +13,7 @@
                                 <br>
                                 <b>{{ trans('agenda.date') }}: </b>
                                 {{ format('j M Y', $colloquium['start_date']) }} - {{ format('H:i', $colloquium['start_date']) }} - {{ format('H:i', $colloquium['end_date']) }}
-                                <a href="{{ url('agenda/show', $colloquium['id']) }}" class="btn btn-sm btn-primary pull-right">Details</a>
+                                <a href="{{ url('agenda/show', $colloquium['id']) }}" class="btn btn-sm btn-primary pull-right">{{ trans('agenda.details') }}</a>
                             </p>
                         </div>
                     </div>

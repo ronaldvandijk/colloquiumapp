@@ -15,6 +15,7 @@
         'location' => 'Location',
         'description' => 'Description',
         'people' => 'People',
-        'notFoundMessage' => 'No results found.'
+        'notFoundMessage' => 'No results found.',
+        'details' => 'Details'
     ];
 ?>

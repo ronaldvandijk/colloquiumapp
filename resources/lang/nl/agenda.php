@@ -15,6 +15,7 @@
         'location' => 'Locatie',
         'description' => 'Beschrijving',
         'people' => 'Personen',
-        'notFoundMessage' => 'Geen resultaten gevonden.'
+        'notFoundMessage' => 'Geen resultaten gevonden.',
+        'details' => 'Details'
     ];
 ?>

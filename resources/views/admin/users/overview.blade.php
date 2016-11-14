@@ -8,13 +8,13 @@
                     <div class="panel-heading"><b>Alle gebruikers</b></div>
 
                     <div class="panel-body">
-                        @if (!empty($failure))
+                        @if (Session::has('failure'))
                             <div class="alert alert-danger" role="alert">
-                                <strong>Er is iets misgegaan bij het verwijderen van de gebruiker:</strong><br />{{ $errors->first('deletion') }}
+                                <strong>{{ Session::get('failure') }}</strong>
                             </div>
-                        @elseif (!empty($success))
+                        @elseif (Session::has('delete_success'))
                             <div class="alert alert-success" role="alert">
-                                De gebruiker is succesvol verwijderd.
+                                {{ Session::get('delete_success') }}
                             </div>
                         @endif
                         <table class="table">

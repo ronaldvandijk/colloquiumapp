@@ -20,9 +20,6 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->_avatarPath = __DIR__ . '/../../../../avatars';
-        $this->_imageExtensions = array('png', 'jpg', 'jpeg', 'gif');
-        $this->_maxAvatarSize = 400000;
     }
 
     /**
@@ -32,7 +29,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return $this->overview();
     }
 
     public function edit(User $user)
@@ -49,14 +46,20 @@ class UsersController extends Controller
 
         // Validate the user ID
         if (!User::where('id', $userId)->exists() || $userId == \Auth::user()->id) {
-            $users = User::all();
-            return view('admin/users/overview')->with('users', $users)->with('failure', true);
+            \Session::flash('failure', trans('admin.delete_user_failed'));
+            return \Redirect::back();
         }
 
         // Delete the user from the database and return to the overview
-        $result = \DB::table('users')->where('id', $userId)->delete();
-        $users = User::all();
-        return view('admin/users/overview')->with('users', $users)->with((!$result ? 'failure' : 'success'), true);
+        try {
+            $result = \DB::table('users')->where('id', $userId)->delete();
+        }
+        catch (\Exception $e) {
+            \Session::flash('failure', trans('admin.delete_user_failed'));
+            return \Redirect::back();
+        }
+        \Session::flash('delete_success', trans('admin.success'));
+        return \Redirect::back();
     }
 
     public function overview()

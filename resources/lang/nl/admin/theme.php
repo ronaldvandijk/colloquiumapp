@@ -11,4 +11,6 @@ return [
 
     /** Attributes */
     'name' => 'Naam',
+    'preview' => 'Voorbeeld',
+    'color' => 'Kleur',
 ];

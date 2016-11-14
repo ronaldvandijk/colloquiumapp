@@ -17,12 +17,12 @@
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
 
-
     <script>
         window.Laravel = <?php echo json_encode([
     'csrfToken' => csrf_token(),
 ]); ?>
     </script>
+
 </head>
 <body>
     <div id="app">
@@ -99,7 +99,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ url('/') }}/js/app.js"></script>
     @yield('scripts')
+    <script src="{{ url('/') }}/js/app.js"></script>
+
 </body>
 </html>

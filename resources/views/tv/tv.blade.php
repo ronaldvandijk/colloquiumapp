@@ -32,7 +32,11 @@
 </head>
 <body>
 	@for($i = 0; $i < 3; ++$i)
-		@include('/tv/colloquium', ['colloquium' => $colloquia[$i] ])
+		@if( empty($colloquia[$i]) )
+			<div class="quarter"><img src="/images/logoHD.png" width="100%" height="100%" /></div>
+		@else
+			@include('/tv/colloquium', ['colloquium' => $colloquia[$i] ])
+		@endif
 	@endfor
 
 	<div class="quarter" style="overflow:hidden">

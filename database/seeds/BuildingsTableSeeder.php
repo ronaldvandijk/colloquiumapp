@@ -12,7 +12,7 @@ class BuildingsTableSeeder extends Seeder
     public function run()
     {
         DB::table('buildings')->insert([
-            'name' => 'Van dorenveste',
+            'name' => 'Van doorenveste',
             'abbreviation' => 'TN',
             'location_id' => 1,
         ]);

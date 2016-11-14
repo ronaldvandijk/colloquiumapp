@@ -12,6 +12,7 @@ use App\Models\Building;
 use App\Models\Location;
 use Illuminate\Validation\Rule;
 use App\Http\Requests\BuildingRequest;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class BuildingController extends Controller
 {
@@ -26,7 +27,7 @@ class BuildingController extends Controller
      */
 
     /**
-     * Display a listing of the resource.
+     * Displays the view list of all buildings with the appropriate action buttons: edit and delete.
      *
      * @return \Illuminate\Http\Response
      */
@@ -36,7 +37,7 @@ class BuildingController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Shows the form for creating a new building.
      *
      * @return \Illuminate\Http\Response
      */
@@ -46,7 +47,7 @@ class BuildingController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Stores the newly created building
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -72,11 +73,12 @@ class BuildingController extends Controller
      */
     public function show($id)
     {
-        //
+        // we don't display a single building, doesn't require implementation.
+        throw new NotFoundHttpException();
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the building (identified by $id)
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -90,7 +92,7 @@ class BuildingController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Updates the building after the editing form is submitted.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -114,7 +116,7 @@ class BuildingController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified building from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

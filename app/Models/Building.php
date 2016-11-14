@@ -22,18 +22,28 @@ use Illuminate\Database\Eloquent\Model;
 class Building extends Model
 {
     public $timestamps = false;
+
     protected $fillable = [
         'name',
         'abbreviation',
         'location_id',
     ];
 
-
+    /**
+     * returns the rooms for a building
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function rooms()
     {
         return $this->hasMany(Room::class);
     }
 
+    /**
+     * returns which location this building belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function location()
     {
         return $this->belongsTo(Location::class);

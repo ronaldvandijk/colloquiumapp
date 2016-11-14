@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <a href="{{ url('agenda') }}" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ trans('agenda.back') }}</a>
-        <button class="btn btn-success pull-right">{{ trans('agenda.interested') }}</button>
+        {{-- <button class="btn btn-success pull-right">{{ trans('agenda.interested') }}</button> --}}
         <hr>
         <div class="presentatie-details">
         <h1><b>{{ $colloquium->title }}</b></h1>

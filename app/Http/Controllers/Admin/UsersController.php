@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;

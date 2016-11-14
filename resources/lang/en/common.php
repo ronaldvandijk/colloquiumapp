@@ -19,12 +19,21 @@ return [
     'update' => 'Update',
     'delete' => 'Delete',
     'create' => 'Create',
+    'edit'   => 'Edit',
 
     'submit' => 'Submit',
 
+    'edit' => 'Edit',
+
+    'title' => 'Title',
+    'name' => 'Name',
+    'capacity' => 'Capacity',
+    'building' => 'Building',
+    'room' => 'Room',
     'modelupdate' => 'Update :modelName',
     'modeldelete' => 'Delete :modelName',
     'modelcreate' => 'Create :modelName',
-
+    'modelupdated' => ':modelName Updated',
+    'deleted_msg' => 'Successfully deleted!',
     'overview' => 'Overview',
 ];

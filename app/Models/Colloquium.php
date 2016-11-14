@@ -27,6 +27,7 @@ use Sofa\Eloquence\Eloquence;
  * @property string $deleted_at
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Invitee[] $invitees
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Theme[] $themes
  * @property-read \App\Models\ColloquiumType $type
  * @property-read \App\Models\Language $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $examinated
@@ -51,6 +52,20 @@ use Sofa\Eloquence\Eloquence;
  */
 class Colloquium extends Model
 {
+
+    protected $fillable = [
+        'title',
+        'description',
+        'room_id',
+        'start_date',
+        'end_date',
+        'type_id',
+        'invite_email',
+        'company_image',
+        'company_url',
+        'approved',
+        'language_id'
+    ];
 
     use SoftDeletes;
     use Eloquence;
@@ -95,6 +110,10 @@ class Colloquium extends Model
         return $this->belongsTo(Language::class);
     }
 
+    public function themes() {
+        return $this->belongsToMany(Theme::class, 'colloquium_themes', 'theme_id', 'colloquium_id');
+    }
+
     public function examinated()
     {
         return $this->belongsToMany(User::class, 'colloquium_examinators', 'user_id', 'colloquium_id');
@@ -105,6 +124,18 @@ class Colloquium extends Model
         return $this->belongsToMany(Colloquium::class);
     }
 
+<<<<<<< HEAD
 
+=======
+    public function isOwner(User $user)
+    {
+        return $user->id === $this->user_id;
+    }
+
+    public function hasTheme(Theme $theme)
+    {
+        return count(ColloquiumTheme::where('colloquium_id', $this->id)->where('theme_id', $theme->id)->get()) > 0;
+    }
+>>>>>>> master
 
 }

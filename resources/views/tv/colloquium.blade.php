@@ -26,7 +26,10 @@
 	</div>
 	
 	<div class="quarter">
-		<img src="{{ $colloquium->company_image or '/images/logo.png'}}" width="100%" height="100%" />
-
+		@if ( strlen($colloquium->company_image) > 0 )
+			<img src="{{ $colloquium->company_image }}" width="100%" height="100%" />
+		@else
+			<img src="/images/logo.png" width="100%" height="100%" />
+		@endif
 	</div>
 </div>

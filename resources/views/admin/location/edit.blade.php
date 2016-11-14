@@ -11,7 +11,7 @@
                     <div class="panel-heading"><b>{{ trans('admin/location.edit_title') }}</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/location/{{ $location->id }}">
+                        <form method="post" action="/admin/locations/{{ $location->id }}">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
                             <div class="col-md-6">
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="input-group">
                                     <label>{{ trans('admin/location.city') }}</label>
-                                    <select class="form-control" name="city">
+                                    <select class="form-control" name="city_id">
                                         <option>{{ trans('admin/location.select_city') }}</option>
                                         @foreach(\App\Models\City::all() as $city)
                                             @if($location->city_id == $city->id)

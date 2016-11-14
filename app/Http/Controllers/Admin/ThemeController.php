@@ -40,10 +40,11 @@ class ThemeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, Theme::RULES);
+        $this->validate($request, Theme::getRules());
 
         $theme = new Theme();
         $theme->name = $request->get('name');
+        $theme->color = $request->get('color');
         $theme->save();
 
         return redirect()->action('Admin\ThemeController@index');
@@ -82,10 +83,13 @@ class ThemeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, Theme::RULES);
+        $this->validate($request, Theme::getRules($id));
+
         $theme = Theme::findOrFail($id);
         $theme->name = $request->get('name');
+        $theme->color = $request->get('color');
         $theme->save();
+
         $request->session()->flash('message', trans('common.modelupdated', ['modelName' => trans('admin/theme.modelname')]));
 
         return redirect()->action('Admin\ThemeController@index');

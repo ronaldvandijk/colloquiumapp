@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\LocationRequest;
 use App\Models\Location;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class LocationController extends Controller
 {
@@ -19,7 +19,7 @@ class LocationController extends Controller
         $locations = Location::all();
 
         return view('admin.location.index', [
-            'locations' => $locations
+            'locations' => $locations,
         ]);
     }
 
@@ -51,7 +51,7 @@ class LocationController extends Controller
         );
 
         // Redirect to location overview
-        return redirect('/admin/location');
+        return redirect('/admin/locations');
     }
 
     /**
@@ -96,7 +96,7 @@ class LocationController extends Controller
         );
 
         // Redirect to location overview
-        return redirect('/admin/location');
+        return redirect('/admin/locations');
     }
 
     /**
@@ -117,6 +117,6 @@ class LocationController extends Controller
         );
 
         // Redirect to location overview
-        return redirect('/admin/location');
+        return redirect('/admin/locations');
     }
 }

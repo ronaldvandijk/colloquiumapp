@@ -11,5 +11,7 @@ return [
 
     /** Attributes */
     'name' => 'Name',
+    'preview' => 'Preview',
+    'color' => 'Color',
 
 ];

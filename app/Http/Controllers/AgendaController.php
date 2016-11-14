@@ -23,6 +23,7 @@ class AgendaController extends Controller
             ->join('locations', 'locations.id', '=', 'buildings.location_id')
             ->select(DB::raw('colloquia.*, DATE(start_date) as sort_date, rooms.name as room_name, buildings.name as building_name, buildings.abbreviation as building_abbreviation, locations.name as location_name'))
             ->orderBy('start_date')
+            ->whereDate('start_date', '>', Carbon::now())
             ->get()->toArray())->groupBy('sort_date');
 
         $locations = Location::all();

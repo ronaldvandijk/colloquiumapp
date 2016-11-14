@@ -20,13 +20,13 @@
 	</div>
 
 	<div class="quarter">
-		<div class="shitz">
+		<div class="description">
 			{{ $colloquium->description }}
 		</div>
 	</div>
 	
 	<div class="quarter">
-		<img src="{{ $colloquium->company_image or 'http://logodatabases.com/wp-content/uploads/2012/04/atos-logo.jpg'}}" width="100%" height="100%" />
+		<img src="{{ $colloquium->company_image or '/images/logo.png'}}" width="100%" height="100%" />
 
 	</div>
 </div>

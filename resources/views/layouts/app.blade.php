@@ -40,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Colloquium @ Hanze Hogeschool
+                        Colloquium @ <img src="{{ url('/images/logo.png') }}" alt="Hanzehogeschool Groningen"/>
                     </a>
                 </div>
 
@@ -64,6 +64,9 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/profile') }}">Profiel</a></li>
+                                    @if (Auth::user()->hasRole('administrator'))
+                                        <li><a href="{{ url('/admin') }}">Dashboard</a></li>
+                                    @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();

@@ -14,7 +14,7 @@ class ColloquiaTableSeeder extends Seeder
         //factory(App\Models\Colloquium::class, 10)->create();
 
     	DB::table('colloquia')->insert([
-            'title' => 'Energy Data Hub: From Webservice to Mobile service', 
+            'title' => 'Energy Data Hub: From Webservice to Mobile service',
             'description' => 'Tijdens deze presentatie zullen jullie alles leren over een Data Hub. Ik vertel jullie over het proces van webservice tot mobileservice met alle bijbehorende zaken.',
             'user_id' => 2,
             'start_date' => '2015-10-11 13:00:00',
@@ -74,7 +74,7 @@ class ColloquiaTableSeeder extends Seeder
         ]);
 
         DB::table('colloquia')->insert([
-            'title' => 'Machine Learning Sales Forecasting', 
+            'title' => 'Machine Learning Sales Forecasting',
             'description' => 'Tegenwoordig is alles geautomatiseerd en leren computers zichzelf bepaalde ritmes aan. Ik heb dit toegepast in de saleswereld.',
             'user_id' => 5,
             'start_date' => '2016-11-24 13:15:00',
@@ -89,7 +89,7 @@ class ColloquiaTableSeeder extends Seeder
         ]);
 
         DB::table('colloquia')->insert([
-            'title' => 'Testplatform: Rolling update', 
+            'title' => 'Testplatform: Rolling update',
             'description' => 'Wil je graag meer weten over updates uitvoeren op grote schaal? Ik vertel je alles over versie checks, updates en compatibility checks etc.',
             'user_id' => 6,
             'start_date' => '2016-12-12 13:00:00',
@@ -104,7 +104,7 @@ class ColloquiaTableSeeder extends Seeder
         ]);
 
         DB::table('colloquia')->insert([
-            'title' => 'Digitale Opsporing: De weg naar een goede samenwerking', 
+            'title' => 'Digitale Opsporing: De weg naar een goede samenwerking',
             'description' => '',
             'user_id' => 6,
             'start_date' => '2016-11-21 09:00:00',
@@ -119,7 +119,7 @@ class ColloquiaTableSeeder extends Seeder
         ]);
 
         DB::table('colloquia')->insert([
-            'title' => 'Hacker Specialties; Providing insight in the specialties of hackers on the HackerOne platform', 
+            'title' => 'Hacker Specialties; Providing insight in the specialties of hackers on the HackerOne platform',
             'description' => 'Do you want to know more about hacking? Join my presentation and you will learn everything about the specialties of hackers on the HackerOne platform',
             'user_id' => 6,
             'start_date' => '2016-11-21 11:15:00',

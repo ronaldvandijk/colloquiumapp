@@ -13,10 +13,8 @@ class CitiesTableSeeder extends Seeder
     {
         DB::table('cities')->insert([
             'name' => 'Groningen',
-        ]);
-
-        DB::table('roles')->insert([
             'name' => 'Leeuwarden',
         ]);
+
     }
 }

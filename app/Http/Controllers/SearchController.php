@@ -16,7 +16,7 @@ class SearchController extends Controller
             $query->whereIn("room.building.location.name", $request->input('Locations'));
         }
         if($request->has('Date')){
-            $query->where("start_date", $request->input('Date'));
+            $query->whereDate("start_date",'=', date('Y-m-d',strtotime($request->input('Date'))));
         }
 
         $colloquia = $query->get();

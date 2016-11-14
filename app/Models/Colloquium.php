@@ -69,8 +69,9 @@ class Colloquium extends Model
 
     use SoftDeletes;
     use Eloquence;
-    //protected $searchableColumns = ['title', 'description'];
+
     protected $table = 'colloquia';
+
     protected $searchableColumns  = [
 
             'title' => 10,
@@ -81,9 +82,6 @@ class Colloquium extends Model
             'room.building.location.name' => 8,
 
     ];
-
-
-
 
     public function room()
     {

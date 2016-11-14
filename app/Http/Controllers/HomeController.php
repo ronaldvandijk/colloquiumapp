@@ -7,13 +7,6 @@ use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -49,6 +42,6 @@ class HomeController extends Controller
         $query->orderBy('start_date', 'asc');
 
         // Return first 20 colloquia to view
-        return view('tv', ['colloquia' => $query->take(20)->get()]);
+        return view('tv/tv', ['colloquia' => $query->take(20)->get()]);
     }
 }

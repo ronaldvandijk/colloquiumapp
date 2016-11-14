@@ -12,29 +12,6 @@ class UsersController extends Controller
     private $_imageExtensions;
     private $_maxSize;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->_avatarPath = __DIR__ . '/../../../../avatars';
-        $this->_imageExtensions = array('png', 'jpg', 'jpeg', 'gif');
-        $this->_maxAvatarSize = 400000;
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
-    }
-
     public function edit(User $user)
     {
         return view('admin/users/edit', ['user' => $user, 'roles' => Role::all()]);
@@ -42,50 +19,36 @@ class UsersController extends Controller
 
     /**
      * Delete a user from the database
-     * @param int $userId The ID of the user that should be deleted
+     * @param int $id The ID of the user that should be deleted
      * @return view
      */
-    public function delete($userId) {
+    public function delete($id) {
 
         // Validate the user ID
-        if (!User::where('id', $userId)->exists() || $userId == \Auth::user()->id) {
-            $users = User::all();
-            return view('admin/users/overview')->with('users', $users)->with('failure', true);
+        if (!User::where('id', $id)->exists() || $id == \Auth::user()->id) {
+            \Session::flash('custom_error', trans('admin.user_not_found'));
+            return \Redirect::back();
+        }
+
+        if ((\App\Models\Colloquium::where('user_id', $id)->count()) > 0) {
+            \Session::flash('custom_error', trans('admin.cannot_delete_has_colloquia'));
+            return \Redirect::back();
         }
 
         // Delete the user from the database and return to the overview
-        $result = \DB::table('users')->where('id', $userId)->delete();
-        $users = User::all();
-        return view('admin/users/overview')->with('users', $users)->with((!$result ? 'failure' : 'success'), true);
+        try {
+            User::findOrFail($id)->delete();
+        }
+        catch (\Exception $e) {
+            \Session::flash('custom_error', trans('admin.delete_user_failed'));
+            return \Redirect::back();
+        }
+        return \Redirect::back();
     }
 
     public function overview()
     {
         $users = User::all();
         return view('admin.users.overview')->with('users', $users);
-    }
-
-    /**
-     * Upload an avatar
-     * @param file $file The file that should be uploaded
-     * @return boolean
-     */
-    private function uploadAvatar($avatar) {
-
-        // The image should have a certain extension
-        if (!in_array($avatar->getClientOriginalExtension, $this->_imageExtensions))
-            return 'wrong_extension';
-        elseif ($avatar->getSize() > $this->_maxAvatarSize)
-            return 'too_large';
-        elseif ($avatar->getSize() < 125)
-            return 'too_small';
-
-        // Move the avatar
-        $originalFileName = getClientOriginalName();
-        $moveFile = $avatar->move($_avatarPath, $originalFileName);
-        if (!$moveFile)
-            return 'upload_failed';
-
-        return true;
     }
 }

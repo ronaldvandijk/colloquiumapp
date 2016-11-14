@@ -1,7 +1,38 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link href="/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet">
+@endsection
+
 @section('content')
+
     <div class="container-fluid">
+
+        <form action="{{url('/')}}/search" method="POST">
+            {{ csrf_field() }}
+            <div class="input-group">
+
+                <select class="selectpicker" data-selected-text-format="count > 1" data-width="25%" Title="Locaties" name="Locations" multiple>
+                   @foreach($locations as $location)
+                       <option>{{ $location->name }}</option>
+                   @endforeach
+                </select>
+
+                <!-- Date Picker -->
+                <div id="sandbox-container">
+                    <input type="text" data-provide="datepicker" name="Date" placeholder="Datum" class="form-control">
+                </div>
+            </div>
+            <div class="input-group">
+
+                <input type="text" name="Searchbar"  class=" form-control " placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                </span>
+            </div>
+        </form>
+
         @foreach($colloquiumCollection as $colloquiumCollectionDate => $colloquiums)
             <div style="cursor: pointer" class="panel panel-default" data-toggle="modal" data-target="#colloquiumDate-{{ format('d-m-Y', $colloquiumCollectionDate) }}">
                 <div class="panel-body schedule-item">
@@ -67,3 +98,10 @@
     @endforeach
     </div>
 @show
+
+@section('scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script> $('#sandbox-container input').datepicker({ format: 'dd/mm/yyyy' });</script>
+@endsection

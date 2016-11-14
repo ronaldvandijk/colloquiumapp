@@ -17,12 +17,12 @@
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
 
-
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+    'csrfToken' => csrf_token(),
+]); ?>
     </script>
+
 </head>
 <body>
     <div id="app">
@@ -40,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Colloquium @ Hanze Hogeschool
+                        Colloquium @ <img src="{{ url('/images/logo.png') }}" alt="Hanzehogeschool Groningen"/>
                     </a>
                 </div>
 
@@ -64,6 +64,9 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/profile') }}">Profiel</a></li>
+                                    @if (Auth::user()->hasRole('administrator'))
+                                        <li><a href="{{ url('/admin') }}">Dashboard</a></li>
+                                    @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -83,11 +86,24 @@
             </div>
         </nav>
 
+        <div class="container">
+	        <div class="row">
+		        <div class="col-md-12">
+		            @if(request()->session()->has('custom_error'))
+			            <div class="alert alert-{{ request()->session()->get('custom_error')['type'] }}">
+			                {{ request()->session()->get('custom_error')['message'] }}
+			            </div>
+			        @endif
+		        </div>
+	        </div>
+        </div>
+
         @yield('content')
     </div>
 
     <!-- Scripts -->
-    <script src="{{ url('/') }}/js/app.js"></script>
     @yield('scripts')
+    <script src="{{ url('/') }}/js/app.js"></script>
+
 </body>
 </html>

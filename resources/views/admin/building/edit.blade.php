@@ -9,7 +9,7 @@
                         <b>{{ trans('admin/building/create.addbuilding-capt')  }}</b>
                     </div>
                     <div class="panel-body">
-                        <form action="/admin/building/{{ $building->id }}" method="POST">
+                        <form action="/admin/buildings/{{ $building->id }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
                             <label>{{trans('admin/building/create.name-capt')}}: </label><input name="name" value="{{ $building->name }}" />

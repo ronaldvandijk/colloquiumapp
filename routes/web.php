@@ -62,6 +62,8 @@ Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function 
     Route::get('/', 'MyColloquiaController@index');
     Route::get('/edit/{colloquium}', 'MyColloquiaController@edit');
     Route::post('/update/{colloquium}', 'MyColloquiaController@update');
+    Route::get('/request', 'MyColloquiaController@create');
+    Route::post('/store', 'MyColloquiaController@store');
 });
 
 Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|user'], function () {

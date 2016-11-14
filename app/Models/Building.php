@@ -40,7 +40,7 @@ class Building extends Model
     }
 
     /**
-     * returns which location this building belongs to
+     * returns which location this building belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

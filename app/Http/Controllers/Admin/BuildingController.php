@@ -58,7 +58,7 @@ class BuildingController extends Controller
             Building::create($request->all());
         } catch (QueryException $exception) {
             if ($exception->getCode() == 23000) {
-                $request->session()->flash('uniqueError', 'There already exists a combination with this name and abbreviation.');
+                $request->session()->flash('uniqueError', '{{ trans(\'admin/building/create.not-unique\') }}');
                 return redirect()->action('Admin\BuildingController@create');
             }
         }
@@ -108,7 +108,7 @@ class BuildingController extends Controller
             $building->save();
         }catch (QueryException $exception) {
             if ($exception->getCode() == 23000) {
-                $request->session()->flash('error', 'The combination of name and abbreviation was no unique.');
+                $request->session()->flash('error', '{{ trans(\'admin/building/create.not-unique\') }}');
                 //redirect()->back();
             }
         }

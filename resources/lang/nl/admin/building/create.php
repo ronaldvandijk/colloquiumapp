@@ -16,4 +16,5 @@ return [
     'edit-capt' => 'Bewerk',
     'delete-capt' => 'Verwijder',
     'confirm' => 'Bevestigen',
+    'not-unique' => 'Er bestaat al een combinatie van de naam en afkorting van dit gebouw.',
 ];

@@ -6,15 +6,15 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <b>Mailtemplates</b>
+                    <b>{{trans("mailtemplate.mailtemplate")}}</b>
                 </div>
                 <div class="panel-body">
                     <table class="table">
                         <thead>
-                            <th>Id</th>
-                            <th>Naam</th>
-                            <th>Body</th>
-                            <th>Onderwerp</th>
+                            <th>{{trans("mailtemplate.id")}}</th>
+                            <th>{{trans("mailtemplate.name")}}</th>
+                            <th>{{trans("mailtemplate.body")}}</th>
+                            <th>{{trans("mailtemplate.subject")}}</th>
                         </thead>
                         <tbody>
                             @foreach($templates as $template)

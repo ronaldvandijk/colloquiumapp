@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class MailTemplatesController extends Controller
 {
     public function overview(){
-      $templates = DB::table('mailtemplates')->get();
+      $templates = MailTemplate::all();
       return view('mailtemplates.index', ['templates' => $templates]);
     }
 

@@ -4,6 +4,12 @@ html, body {
 	margin: 0;
 }
 
+body {
+	border-size: 5px;
+	border-style: solid;
+	border-color: white;
+}
+
 .wrapper { 
 	height: 100%;
 	padding: 0;
@@ -15,18 +21,39 @@ html, body {
 	width: 50%;
 	height: 50%;
 	float: left;
+	overflow: hidden;
+}
+.shitz {
+	font-size: 15px;
+	/*
+	width: 480px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;*/
+
+	display: block; /* Fallback for non-webkit */
+	display: -webkit-box;
+	max-width: 480;
+	/*height: 26*1.4*10;  Fallback for non-webkit */
+	margin: 0 auto;
+	font-size: 21px;
+	line-height: 1.4;
+	-webkit-line-clamp: 9;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 #div1 {
-	background: #DDD;
+	background: white;
 }
 
 #div2 {
-	background: #AAA;
+	background: white;
 }
 #div3 {
-	background: #777;
+	background: white;
 }
 #div4 {
-	background: #444;
+	background: white;
 }

@@ -3,17 +3,15 @@
 @section('content')
     <div class="container">
         <div class="row">
-        	<div class="col-md-12">
-	            @if(Session::has('message'))
-	                <div class="alert alert-info">{{ Session::get('message') }}</div>
-	            @endif
-            </div>
+
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                    	<b>{{ trans('common.rooms') }}</b>
-                    	<a class="btn btn-default pull-right" href="{{ url('/admin/room/create') }}">{{ trans('common.modelcreate', ['modelName' => trans('common.room')]) }}</a>
-                    	<div class="clearfix"></div>
+                    	@include('layouts.panel_heading', [
+                    		'title' => trans('common.rooms'),
+                    		'button' => trans('common.modelcreate', ['modelName' => trans('common.room')]),
+                    		'url' => url('/admin/room/create'),
+                    	])
                     </div>
                     <div class="panel-body">
                         <table class="table">

@@ -6,17 +6,13 @@
             <div class="col-md-10 col-md-push-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                    	<b>{{ trans('common.modelcreate', ['modelName' => trans('common.room')])  }}</b>
-                    	<a class="btn btn-default pull-right" href="{{ url('/admin/rooms') }}">{{ trans('common.overview') }}</a>
-                    	<div class="clearfix"></div>
+                    	@include('layouts.panel_heading', [
+                    		'title' => trans('common.modelcreate', ['modelName' => trans('common.room')]),
+                    		'button' => trans('common.overview'),
+                    		'url' => url('/admin/rooms'),
+                    	])
                     </div>
                     <div class="panel-body">
-                        @foreach ($errors->all() as $error)
-                            <div>
-                                {{ $error }}
-                            </div>
-                        @endforeach
-
                         <form method="post" action="{{ url('/admin/rooms') }}">
                             {{ csrf_field() }}
                             <div class="col-md-6">

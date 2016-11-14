@@ -82,6 +82,6 @@ Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|
     Route::get('/show/{colloquium}', 'SearchController@show');
 });
 
-Route::group(['prefix' => 'mailtemplates'], function(){
+Route::group(['prefix' => 'mailtemplates', 'middleware' => 'role:planner|administrator'], function(){
   Route::get('/', 'MailTemplatesController@overview');
 });

@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mailtemplate;
+use Illuminate\Support\Facades\DB;
 
 class MailTemplatesController extends Controller
 {
     public function overview(){
-      $templates = mailtemplates::all();
-      return view('mailtemplates.index', ['mailtemplate' => $templates]);
+      $templates = DB::table('mailtemplates')->get();
+      return view('mailtemplates.index', ['templates' => $templates]);
     }
 
-    public function get_templates() {
-
+    public function send_email() {
+        // Need subscription functionallity to continue mail templates.
     }
 }

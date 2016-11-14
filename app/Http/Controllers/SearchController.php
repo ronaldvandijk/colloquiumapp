@@ -10,7 +10,6 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
-
         $query = Colloquium::search($request->input('Searchbar'))
             ->with(["user", "room.building.location"]);
         if($request->has('locations')){

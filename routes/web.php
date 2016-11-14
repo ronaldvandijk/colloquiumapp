@@ -45,11 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::resource('locations', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
     Route::resource('city', 'Admin\CityController');
-<<<<<<< HEAD
     Route::resource('mailtemplates', 'Admin\MailtemplateController');
-});
-=======
->>>>>>> 095a5c725d362e55e446717e642fe2f7074a123b
 
     Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {
         Route::get('/', 'Admin\ColloquiumController@index');

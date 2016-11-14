@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Admin location create')
+@section('title','Admin location edit')
 
 @section('content')
     <div class="container">
@@ -10,26 +10,32 @@
             @endforeach
             <div class="col-md-10 col-md-push-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>{{ trans('common.modelupdate', [trans('common.location')]) }}</b></div>
+                    <div class="panel-heading"><b>{{ trans('admin/location.edit_title') }}</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/locations">
+                        <form method="post" action="/admin/locations/{{ $location->id }}">
+                            {{ method_field('PATCH') }}
                             {{ csrf_field() }}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{ trans('common.name') }}</label>
+                                    <label>Name</label>
                                     <input type="text"
                                            class="form-control"
-                                           placeholder="Locatie naam"
+                                           placeholder="{{ trans('admin/location.name') }}"
                                            name="name"
-                                           value="{{ request()->old('name') }}"
+                                           value="{{ $inputValue }}"
                                     />
                                 </div>
-                                <div class="input-group pull-left">
-                                    <label>{{ trans('common.city') }}</label>
+                                <div class="input-group">
+                                    <label>{{ trans('admin/location.city') }}</label>
                                     <select class="form-control" name="city_id">
+                                        <option>{{ trans('admin/location.select_city') }}</option>
                                         @foreach(\App\Models\City::all() as $city)
-                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                            @if($location->city_id == $city->id)
+                                                <option value="{{ $city->id }}" selected>{{ $city->name }}</option>
+                                            @else
+                                                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>

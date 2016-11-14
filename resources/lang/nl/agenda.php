@@ -2,6 +2,7 @@
     return [
         'events' => 'Evenementen',
         'event' => 'Evenement',
+        'date' => 'Datum',
         'room' => 'Zaal',
         'time' => 'Tijd',
         'details' => 'Details',
@@ -13,6 +14,8 @@
         'language' => 'Taal',
         'location' => 'Locatie',
         'description' => 'Beschrijving',
-        'people' => 'Personen'
+        'people' => 'Personen',
+        'notFoundMessage' => 'Geen resultaten gevonden.',
+        'details' => 'Details'
     ];
 ?>

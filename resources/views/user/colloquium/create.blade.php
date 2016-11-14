@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-success pull-right">{{ trans('common.modelupdate', ['modelName' =>trans('user/colloquium/general.modelName')]) }}</button>
+                                        <button type="submit" class="btn btn-success pull-right">{{ trans('common.modelcreate', ['modelName' =>trans('user/colloquium/general.modelName')]) }}</button>
                                     </div>
                                 </div>
                             </form>

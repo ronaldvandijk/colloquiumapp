@@ -8,11 +8,8 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "doctrine/dbal": "^2.5",
-<<<<<<< HEAD
         "sofa/eloquence": "~5.3"
-=======
         "barryvdh/laravel-debugbar": "^2.3"
->>>>>>> master
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

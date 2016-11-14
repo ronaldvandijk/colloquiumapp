@@ -21,7 +21,7 @@
                                            class="form-control"
                                            placeholder="{{ trans('admin/location.name') }}"
                                            name="name"
-                                           value="{{ request()->old('name') ? $location->name : null }}"
+                                           value="{{ $inputValue }}"
                                     />
                                 </div>
                                 <div class="input-group">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12" style="padding: 20px 15px 0 30px;">
-                                    <a class="btn btn-default pull-left" href="{{ url('/admin/location') }}">{{ trans('admin/location.goback') }}</a>
+                                    <a class="btn btn-default pull-left" href="{{ url('/admin/locations') }}">{{ trans('admin/location.goback') }}</a>
                                     <button type="submit" class="btn btn-success pull-right">{{ trans('admin/location.save') }}</button>
                                 </div>
                             </div>

@@ -21,9 +21,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', 'TestController@overview');
 
 // TV Screen
-Route::get('/tv', function () {
-    return view('tv');
-});
+Route::get('/tv/{location_id?}', 'HomeController@tv');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
     Route::get('/', 'Admin\HomeController@index');

@@ -3,14 +3,20 @@
 @section('content')
     <div class="container-fluid">
         @foreach($colloquiumCollection as $colloquiumCollectionDate => $colloquiums)
-            <div class="panel panel-default" data-toggle="modal" data-target="#colloquiumDate-{{ format('d-m-Y', $colloquiumCollectionDate) }}">
+            <div style="cursor: pointer" class="panel panel-default" data-toggle="modal" data-target="#colloquiumDate-{{ format('d-m-Y', $colloquiumCollectionDate) }}">
                 <div class="panel-body schedule-item">
                     <div class="row">
                         <div class="col-xs-2    ">
                             <h4><b>{{ strtoupper(format('D', $colloquiumCollectionDate)) }}</b></h4>
                         </div>
                         <div class="col-xs-10">
-                            <h4>{{ format('j M Y', $colloquiumCollectionDate) }} <span class="label label-default pull-right">{{ $colloquiums->count() }} {{ trans('agenda.events') }}</span></h4>
+                            <h4>{{ format('j M Y', $colloquiumCollectionDate) }}
+                                @if ($colloquiums->count() > 1)
+                                    <span class="label label-default pull-right">{{ $colloquiums->count() }} {{ trans('agenda.events') }}</span>
+                                @else
+                                    <span class="label label-default pull-right">{{ $colloquiums->count() }} {{ trans('agenda.event') }}</span>
+                                @endif
+                            </h4>
                         </div>
                     </div>
                 </div>

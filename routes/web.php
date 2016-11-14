@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::resource('themes', 'Admin\ThemeController');
     Route::resource('building', 'Admin\BuildingController');
     Route::resource('city', 'Admin\CityController');
+    Route::resource('mailtemplates', 'Admin\MailtemplateController');
 
     Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {
         Route::get('/', 'Admin\ColloquiumController@index');
@@ -67,8 +68,4 @@ Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function 
 Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|user'], function () {
     Route::get('/', 'SearchController@index');
     Route::get('/show/{colloquium}', 'SearchController@show');
-});
-
-Route::group(['prefix' => 'mailtemplates'], function () {
-    Route::get('/', 'MailTemplatesController@overview');
 });

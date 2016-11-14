@@ -18,9 +18,9 @@ class SearchController extends Controller
             ->join('rooms', 'rooms.id', '=', 'colloquia.room_id')
             ->join('buildings', 'buildings.id', '=', 'rooms.building_id')
             ->join('locations', 'locations.id', '=', 'buildings.location_id')
-             ->select(DB::raw('colloquia.*, DATE(start_date) as sort_date, rooms.name as room_name, buildings.name as building_name, buildings.abbreviation as building_abbreviation, locations.name as location_name'))
-             ->orderBy('start_date')
-             ->get()->toArray())->groupBy('sort_date');
+            ->select(DB::raw('colloquia.*, DATE(start_date) as sort_date, rooms.name as room_name, buildings.name as building_name, buildings.abbreviation as building_abbreviation, locations.name as location_name'))
+            ->orderBy('start_date')
+            ->get()->toArray())->groupBy('sort_date');
         
         return view('agenda.index', ['colloquiumCollection' => $colloquiumCollection]);
     }

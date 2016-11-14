@@ -1,6 +1,7 @@
 <?php
     return [
         'events' => 'Evenementen',
+        'event' => 'Evenement',
         'room' => 'Zaal',
         'time' => 'Tijd',
         'details' => 'Details',

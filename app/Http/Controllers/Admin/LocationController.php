@@ -6,11 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LocationRequest;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class LocationController
+ *
+ * @package App\Http\Controllers\Admin
+ */
 class LocationController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of locations.
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,23 +24,23 @@ class LocationController extends Controller
     {
         $locations = Location::all();
 
-        return view('admin.location.index', [
-            'locations' => $locations,
+        return view('admin.locations.index', [
+            'locations' => $locations
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new location.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('admin.location.create');
+        return view('admin.locations.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created location in storage.
      *
      * @param  LocationRequest $request
      * @return \Illuminate\Http\Response
@@ -55,29 +61,33 @@ class LocationController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified location.
+     * Does not need to be implemented
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        // Does not need to be implemented
+        throw new NotFoundHttpException();
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified location.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        return view('admin.location.edit', ['location' => Location::findOrFail($id)]);
+        $location = Location::findOrFail($id);
+        $inputValue = (!empty(request()->old('name'))) ? request()->old('name') : $location->name;
+        return view('admin.locations.edit', ['location' => $location, 'inputValue' => $inputValue]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified location in storage.
      *
      * @param  LocationRequest $request
      * @param  int $id
@@ -100,7 +110,7 @@ class LocationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified location from storage.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response

@@ -22,7 +22,7 @@ Route::get('/test', 'TestController@overview');
 
 // TV Screen
 Route::get('/tv', function () {
-    return view('tv');
+    return view('tv/tv');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {

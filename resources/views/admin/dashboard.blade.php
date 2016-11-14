@@ -27,7 +27,7 @@
                 <a href="{{ action('Admin\ThemeController@index') }}" ><div class="panel panel-default panel-admin"><i class="fa fa-pencil-square"></i> {{ trans('admin/dashboard.themes') }}</div></a>
             </div>
             <div class="col-sm-6 col-md-4">
-                <a href="{{ action('Admin\UsersController@overview') }}" ><div class="panel panel-default panel-admin"><i class="fa fa-users"></i> {{ trans('admin/dashboard.users') }}</div></a>
+                <a href="{{ action('Admin\UsersController@index') }}" ><div class="panel panel-default panel-admin"><i class="fa fa-users"></i> {{ trans('admin/dashboard.users') }}</div></a>
             </div>
         </div>
     </div>

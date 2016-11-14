@@ -29,19 +29,19 @@ class HomeController extends Controller
 
     /**
      * This is the action which will display the TV screen with relevant colloquia for this location
-     * @param null $location The location to filter on
+     * @param null $location_id The location to filter on
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function tv($location = null) {
+    public function tv($location_id = null) {
 
         $query = Colloquium::query();
 
         // If user filled in location then filter on it
-        if(!is_null($location)) {
+        if(is_numeric($location_id)) {
             $query->join('rooms', 'rooms.id', '=', 'colloquia.room_id')
                 ->join('buildings', 'buildings.id', '=', 'rooms.building_id')
                 ->join('locations', 'locations.id', '=', 'buildings.location_id')
-                ->where('locations.name','=',$location);
+                ->where('locations.id','=',$location_id);
         };
 
         // Get upcoming colloquia first

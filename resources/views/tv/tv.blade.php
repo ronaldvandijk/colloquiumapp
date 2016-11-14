@@ -31,9 +31,9 @@
     </script>
 </head>
 <body>
-	@include('/tv/colloquium', ['i' => '0'])
-	@include('/tv/colloquium', ['i' => '1'])
-	@include('/tv/colloquium', ['i' => '2'])
+	@for($i = 0; $i < 3; ++$i)
+		@include('/tv/colloquium', ['colloquium' => $colloquia[$i] ])
+	@endfor
 
 	<div class="quarter" style="overflow:hidden">
 		<table class="table table-striped ">

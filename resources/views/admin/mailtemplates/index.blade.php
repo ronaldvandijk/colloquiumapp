@@ -10,11 +10,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>{{ trans('admin/mailtemplate.list_title') }}</b></div>
-                    <div>
-                        <a class="btn btn-default" href="{{ url('/admin/mailtemplates/create') }}">
-                            {{ trans('admin/mailtemplate.add_template') }}
-                        </a>
+                    <div class="panel-heading">
+                    	@include('layouts.panel_heading', [
+                    		'title' => trans('admin/mailtemplate.list_title'),
+                    		'button' => trans('admin/mailtemplate.add_template'),
+                    		'url' => url('/admin/mailtemplates'),
+                    	])
                     </div>
                     <div class="panel-body">
                         <table class="table">
@@ -60,4 +61,3 @@
         </div>
     </div>
 @endsection
-

@@ -5,8 +5,11 @@
         <div class="row">
             <div class="col-md-10 col-md-push-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>{{ trans('common.modelcreate', ['modelName' => trans('common.room')])  }}</b></div>
-
+                    <div class="panel-heading">
+                    	<b>{{ trans('common.modelcreate', ['modelName' => trans('common.room')])  }}</b>
+                    	<a class="btn btn-default pull-right" href="{{ url('/admin/rooms') }}">{{ trans('common.overview') }}</a>
+                    	<div class="clearfix"></div>
+                    </div>
                     <div class="panel-body">
                         @foreach ($errors->all() as $error)
                             <div>

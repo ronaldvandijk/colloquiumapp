@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Colloquium;
-use DB;
+use Carbon\Carbon;
 
 class SearchController extends Controller
 {

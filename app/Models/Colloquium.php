@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Presenters\ColloquiumPresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Sofa\Eloquence\Eloquence;
@@ -132,4 +133,13 @@ class Colloquium extends Model
         return count(ColloquiumTheme::where('colloquium_id', $this->id)->where('theme_id', $theme->id)->get()) > 0;
     }
 
+
+    /**
+     * Returns a ColloquiumPresenter
+     * @return ColloquiumPresenter
+     */
+    public function present()
+    {
+        return new ColloquiumPresenter($this);
+    }
 }

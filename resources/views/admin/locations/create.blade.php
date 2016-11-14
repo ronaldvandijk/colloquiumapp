@@ -26,6 +26,7 @@
                                 <div class="input-group pull-left">
                                     <label>{{ trans('common.city') }}</label>
                                     <select class="form-control" name="city_id">
+                                        <option selected>{{ trans('admin/location.select_city') }}</option>
                                         @foreach(\App\Models\City::all() as $city)
                                             <option value="{{ $city->id }}">{{ $city->name }}</option>
                                         @endforeach

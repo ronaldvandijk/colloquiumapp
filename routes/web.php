@@ -59,7 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::get('template/edit/{id}', 'Admin\TemplatesController@edit');
     Route::post('template/update', 'Admin\TemplateController@update');
 
-    Route::resource('location', 'Admin\LocationController');
+    Route::resource('locations', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
     Route::resource('city', 'Admin\CityController');
 });

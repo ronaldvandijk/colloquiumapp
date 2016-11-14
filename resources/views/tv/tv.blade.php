@@ -28,6 +28,10 @@
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
+
+        setTimeout( function() {
+        	window.location.reload();
+        }, 300000);
     </script>
 </head>
 <body>

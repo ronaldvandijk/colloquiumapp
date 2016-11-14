@@ -8,10 +8,10 @@
                     <div class="panel-heading"><b>Alle gebruikers</b></div>
 
                     <div class="panel-body">
-                        @if (request()->session()->has('custom_error'))
-                            <div class="alert alert-{{ request()->session()->get('custom_error')['type'] }}">
-                                {{ request()->session()->get('custom_error')['message'] }}
-                            </div>
+                        @if(request()->session()->has('custom_error'))
+                        <div class="alert alert-danger }}">
+                            {{ request()->session()->get('custom_error') }}
+                        </div>
                         @endif
                         <table class="table">
                             <thead>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin location index')
+
 @section('content')
     <div class="container">
         @if(request()->session()->has('success'))

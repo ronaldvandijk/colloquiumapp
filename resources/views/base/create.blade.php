@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Create base')
+
 @section('content')
     <div class="container">
         <div class="col-md-10">

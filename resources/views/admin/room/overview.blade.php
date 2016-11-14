@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin room overview')
+
 @section('content')
     <div class="container">
         <div class="row">

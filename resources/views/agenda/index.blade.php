@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Agenda')
+
 @section('content')
     <div class="container-fluid">
         @foreach($colloquiumCollection as $colloquiumCollectionDate => $colloquiums)

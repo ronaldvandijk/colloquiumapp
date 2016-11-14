@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin location delete')
+
 @section('content')
     <div class="container">
         <div class="row">

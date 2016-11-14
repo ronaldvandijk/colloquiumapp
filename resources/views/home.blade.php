@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Home')
+
 @section('content')
     <div class="container">
         <h2>({{ count($colloquia) }}) Colloquia gevonden op deze locatie</h2>

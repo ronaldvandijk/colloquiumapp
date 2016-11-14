@@ -14,7 +14,7 @@ class UpdateProfileRequest extends FormRequest
      */
     public function authorize()
     {
-        return (Auth::guest() ? false : true) == return Auth::guest();
+        return true;
     }
 
     /**

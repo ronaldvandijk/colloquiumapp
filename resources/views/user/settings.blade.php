@@ -51,15 +51,9 @@
                                         <label for="language">{{ trans('profile.language') }}</label>
                                         <select name="prefered_language" class="form-control">
                                             @foreach ($languages as $language)
-                                                <option value="{{$language}}"{{ "Auth::user()->prefered_language" == $language ? " selected" : "" }}>{{$language}}</option>
+                                                <option value="{{$language->directory}}"{{ Auth::user()->prefered_language == $language->directory ? " selected" : "" }}>{{$language->native}}</option>
                                             @endforeach
                                         </select>
-
-                                        @if ($errors->has('prefered_language'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('prefered_language') }}</strong>
-                                            </span>
-                                        @endif      
                                     </div>                                        
                                     <hr />
                                     <h4>{{ trans('profile.change_password') }}</h4>

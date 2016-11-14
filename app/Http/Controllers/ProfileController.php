@@ -12,7 +12,6 @@ class ProfileController extends Controller
 {
 
     private $_importantFields;
-    private $_languages;
     private $_dir;
 
     /**
@@ -32,31 +31,12 @@ class ProfileController extends Controller
     }
 
     /**
-     * What languages do we have installed?
-     * @return array
-     */
-    public function languages() {
-
-        if (!empty($this->_languages))
-            return true;
-
-        $this->_languages = array();
-        $this->_dir = __DIR__ . '/../../../resources/lang';
-
-        // Get the languages from the database
-        $dir = scandir($this->_dir);
-        foreach ($dir as $directory)
-            if (is_dir($this->_dir . '/' . $directory) && $directory != '.' && $directory != '..')
-                $this->_languages[] = $directory;        
-    }
-
-    /**
      * Allow the user to edit his/her account settings
      * @return view
      */
     public function settings() {
-        $this->languages();
-        return view('user/settings')->with('languages', $this->_languages);
+        $languages = \DB::table('software_languages')->get();
+        return view('user/settings')->with('languages', $languages);
     }
 
     /**
@@ -66,12 +46,10 @@ class ProfileController extends Controller
      */
     public function save(UpdateProfileRequest $request) {
 
-        // If we have chosen a language, make sure it exists.
-        if (!empty($_POST['prefered_language'])) {
-            $this->languages();
-            if (!in_array($_POST['prefered_language'], $this->_languages))
-              $_POST['prefered_language'] = 'en';
-        }
+        // If we have chosen a language, make sure it exists. If not, use English
+        $language = \DB::table('software_languages')->get();
+        if (count($language) == 0)
+            $_POST['prefered_language'] = 'en';
 
         // Validate the form
         $user = Auth::user();

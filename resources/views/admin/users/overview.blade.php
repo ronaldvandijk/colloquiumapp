@@ -20,6 +20,7 @@
                                     <th>Tussenvoegsel</th>
                                     <th>Achternaam</th>
                                     <th>Email</th>
+                                    <th>Role</th>
                                     <th>Bewerken</th>
                                     <th>Verwijderen</th>
                                 </tr>
@@ -31,8 +32,9 @@
                                         <td>{{$user->insertion}}</td>
                                         <td>{{$user->last_name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td><a href="/admin/user/edit/{{$user->id}}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Bewerken</a></td>
-                                        <td><a href="/admin/user/delete/{{$user->id}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Verwijderen</a></td>
+                                        <td>{{$user->role->name}}</td>
+                                        <td><a href="/admin/users/edit/{{$user->id}}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Bewerken</a></td>
+                                        <td><a href="/admin/users/delete/{{$user->id}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Verwijderen</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -2,15 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
-use \App\Http\Requests\UpdateProfileRequest;
-use \Auth;
-use App\SoftwareLanguages;
-use Illuminate\Foundation\Auth\User;
+use Request;
+use Auth;
+use Image;
 
 class ProfileController extends Controller
 {
+    public function profile(){
+        return view('profile', array('user' => Auth::user()) );
+    }
+    public function update_avatar(Request $request){
+
+        // Handle the user upload of avatar
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+
+            $user = Auth::user();
+            $user->avatar = $filename;
+            $user->save();
+        }
+
+        return view('profile', array('user' => Auth::user()) );
+
+    }
 
     private $_importantFields;
     private $_dir;
@@ -72,7 +88,7 @@ class ProfileController extends Controller
      * @param file $file The file that should be uploaded
      * @return boolean
      */
-    private function uploadAvatar($avatar) {
+    //private function uploadAvatar($avatar) {
         /*
         // The image should have a certain extension
         if (!in_array($avatar->getClientOriginalExtension, $this->_imageExtensions))
@@ -89,5 +105,8 @@ class ProfileController extends Controller
             return 'upload_failed';
 
         return true;*/
-    } 
+
+
+
+
 }

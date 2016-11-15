@@ -1,21 +1,26 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
+
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use Request;
+
 
 class UsersController extends Controller
 {
-    private $_avatarPath;
-    private $_avatarId;
-    private $_imageExtensions;
-    private $_maxSize;
-
-    public function edit(User $user)
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        return view('admin/users/edit', ['user' => $user, 'roles' => Role::all()]);
+        $this->middleware('auth');
     }
+
+
 
     /**
      * Delete a user from the database
@@ -44,11 +49,52 @@ class UsersController extends Controller
             return \Redirect::back();
         }
         return \Redirect::back();
+        if (!empty($_POST))
+            $this->saveeditprofile();
+        $roles = Role::all();
+        return view('admin/users/edit', ['user' => $user, 'roles' => $roles]);
     }
 
     public function overview()
     {
         $users = User::all();
         return view('admin.users.overview')->with('users', $users);
+    }
+
+    public function edit(User $user)
+    {
+        $roles = Role::all();
+        return view('admin/users/edit', ['user' => $user, 'roles' => $roles]);
+    }
+    public function editprofile()
+    {
+        if (!empty($_POST['id']))
+            die;//$this->saveditprofile();
+
+        $user = User::find(Auth::user()->id);
+        return view('laraveleditprofile::editprofile', ["user" => $user]);
+    }
+
+    /**
+     * @param $input
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function saveeditprofile()
+    {
+
+        $input = Request::all();
+
+        $user = User::find($input['id']);
+        $user->first_name = $input["first_name"];
+        if (!empty($input['password']))
+            $user->password = bcrypt($input['password']);
+        $user->insertion = $input["insertion"];
+        $user->last_name = $input["last_name"];
+        $user->email = $input["email"];
+        $user->role_id = $input["role"];
+        $user->save();
+        return \Redirect::back();
+
+
     }
 }

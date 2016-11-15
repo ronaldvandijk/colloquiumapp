@@ -27,11 +27,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::get('/', 'Admin\HomeController@index');
 
     Route::get('/profile', 'Admin\UsersController@profile');
+    Route::get('profile', 'UserController@profile');
 
     Route::get('users', 'Admin\UsersController@overview');
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
     Route::get('user/delete/{userId}', 'Admin\UsersController@delete');
     Route::post('user/update', 'Admin\UsersController@edit');
+    Route::get('users/edit/{user}', 'Admin\UsersController@edit');
+    Route::post('users/edit/{user}', 'Admin\UsersController@saveeditprofile');
+
 
     Route::get('rooms', 'Admin\RoomController@index');
     Route::post('rooms', 'Admin\RoomController@store');
@@ -81,5 +85,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administ
     Route::get('/', 'ProfileController@index');
     Route::get('/settings', 'ProfileController@settings');
     Route::post('/settings', 'ProfileController@save');
+    Route::post('profile', 'ProfileController@profile');
     Route::get('/avatar', 'ProfileController@avatar');
+    Route::get('profile', 'ProfileController@profile');
 });

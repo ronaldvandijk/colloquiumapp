@@ -3,6 +3,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 
+/**
+ * Class RoleMiddleware
+ * @package App\Http\Middleware
+ */
 class RoleMiddleware
 {
     /**
@@ -10,6 +14,7 @@ class RoleMiddleware
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
+     * @param   String $role The role to check against, and see if the current user has that role
      * @return mixed
      */
     public function handle($request, Closure $next, $role)

@@ -63,7 +63,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/profile') }}">Profiel</a></li>
+                                    <li><a href="{{ url('/profile') }}">{{ trans('profile.profile') }}</a></li>
                                     @if (Auth::user()->hasRole('administrator'))
                                         <li><a href="{{ url('/admin') }}">Dashboard</a></li>
                                     @endif

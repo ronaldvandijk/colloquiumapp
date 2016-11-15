@@ -28,7 +28,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 
     Route::get('/profile', 'Admin\UsersController@profile');
 
-    Route::get('users', 'Admin\UsersController@index');
+    Route::get('users', 'Admin\UsersController@overview');
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
     Route::get('user/delete/{userId}', 'Admin\UsersController@delete');
     Route::post('user/update', 'Admin\UsersController@edit');
@@ -75,4 +75,11 @@ Route::group(['prefix' => 'agenda'], function () {
 
 Route::group(['prefix' => 'search'], function () {
     Route::post('/', 'SearchController@index');
+});
+
+Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administrator'], function() {
+    Route::get('/', 'ProfileController@index');
+    Route::get('/settings', 'ProfileController@settings');
+    Route::post('/settings', 'ProfileController@save');
+    Route::get('/avatar', 'ProfileController@avatar');
 });

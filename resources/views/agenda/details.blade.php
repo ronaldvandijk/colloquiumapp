@@ -11,9 +11,11 @@
         <h1><b>{{ $colloquium->title }}</b></h1>
         <hr>
         <div class="row">
-            <div class="col-xs-5">
-                <img src="{{ $colloquium->user->image }}" alt="" />
-            </div>
+            @if ($colloquium->user->image != null)
+                <div class="col-xs-5">
+                    <img src="{{ $colloquium->user->image }}" alt="" />
+                </div>
+            @endif
             <div class="col-xs-7">
                 <p><b>{{ trans('agenda.speaker') }}: </b>{{ $colloquium->user->first_name }} {{ $colloquium->user->insertion }} {{ $colloquium->user->last_name }}</p>
                 <p><b>{{ trans('agenda.type') }}: </b>{{ $colloquium->type->name }}</p>

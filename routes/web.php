@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index');
-Route::get('/test', 'TestController@overview');
 
 // TV Screen
 Route::get('/tv/{location_id?}', 'HomeController@tv');

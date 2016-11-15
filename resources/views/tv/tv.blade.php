@@ -46,7 +46,7 @@
 
 	@for($i = $colloquia->count(); $i < 3; $i++)
 		<div class="quarter">
-			<img class="img-responsive" src="http://i.imgur.com/VTEqXt6.png" width="100%" height="100%" />
+			<img class="img-responsive" src="/images/logoTransparent.png" width="100%" height="100%" />
 		</div>
 	@endfor
 

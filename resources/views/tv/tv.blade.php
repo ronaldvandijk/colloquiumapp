@@ -31,10 +31,11 @@
 
         setTimeout( function() {
         	window.location.reload();
-        }, 300000);
+        }, 150000);
     </script>
 </head>
 <body>
+
 	@for($i = 0; $i < 3; ++$i)
 		@if( empty($colloquia[$i]) )
 			<div class="quarter"><img src="/images/logoHD.png" width="100%" height="100%" /></div>

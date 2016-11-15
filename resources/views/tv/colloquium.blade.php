@@ -46,7 +46,7 @@
 								<h4>
 							</td>
 							<td>
-								{{ $colloquium->end_date->format('H:i, d F') }}	
+								{{ $colloquium->end_date->format('H:i') }}	
 							</td>
 						</tr>
 						<tr>
@@ -126,7 +126,6 @@
 			    $( box ).css( 'font-size', n );
 
 			    while ( $( line ).width() > width - 100) {
-			    	console.log($( line ).width() + " " + width)
 			        $( box ).css( 'font-size', --n );
 			    }
 

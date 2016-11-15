@@ -1,5 +1,8 @@
 @extends('layouts.panel', [
-    'title' => trans('common.modelupdate', ['modelName' => trans('common.location')])
+    'title' => trans('common.modelupdate', ['modelName' => trans('common.location')]),
+    'btnText' => trans('common.overview'),
+    'btnUrl' => url('/admin/locations'),
+    'btnType' => 'default',
 ])
 
 @section('title','Admin location create')
@@ -29,7 +32,6 @@
         </div>
         <div class="row">
             <div class="col-md-12" style="padding: 20px 15px 0 30px;">
-                <a class="btn btn-default pull-left" href="{{ url('/admin/locations') }}">{{ trans('admin/location.goback') }}</a>
                 <button type="submit" class="btn btn-success pull-right">{{ trans('admin/location.save') }}</button>
             </div>
         </div>

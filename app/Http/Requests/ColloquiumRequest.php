@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-use Auth;
 class ColloquiumRequest extends FormRequest
 {
     /**
@@ -24,7 +24,7 @@ class ColloquiumRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method()) {
+        switch ($this->method()) {
             case "GET":
                 return [];
             case "POST":

@@ -4,12 +4,16 @@
  */
 ?>
 
-@extends('layouts.app')
+@extends('layouts.panel', [
+    'title' => 'show theme',
+    'btnText' => '<i class="fa fa-arrow-left"></i> ' . trans('common.overview'),
+    'btnUrl' => url('/admin/themes'),
+    'btnType' => 'default'
+])
 
 @section('title', 'Theme '.$theme->name)
 
-@section('content')
-    <div class="container">
+@section('panel-body')
         <h2>Preview of label: {{ $theme->name }}</h2>
         <div class="row">
             <div class="col-sm-12">
@@ -29,5 +33,4 @@
                 </table>
             </div>
         </div>
-    </div>
 @endsection

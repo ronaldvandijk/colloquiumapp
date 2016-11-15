@@ -5,7 +5,7 @@
     'btnType' => 'default',
 ])
 
-@section('title','Admin ' . trans('admin/room.create_title'))
+@section('title','Admin - ' . trans('admin/room.create_title'))
 
 @section('panel-body')
     <form method="post" action="{{ url('/admin/rooms') }}">

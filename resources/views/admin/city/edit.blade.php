@@ -15,7 +15,7 @@
                        class="form-control"
                        placeholder="{{ trans('admin/city.name') }}"
                        name="name"
-                       value="{{ request()->old('name') ?? $data->name }}"
+                       value="{{ !empty(request()->old('name')) ? request()->old('name') : $data->name }}"
                 />
             </div>
         </div>

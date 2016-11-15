@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * A simple model for the Languages in the database
+ * @author       Sander van Doorn
+ */
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -16,8 +19,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Language extends Model
 {
+    /**
+     * A field to let Eloquent know if created_at and updated_fields in the database
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function colloquia()
     {
         return $this->hasMany(Colloquium::class);

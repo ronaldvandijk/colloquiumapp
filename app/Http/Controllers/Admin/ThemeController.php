@@ -1,7 +1,7 @@
 <?php
 /**
  * Controller for the themes
- * @author       F Bloggs <gbloggs@email.com>
+ * @author       Melle Dijkstra
  */
 namespace App\Http\Controllers\Admin;
 

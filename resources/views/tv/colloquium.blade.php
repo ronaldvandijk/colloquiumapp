@@ -14,7 +14,7 @@
 		</div>
 
 		<div class="col-md-6">
-			<h4><i class="fa fa-clock-o" aria-hidden="true"></i> End {{ $colloquium->end_date }}<h4>
+			<h4><i class="fa fa-clock-o" aria-hidden="true"></i> End {{ $colloquium->end_date->format('H:i, d F') }}<h4>
 			<h4><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $colloquium->room->building->name }} {{ $colloquium->room->name }}</h4>
 		</div>
 	</div>

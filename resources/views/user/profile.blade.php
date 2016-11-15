@@ -16,6 +16,7 @@
                         <div class="col-sm-10">
                             @if(!empty(Auth::user()->image))
                             <div class="col-sm-2">
+                                <img src="{{ Auth::user()->image }}" alt="{{ trans('profile.avatar') }}" />
                             </div>
                             @endif
                             <div class="col-sm-8">

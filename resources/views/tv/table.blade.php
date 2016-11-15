@@ -1,9 +1,9 @@
 <tr>
 	<td>
-		{{ $colloquium->start_date }}
+		{{ $colloquium->start_date->format('H:i d F Y') }}
 	</td>
 	<td>
-		{{ $colloquium->end_date }}
+		{{ $colloquium->end_date->format('H:i d F Y') }}
 	</td>
 	<td>
 		{{ $colloquium->title }}

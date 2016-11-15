@@ -80,6 +80,11 @@ class Colloquium extends Model
         'room.building.location.name' => 8,
     ];
 
+    protected $dates = [
+        'start_date',
+        'end_date',
+    ];
+
     public function room()
     {
         return $this->belongsTo(Room::class);

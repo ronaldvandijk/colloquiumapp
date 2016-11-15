@@ -1,7 +1,7 @@
 <div class="quarter" >
 	<div class="quarter">
 		<img style="display:block;
-    margin:auto;" src="{{ $colloquium->user->image or 'http://placekitten.com/540/270'}}" />
+    margin:auto;" src="{{ $colloquium->user->imagez or '/images/realtime.jpg'}}" />
 	</div>
 
 	<div class="quarter"  style="text-align:center">
@@ -9,8 +9,8 @@
 		<h4>{{ $colloquium->user->present()->full_name() }}</h4>
 		
 		<div class="col-md-6">
-			<h4><i class="fa fa-clock-o" aria-hidden="true"></i> Start {{ $colloquium->start_date }}<h4>
-			<h4><i class="fa fa-language" aria-hidden="true"></i> {{ $colloquium->language_id }}</h4>
+			<h4><i class="fa fa-clock-o" aria-hidden="true"></i> Start {{ $colloquium->start_date->format('H:i, d F') }}<h4>
+			<h4><i class="fa fa-language" aria-hidden="true"></i> {{ $colloquium->language->name }}</h4>
 		</div>
 
 		<div class="col-md-6">

@@ -1,0 +1,20 @@
+<?php
+return [
+    'addbuilding' => 'añadir edificio',
+    'name' => 'nombre',
+    'location' => 'lugar',
+    'city' => 'ciudad',
+    'abbreviation' => 'abreviación',
+    'addbuilding-capt' => 'Añadir edificio',
+    'buildings-capt' => 'Edificios',
+    'addbuildings-capt' => 'Añadir edificio',
+    'building-capt' => 'Edificio',
+    'name-capt' => 'Nombre',
+    'abbreviation-capt' => 'Abreviación',
+    'location-capt' => 'Lugar',
+    'city-capt' => 'Ciudad',
+    'edit-capt' => 'Modificar',
+    'delete-capt' => 'Borrar',
+    'confirm' => 'Confirmar',
+    'not-unique' => 'La combinación de nombre y abreviación ya existe como edificio.',
+];

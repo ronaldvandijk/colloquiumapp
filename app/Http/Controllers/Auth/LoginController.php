@@ -50,6 +50,7 @@ class LoginController extends Controller
     }
 
     /**
+     * Redirect the user, based on a certain role
      * @param Request $request
      * @param $user User
      * @return \Illuminate\Http\RedirectResponse

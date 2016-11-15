@@ -1,8 +1,12 @@
 <?php
+/**
+ * BuildingController
+ * @author       Rens Santing
+ */
+
 
 namespace App\Http\Controllers\Admin;
 
-//use App\Http\Controllers\BaseTypeController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BuildingRequest;
 use App\Models\Building;
@@ -12,10 +16,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class BuildingController
+ * @package App\Http\Controllers\Admin
+ */
 class BuildingController extends Controller
 {
-
-    //  protected $modelClass = 'App\Models\Building';
 
     /**
      * Create a new controller instance.

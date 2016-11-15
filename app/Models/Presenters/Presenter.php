@@ -13,11 +13,13 @@ namespace App\Models\Presenters;
 abstract class Presenter
 {
     /**
+     * The instance of the class
      * @var mixed
      */
     protected $entity;
 
     /**
+     * Constructor
      * @param $entity
      */
     public function __construct($entity)

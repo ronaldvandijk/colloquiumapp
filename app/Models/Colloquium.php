@@ -112,7 +112,7 @@ class Colloquium extends Model
 
     public function themes()
     {
-        return $this->belongsToMany(Theme::class, 'colloquium_themes', 'theme_id', 'colloquium_id');
+        return $this->belongsToMany(Theme::class, 'colloquium_themes', 'colloquium_id', 'theme_id');
     }
 
     public function examinated()

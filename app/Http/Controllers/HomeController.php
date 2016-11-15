@@ -42,6 +42,10 @@ class HomeController extends Controller
         $query->orderBy('start_date', 'asc');
 
         // Return first 20 colloquia to view
-        return view('tv/tv', ['colloquia' => $query->take(20)->get()]);
+        $colloquia = $query->take(20)->get();
+
+        return view('tv/tv', [
+            'colloquia' => $colloquia,
+        ]);
     }
 }

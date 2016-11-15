@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin room overview')
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -27,7 +29,7 @@
                                 <tr style="margin-top: 50px; margin-bottom: 5em;">
                                     <td>{{ $room->name }}</td>
                                     <td>{{ $room->capacity }}</td>
-                                    <td>{{ $room->building->name }}</td>
+                                    <td><a href="{{route('buildings.index') }}">{{ $room->building->name }}</a></td>
                                     <td><a href="/admin/room/edit/{{ $room->id }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{ trans('admin/general.edit') }}</a></td>
                                     <td>
                                         <form method="post" action="{{ url('/admin/room/destroy/' . $room->id) }}">

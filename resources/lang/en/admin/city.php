@@ -9,4 +9,5 @@ return [
     'edit_title'       => 'Edit city',
     'goback'           => 'Back to overview',
     'constraint_error' => 'There are still buildings in this city!',
+    'locations_amount' => 'Locations',
 ];

@@ -5,6 +5,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet">
 @endsection
 
+@section('title','Agenda')
+
 @section('content')
 
     <div class="container-fluid">

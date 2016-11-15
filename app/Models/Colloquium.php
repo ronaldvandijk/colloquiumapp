@@ -72,6 +72,11 @@ class Colloquium extends Model
 
     protected $table = 'colloquia';
 
+    /**
+     * Configuration for eloquence search engine.
+     *
+     * @var array
+     */
     protected $searchableColumns = [
         'title' => 10,
         'description' => 5,

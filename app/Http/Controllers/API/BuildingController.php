@@ -6,7 +6,7 @@ use App\Models\Building;
 use App\Models\City;
 use App\Models\Location;
 
-class BuildingsController extends Controller
+class BuildingController extends Controller
 {
 
     public function getBuildingsBasedOnCity(City $city)

@@ -37,9 +37,12 @@ class HomeController extends Controller
                 ->where('locations.id','=',$location_id);
         };
 
+        // Only get approved colloquia
+        $query->where('approved',1);
         // Get upcoming colloquia first
         $query->whereDate('start_date', '>=', Carbon::now()->format('Y-m-d'));
         $query->orderBy('start_date', 'asc');
+        $query->with(['user','room','room.building','language']);
 
         // Return first 20 colloquia to view
         $colloquia = $query->take(20)->get();

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin colloquia overview')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -26,7 +28,7 @@
                             <tbody>
                             @foreach($colloquia as $colloquium)
                                 <tr>
-                                    <td><a href="/admin/colloquia/edit/{{$colloquium->id}}">{{ $colloquium->title }}</a></td>
+                                    <td><a href="/planner/colloquia/edit/{{$colloquium->id}}">{{ $colloquium->title }}</a></td>
                                     <td>{{ $colloquium->user->present()->full_name() }}</td>
                                     <td>
                                         @if($colloquium->room_id != null)
@@ -39,10 +41,10 @@
                                     <td>{{ $colloquium->start_date }}</td>
                                     <td>{{ $colloquium->end_date }}</td>
                                     <td>
-                                        <a href="{{ url('/admin/colloquia/deny/' . $colloquium->id) }}">
+                                        <a href="{{ url('/planner/colloquia/deny/' . $colloquium->id) }}">
                                             <i class="fa fa-ban text-danger"></i>
                                         </a>
-                                        <a href="{{ url('/admin/colloquia/approve/' . $colloquium->id) }}">
+                                        <a href="{{ url('/planner/colloquia/approve/' . $colloquium->id) }}">
                                             <i class="fa fa-check text-success"></i>
                                         </a>
                                     </td>

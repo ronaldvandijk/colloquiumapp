@@ -4,12 +4,6 @@ html, body {
 	margin: 0;
 }
 
-body {
-	border-size: 5px;
-	border-style: solid;
-	border-color: white;
-}
-
 .quarter {
 	width: 50%;
 	height: 50%;

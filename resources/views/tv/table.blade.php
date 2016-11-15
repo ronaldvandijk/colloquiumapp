@@ -18,8 +18,6 @@
 		{{ $colloquium->language->name }}
 	</td>
 	<td>
-		@foreach($colloquium->themes as $theme)
-			{!! $theme->render(null, 5) !!} <div style="margin-top: 12px;"></div>
-		@endforeach
+		{!! QrCode::size(50)->generate(url('agenda/show/' . $colloquium->id)); !!}
 	</td>
 </tr>

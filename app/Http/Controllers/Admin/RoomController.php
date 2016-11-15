@@ -29,6 +29,11 @@ class RoomController extends BaseTypeController
             'building_id' => 'required|exists:buildings,id',
         ]);
 
+        Session::flash('custom_error', [
+            'type' => 'success',
+            'message' => trans('common.modelcreated', ['modelName' => trans('common.room')]),
+        ]);
+
         return parent::store($request);
     }
 
@@ -45,6 +50,11 @@ class RoomController extends BaseTypeController
             'name' => 'required',
             'capacity' => 'required|numeric|min:0',
             'building_id' => 'required|exists:buildings,id',
+        ]);
+
+        Session::flash('custom_error', [
+            'type' => 'success',
+            'message' => trans('common.modelupdated', ['modelName' => trans('common.room')]),
         ]);
 
         return parent::update($request, $id);
@@ -66,6 +76,11 @@ class RoomController extends BaseTypeController
             ]);
             return back();
         }
+
+        Session::flash('custom_error', [
+            'type' => 'success',
+            'message' => trans('common.modeldeleted', ['modelName' => trans('common.room')]),
+        ]);
 
         return parent::destroy($id);
     }

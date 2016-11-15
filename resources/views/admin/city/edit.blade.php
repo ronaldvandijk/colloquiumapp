@@ -1,5 +1,8 @@
 @extends('layouts.panel', [
-    'title' => trans('admin/city.edit_title')
+    'title' => trans('admin/city.edit_title'),
+    'btnText' => trans('common.overview'),
+    'btnUrl' => url('/admin/cities'),
+    'btnType' => 'default',
 ])
 
 @section('title','Admin city edit')
@@ -21,7 +24,6 @@
         </div>
         <div class="row">
             <div class="col-md-12" style="padding: 20px 15px 0 30px;">
-                <a class="btn btn-default pull-left" href="{{ url('/admin/cities') }}">{{ trans('admin/city.goback') }}</a>
                 <button type="submit" class="btn btn-success pull-right">{{ trans('admin/city.save') }}</button>
             </div>
         </div>

@@ -23,25 +23,23 @@ class BuildingRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case "PATCH":
-            {
-                return [
-                    'name' => 'required|unique:buildings,name,' . $this->building,
-                    'abbreviation' => 'required|unique:buildings,abbreviation,' . $this->building,
-                    'location_id' => 'required|integer|exists:locations,id',
-                ];
-            }
+                {
+                    return [
+                        'name' => 'required|unique:buildings,name,' . $this->building,
+                        'abbreviation' => 'required|unique:buildings,abbreviation,' . $this->building,
+                        'location_id' => 'required|integer|exists:locations,id',
+                    ];
+                }
             case "POST":
-            {
-                return [
-                    'name' => 'required|unique:buildings,name',
-                    'abbreviation' => 'required|unique:buildings,abbreviation',
-                    'location_id' => 'required|integer|exists:locations,id'
-                ];
-            }
-
+                {
+                    return [
+                        'name' => 'required|unique:buildings,name',
+                        'abbreviation' => 'required|unique:buildings,abbreviation',
+                        'location_id' => 'required|integer|exists:locations,id',
+                    ];
+                }
 
         }
         return [];

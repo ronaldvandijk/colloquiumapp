@@ -3,15 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row">
-        @foreach($errors->all() as $error)
-            <div class="alert alert-info">{{ $error }}</div>
-        @endforeach
-        @if(request()->session()->has('custom_error'))
-            <div class="alert alert-{{ request()->session()->get('custom_error')['type'] }}">
-                {{ request()->session()->get('custom_error')['message'] }}
-            </div>
-        @endif
-        <div class="col-md-10 col-md-push-1">
+        <div class="col-md-12">
+	        @foreach($errors->all() as $error)
+	            <div class="alert alert-warning">{{ $error }}</div>
+	        @endforeach
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <b>{{ $title }}</b>

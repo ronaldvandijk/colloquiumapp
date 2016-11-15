@@ -27,4 +27,7 @@ return [
     'modelcreate' => ':modelName Aanmaken',
 
     'overview' => 'Overzicht',
+    'colloquia_found' => 'Colloquia gevonden op deze locatie',
+    'save' => 'Opslaan',
+    'my_colloquia' => 'Mijn Colloquia',
 ];

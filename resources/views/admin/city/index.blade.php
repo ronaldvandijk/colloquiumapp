@@ -10,7 +10,7 @@
             </div>
         @endif
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>{{ trans('admin/city.list_title') }}</b></div>
                     <div><a class="btn btn-default" href="{{ url('/admin/cities/create') }}">{{ trans('admin/city.add_city') }}</a></div>

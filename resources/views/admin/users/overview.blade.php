@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Alle gebruikers</b></div>
+                    <div class="panel-heading"><b>{{ trans('admin/general.all }} {{ trans('admin/general.users') }}</b></div>
 
                     <div class="panel-body">
                         @if(request()->session()->has('custom_error'))

@@ -28,6 +28,8 @@ use Illuminate\Validation\Rule;
 class Theme extends Model
 {
     /**
+     * Let Eloquent know if there are any created_at and updated_at fields
+     *
      * @var bool
      */
     public $timestamps = false;
@@ -53,6 +55,7 @@ class Theme extends Model
     /**
      * This renders the Theme as a bootstrap label
      * @param null $fontsize The fontsize for the label
+     * @param int $ellipse The amount of character after which the ellipse function should work
      * @return string The label as html
      */
     public function render($fontsize = null, $ellipse = 255) {

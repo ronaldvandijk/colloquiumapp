@@ -1,9 +1,11 @@
 <?php
-
+/*
+ * Mailtemplates Controller
+/*
+ */
 namespace App\Http\Controllers;
 
 use App\Models\Mailtemplate;
-use Illuminate\Support\Facades\DB;
 
 class MailTemplatesController extends Controller
 {

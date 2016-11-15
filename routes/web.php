@@ -84,4 +84,5 @@ Route::group(['prefix' => 'agenda', 'middleware' => 'role:planner|administrator|
 
 Route::group(['prefix' => 'mailtemplates', 'middleware' => 'role:planner|administrator'], function(){
   Route::get('/', 'MailTemplatesController@overview');
+
 });

@@ -1,4 +1,11 @@
 <?php
+/**
+ * UsersController for the Admins
+ *
+ * @author       Sander van Kasteel <info@sandervankasteel.nl>
+ * @author       Robert
+ * @author       Jamie Schouten
+ */
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -9,11 +16,31 @@ use \App\Models\Colloquium;
 use \Redirect;
 use \Session;
 
+/**
+ * Class UsersController
+ * @package App\Http\Controllers\Admin
+ */
 class UsersController extends Controller
 {
+    /**
+     * Path to where the avatar should be stored
+     * @var
+     */
     private $_avatarPath;
+    /**
+     * ID of the avatar
+     * @var
+     */
     private $_avatarId;
+    /**
+     * Image extensions that are allowed
+     * @var
+     */
     private $_imageExtensions;
+    /**
+     * Max size of the image
+     * @var
+     */
     private $_maxSize;
 
     /**
@@ -52,7 +79,7 @@ class UsersController extends Controller
     /**
      * Displays a form for editing the resource
      *
-     * @param  User   $user
+     * @param  UserRequest   $request
      * @return View
      */
     public function store(UserRequest $request)
@@ -69,6 +96,7 @@ class UsersController extends Controller
 
     /**
      * Updates the resource in the database
+     * @param  UserRequest $request
      * @param  User   $user
      * @return View
      */

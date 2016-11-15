@@ -48,8 +48,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::resource('mailtemplates', 'Admin\MailtemplateController');
 
     Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {
-        Route::get('/', 'Admin\ColloquiumController@index');
-        Route::get('/{status}', 'Admin\ColloquiumController@index');
+        Route::get('/{status?}', 'Admin\ColloquiumController@index');
         Route::get('edit/{colloquium}', 'Admin\ColloquiumController@edit');
         Route::post('insert', 'Admin\ColloquiumController@insert');
         Route::post('update/{colloquium}', 'Admin\ColloquiumController@update');

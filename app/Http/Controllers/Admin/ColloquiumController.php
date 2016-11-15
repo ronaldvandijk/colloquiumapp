@@ -15,17 +15,25 @@ use Illuminate\Http\Request;
 class ColloquiumController extends Controller
 {
 
-    public function index(Request $request, $status = '')
+    public function index($status = null)
     {
-        if(strlen($status) == 0) {
-            $colloquia = Colloquium::orderBy('start_date')->get();
-        } else if ($status == 'null') {
-            $colloquia = Colloquium::whereNull('approved')->orderBy('start_date')->get();
-        } else {
-            $colloquia = Colloquium::whereNotNull('approved')->where('approved', $status)->orderBy('start_date')->get();
+
+        switch ($status){
+            case null:
+                $colloquia = Colloquium::orderBy('start_date')->get();
+                break;
+            case 0:
+                $colloquia = Colloquium::orderBy('start_date')->where('approved', 0)->get();
+                break;
+            case 1:
+                $colloquia = Colloquium::orderBy('start_date')->where('approved', 1)->get();
+                break;
+            case 2:
+                $colloquia = Colloquium::orderBy('start_date')->whereNull('approved')->get();
+                break;
         }
 
-        return view('admin.colloquia.overview', compact('colloquia'));
+        return view('admin.colloquia.overview', compact('colloquia', 'status'));
     }
 
     public function edit(Colloquium $colloquium)

@@ -16,5 +16,11 @@ class CitiesTableSeeder extends Seeder
             'name' => 'Leeuwarden',
         ]);
 
+<<<<<<< HEAD
+=======
+        DB::table('cities')->insert([
+            'name' => 'Leeuwarden',
+        ]);
+>>>>>>> refs/remotes/ronaldvandijk/master
     }
 }

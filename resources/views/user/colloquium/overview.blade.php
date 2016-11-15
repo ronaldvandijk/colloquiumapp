@@ -7,6 +7,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <b>Colloquia</b>
+
+                        <div class="pull-right">
+                            <a href="{{ action('MyColloquiaController@create') }}" class="btn btn-primary">{{ trans('user/colloquium/general.colloquium_request') }}</a>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <table class="table">
@@ -23,8 +27,8 @@
                                 @foreach($colloquia as $colloquium)
                                     <tr>
                                         <td>{{ $colloquium->title }}</td>
-                                        <td>{{ explode(" ", $colloquium->start_date)[0] }}</td>
-                                        <td>{{ explode(" ", $colloquium->start_date)[1] }}</td>
+                                        <td>{{ $colloquium->present()->startDate() }}</td>
+                                        <td>{{ $colloquium->present()->startTime() }}</td>
                                         <td>{{ $colloquium->type()->first()->name }}</td>
                                         <td>{{ $colloquium->language()->first()->name }}</td>
                                         <td>

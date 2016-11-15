@@ -5766,4 +5766,8 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.navbar-brand > img {
+  display: inline;
+  max-height: 100%; }
+
 /*# sourceMappingURL=app.css.map */

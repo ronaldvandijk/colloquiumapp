@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h2>({{ count($colloquia) }}) Colloquia gevonden op deze locatie</h2>
+        <h2>({{ count($colloquia) }}) {{ trans('colloquia_found') }}</h2>
         <div class="row">
             @foreach($colloquia as $colloquium)
                 <div class="col-sm-3">

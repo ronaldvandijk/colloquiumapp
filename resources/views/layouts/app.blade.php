@@ -50,11 +50,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::guest())
                             <!-- Authentication Links -->
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">{{ trans('auth.login') }}</a></li>
+                            <li><a href="{{ url('/register') }}">{{ trans('auth.register') }}</a></li>
                         @else
                             @if(Auth::user()->hasRole('user'))
-                                <li><a href="{{url('/mycolloquia')}}">Mijn Colloquia</a></li>
+                                <li><a href="{{url('/mycolloquia')}}">{{ trans('common.my_colloquia') }}</a></li>
                             @endif
                             <li><a href="{{ url('/agenda') }}">Agenda</a></li>
                             <li class="dropdown">

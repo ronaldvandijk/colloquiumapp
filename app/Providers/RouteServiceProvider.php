@@ -1,4 +1,8 @@
 <?php
+/**
+ * RouteServiceProvider, provided by Laravel
+ * @author       Sander van Kasteel
+ */
 
 namespace App\Providers;
 
@@ -6,6 +10,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
+/**
+ * Class RouteServiceProvider
+ * @package App\Providers
+ */
 class RouteServiceProvider extends ServiceProvider
 {
     /**

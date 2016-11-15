@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Controller for the themes
+ * @author       F Bloggs <gbloggs@email.com>
+ */
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -8,6 +11,10 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Session;
 
+/**
+ * Class ThemeController
+ * @package App\Http\Controllers\Admin
+ */
 class ThemeController extends Controller
 {
     /**

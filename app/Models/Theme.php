@@ -1,4 +1,12 @@
 <?php
+/**
+ * Instance of a theme
+ *
+ * @author       Sander van Doorn
+ * @author       Maarten Oosting
+ * @author       Melle Dijkstra
+ * @author       Rik van den Top
+ */
 
 namespace App\Models;
 
@@ -19,6 +27,9 @@ use Illuminate\Validation\Rule;
  */
 class Theme extends Model
 {
+    /**
+     * @var bool
+     */
     public $timestamps = false;
 
     /**

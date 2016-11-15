@@ -27,6 +27,7 @@ return [
 
     'title' => 'Title',
     'name' => 'Name',
+    'forceDelete' => 'Force delete',
     'capacity' => 'Capacity',
     'building' => 'Building',
     'room' => 'Room',
@@ -41,4 +42,5 @@ return [
     'colloquia_found' => 'Colloquia found on this location',
     'save' => 'Save',
     'my_colloquia' => 'My Colloquia',
+    'stillhasroomsforcedelete' => 'Building still has rooms. Force delete? :link'
 ];

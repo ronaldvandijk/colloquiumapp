@@ -44,9 +44,9 @@ class Theme extends Model
      * @param null $fontsize The fontsize for the label
      * @return string The label as html
      */
-    public function render($fontsize = null) {
+    public function render($fontsize = null, $ellipse = 255) {
         $fontsize = (is_int($fontsize)) ? 'font-size: '.$fontsize.'px;' : '';
-        return "<div style=\"background-color: {$this->color};{$fontsize}\" class=\"label\">{$this->name}</div>";
+        return "<div style=\"background-color: {$this->color};{$fontsize}\" class=\"label\">" . ellipsis($this->name, $ellipse) . "</div>";
     }
 
     /**

@@ -51,7 +51,12 @@
 	@endfor
 
 	<div class="quarter smaller" style="overflow:hidden">
-		<table class="table table-striped ">
+		<div class="title-bar" style="width: 100%;text-align: center; height: 95px">
+			<h1>
+				Upcoming Colloquia
+			</h1>
+		</div>
+		<table class="table table-striped">
 			<tr>
 				<th>
 					<i class="fa fa-clock-o" aria-hidden="true"></i> Start

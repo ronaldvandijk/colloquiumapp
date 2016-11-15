@@ -10,4 +10,9 @@
     {
         return strval(date($format, strtotime($date)));
     }
+
+    function ellipsis($in, $length)
+    {
+        return strlen($in) > $length ? substr($in,0,$length)."..." : $in;
+    }
 ?>

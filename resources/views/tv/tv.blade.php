@@ -36,12 +36,18 @@
 </head>
 <body>
 
-	@for($i = 0; $i < 3; ++$i)
-		@if( empty($colloquia[$i]) )
-			<div class="quarter"><img src="/images/logoHD.png" width="100%" height="100%" /></div>
-		@else
-			@include('/tv/colloquium', ['colloquium' => $colloquia[$i] ])
+	@foreach( $colloquia->shuffle() as $colloquium)
+		@if($loop->iteration >= 4)
+			@continue
 		@endif
+
+		@include('/tv/colloquium', ['colloquium' => $colloquium ])
+	@endforeach
+
+	@for($i = $colloquia->count(); $i < 3; $i++)
+		<div class="quarter">
+			<img class="img-responsive" src="/images/logoHD.png" width="100%" height="100%" />
+		</div>
 	@endfor
 
 	<div class="quarter" style="overflow:hidden">

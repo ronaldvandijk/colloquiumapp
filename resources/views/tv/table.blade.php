@@ -9,7 +9,7 @@
 		{{ $colloquium->title }}
 	</td>
 	<td>
-		{{ $colloquium->user->present()->full_name() }}
+		{{ $colloquium->user->present()->full_name }}
 	</td>
 	<td>
 		{{ $colloquium->room->building->name }} {{ $colloquium->room->name }}
@@ -18,6 +18,10 @@
 		{{ $colloquium->language->name }}
 	</td>
 	<td>
-		{{ $colloquium->theme[0]->name or 'No themes found'}}
+		@foreach($colloquium->themes as $theme)
+			<span class="label label-primary">
+				{{ $theme->name }}
+			</span>
+		@endforeach
 	</td>
 </tr>

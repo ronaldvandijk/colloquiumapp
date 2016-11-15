@@ -37,7 +37,7 @@
                                 <tr style="margin-top: 50px; margin-bottom: 5em;">
                                     <td>{{ $location->id }}</td>
                                     <td>{{ $location->name }}</td>
-                                    <td>{{ $location->city->name }}</td>
+                                    <td><a href="{{ route('cities.index') }}">{{ $location->city->name }}</a></td>
                                     <td><a href="{{ route("buildings.index") }}">{{ $location->buildings->count() }}</a></td>
                                     <td><a href="/admin/locations/{{ $location->id }}/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{ trans('admin/general.edit') }}</a></td>
                                     <td>

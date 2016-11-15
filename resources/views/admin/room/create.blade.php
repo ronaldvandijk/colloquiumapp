@@ -39,7 +39,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-success pull-right">Save</button>
+                                    <button type="submit" class="btn btn-success pull-right">{{ trans('common.save') }}</button>
                                 </div>
                             </div>
                         </form>

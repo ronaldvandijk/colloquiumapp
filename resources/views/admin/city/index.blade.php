@@ -10,7 +10,7 @@
             </div>
         @endif
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>{{ trans('admin/city.list_title') }}</b></div>
                     <div><a class="btn btn-default" href="{{ url('/admin/cities/create') }}">{{ trans('admin/city.add_city') }}</a></div>
@@ -20,6 +20,7 @@
                             <tr>
                                 <th>{{ trans('common.id') }}</th>
                                 <th>{{ trans('admin/city.name') }}</th>
+                                <th>{{ trans('admin/city.locations_amount') }}</th>
                                 <th>{{ trans('common.edit') }}</th>
                                 <th>{{ trans('common.delete') }}</th>
                             </tr>
@@ -29,6 +30,7 @@
                                 <tr style="margin-top: 50px; margin-bottom: 5em;">
                                     <td>{{ $city->id }}</td>
                                     <td>{{ $city->name }}</td>
+                                    <td><a href="{{ route("locations.index") }}">{{ $city->locations->count() }}</a></td>
                                     <td><a href="/admin/cities/{{ $city->id }}/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{ trans('common.edit') }}</a></td>
                                     <td>
                                         <form method="post" action="/admin/city/{{ $city->id }}">

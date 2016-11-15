@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin colloquia overview')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">

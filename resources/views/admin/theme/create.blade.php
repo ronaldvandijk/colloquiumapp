@@ -13,6 +13,8 @@
     </script>
 @endsection
 
+@section('title','Admin theme create')
+
 @section('content')
     <div class="container">
         <div class="row">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Create user')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">

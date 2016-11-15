@@ -12,7 +12,9 @@
  */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+    $photoUrls = array("/images/users/IMG_20161115_112939.jpg", "/images/users/IMG_20161115_113004.jpg", "/images/users/IMG_20161115_113023.jpg", "/images/users/IMG_20161115_113037.jpg", "/images/users/IMG_20161115_113100.jpg");
     return [
         'first_name' => $faker->firstNameFemale,
         'insertion' => '',
@@ -22,7 +24,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'verified' => rand(0, 1),
         'role_id' => rand(1, 4),
         'enabled' => rand(0, 1),
-        'image' => $faker->imageUrl(100, 200, 'cats'),
+        'image' => $photoUrls[rand(0, 4)],
         'prefered_language' => $faker->languageCode,
         'remember_token' => str_random(10),
     ];

@@ -1,10 +1,22 @@
 <?php
+/**
+ * Home Controller
+ *
+ * Used for the TV view
+ * @author       Sander van Kasteel <info@sandervankasteel.n>
+ * @author       Melle Dijkstra
+ * @author       Rik van den Top
+ */
 
 namespace App\Http\Controllers;
 
 use App\Models\Colloquium;
 use Carbon\Carbon;
 
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
 

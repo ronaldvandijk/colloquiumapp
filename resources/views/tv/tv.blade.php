@@ -53,7 +53,7 @@
 	<div class="quarter smaller" style="overflow:hidden">
 		<div class="title-bar" style="width: 100%;text-align: center; height: 95px">
 			<h1>
-				Upcoming Colloquia
+				Upcoming Public Colloquia
 			</h1>
 		</div>
 		<table class="table table-striped">

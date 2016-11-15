@@ -14,7 +14,7 @@ class ColloquiumRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->colloquium->isOwner(Auth::user());
+        return ($this->colloquium->isOwner(Auth::user())) ? true : abort(403);
     }
 
     /**

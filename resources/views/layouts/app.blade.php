@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Colloquia - @yield('title')</title>
+    <title>Colloquia @yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ url('/') }}/css/app.css" rel="stylesheet">
@@ -89,7 +89,7 @@
         <div class="container">
 	        <div class="row">
 		        <div class="col-md-12">
-		            @if(request()->session()->has('custom_error'))
+		            @if(Session::has('custom_error'))
 			            <div class="alert alert-{{ request()->session()->get('custom_error')['type'] }}">
 			                {{ request()->session()->get('custom_error')['message'] }}
 			            </div>

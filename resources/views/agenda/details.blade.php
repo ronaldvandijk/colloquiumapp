@@ -13,7 +13,7 @@
         <div class="row">
             @if ($colloquium->user->image != null)
                 <div class="col-xs-5">
-                    <img src="{{ $colloquium->user->image }}" alt="" />
+                    <img class="img-responsive" src="{{ $colloquium->user->image }}" alt="" />
                 </div>
             @endif
             <div class="col-xs-7">

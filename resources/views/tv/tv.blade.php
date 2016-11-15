@@ -21,7 +21,7 @@
 
     <link href="{{ url('/') }}/css/font-awesome.css" rel="stylesheet">
 
-	<link href="css/tv.css" rel="stylesheet" type="text/css">
+	<link href="{{ url('/') }}/css/tv.css" rel="stylesheet" type="text/css">
 
     <!-- Scripts -->
     <script>

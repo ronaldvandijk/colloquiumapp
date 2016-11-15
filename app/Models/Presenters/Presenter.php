@@ -1,7 +1,15 @@
 <?php
+/**
+ * Base class of a presenter
+ * @author       Jamie Schouten
+ */
 
 namespace App\Models\Presenters;
 
+/**
+ * Class Presenter
+ * @package App\Models\Presenters
+ */
 abstract class Presenter
 {
     /**

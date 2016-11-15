@@ -66,6 +66,8 @@
                                     <li><a href="{{ url('/profile') }}">{{ trans('profile.profile') }}</a></li>
                                     @if (Auth::user()->hasRole('administrator'))
                                         <li><a href="{{ url('/admin') }}">Dashboard</a></li>
+                                    @elseif (Auth::user()->hasRole('administrator') || Auth::user()->hasRole('planner'))
+                                        <li><a href="{{ url('/admin/colloquia') }}">Colloquia Planner</a></li>
                                     @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"

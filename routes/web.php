@@ -39,7 +39,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::delete('room/destroy/{id}', 'Admin\RoomController@destroy');
     Route::post('room/update/{id}', 'Admin\RoomController@update');
     Route::get('room/create', 'Admin\RoomController@create');
-
     Route::resource('locations', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
     Route::resource('buildings', 'Admin\BuildingController');
@@ -47,16 +46,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::resource('cities', 'Admin\CityController');
 
     Route::resource('mailtemplates', 'Admin\MailtemplateController');
+});
 
-    Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {
-        Route::get('/', 'Admin\ColloquiumController@index');
-        Route::get('/{status}', 'Admin\ColloquiumController@index');
-        Route::get('edit/{colloquium}', 'Admin\ColloquiumController@edit');
-        Route::post('insert', 'Admin\ColloquiumController@insert');
-        Route::post('update/{colloquium}', 'Admin\ColloquiumController@update');
-        Route::get('/approve/{colloquium}', 'Admin\ColloquiumController@approve');
-        Route::get('/deny/{colloquium}', 'Admin\ColloquiumController@deny');
-    });
+Route::group(['prefix' => 'admin/colloquia', 'middleware' => 'role:administrator|planner'], function () {
+    Route::get('/', 'Admin\ColloquiumController@index');
+    Route::get('/{status}', 'Admin\ColloquiumController@index');
+    Route::get('edit/{colloquium}', 'Admin\ColloquiumController@edit');
+    Route::post('insert', 'Admin\ColloquiumController@insert');
+    Route::post('update/{colloquium}', 'Admin\ColloquiumController@update');
+    Route::get('/approve/{colloquium}', 'Admin\ColloquiumController@approve');
+    Route::get('/deny/{colloquium}', 'Admin\ColloquiumController@deny');
 });
 
 Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function () {

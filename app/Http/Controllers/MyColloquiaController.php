@@ -1,4 +1,9 @@
 <?php
+/**
+ * MyColloquiaController
+ * @author       Sander van Kasteel
+ */
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ColloquiumRequest;

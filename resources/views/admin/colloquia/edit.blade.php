@@ -14,7 +14,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>{{ trans('addColloquium.edit-colloquium') }}</b></div>
                     <div class="panel-body">
-                    <form method="POST" action="{{ url('/admin/colloquia/update/' . $colloquium->id) }}">
+                    <form method="POST" action="{{ url('/planner/colloquia/update/' . $colloquium->id) }}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label>{{ trans('addColloquium.title') }}</label>

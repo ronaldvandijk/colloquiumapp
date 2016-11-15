@@ -26,6 +26,8 @@ class Language extends Model
     public $timestamps = false;
 
     /**
+     * Return all colloquia that has this language
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function colloquia()

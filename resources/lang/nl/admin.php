@@ -9,4 +9,6 @@ return [
     'placeholder_firstname' => 'Jan',
     'placeholder_lastname' => 'Smit',
     'placeholder_mail' => 'iemand@voorbeeld.nl',
+    'dashboard' => 'Beheerpaneel',
+    'colloquia_planner' => 'Colloquia Plannen'
 ];

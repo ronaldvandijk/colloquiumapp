@@ -60,7 +60,7 @@
 								<h4>
 							</td>
 							<td>
-								English
+								{{ $colloquium->language->name }}
 							</td>
 						</tr>	
 						<tr>

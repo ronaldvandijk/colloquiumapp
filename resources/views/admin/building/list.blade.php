@@ -28,8 +28,8 @@
                             @foreach ($buildings as $building)
                                 <tr style="margin-top: 50px; margin-bottom: 5em;">
                                     <td>{{ $building->name }}</td>
-                                    <td>{{ $building->location->name }}</td>
-                                    <td>{{ $building->location->city->name }}</td>
+                                    <td><a href="{{route('locations.index') }}">{{ $building->location->name }}</a></td>
+                                    <td><a href="{{route('cities.index') }}">{{ $building->location->city->name }}</a></td>
                                     <td>{{ $building->abbreviation }}</td>
                                     <td><a href="/admin/rooms">{{ $building->rooms->count() }}</a></td>
                                     <td><a href="/admin/buildings/{{$building->id}}/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{trans('admin/building/create.edit-capt')}}</a></td>

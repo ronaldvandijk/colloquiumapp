@@ -12,6 +12,8 @@
     </script>
 @endsection
 
+@section('title','Admin theme edit')
+
 @section('content')
     <div class="container">
         <div class="row">

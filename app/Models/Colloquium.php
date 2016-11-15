@@ -72,12 +72,22 @@ class Colloquium extends Model
 
     protected $table = 'colloquia';
 
+    /**
+     * Configuration for eloquence search engine.
+     *
+     * @var array
+     */
     protected $searchableColumns = [
         'title' => 10,
         'description' => 5,
         'user.first_name' => 10,
         'user.last_name' => 10,
         'room.building.location.name' => 8,
+    ];
+
+    protected $dates = [
+        'start_date',
+        'end_date',
     ];
 
     public function room()
@@ -107,7 +117,7 @@ class Colloquium extends Model
 
     public function themes()
     {
-        return $this->belongsToMany(Theme::class, 'colloquium_themes', 'theme_id', 'colloquium_id');
+        return $this->belongsToMany(Theme::class, 'colloquium_themes', 'colloquium_id', 'theme_id');
     }
 
     public function examinated()

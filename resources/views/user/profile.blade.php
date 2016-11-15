@@ -14,9 +14,11 @@
                         <p>{{ trans('profile.welcome_info') }}</p>
                         <hr />
                         <div class="col-sm-10">
+                            @if(!empty(Auth::user()->image))
                             <div class="col-sm-2">
-                                <img src="{{ Auth::user()->image }}" alt="*" />
+                                <img src="{{ Auth::user()->image }}" alt="{{ trans('profile.avatar') }}" />
                             </div>
+                            @endif
                             <div class="col-sm-8">
                                 <h3>{{ trans('profile.userinfo') }}</h3>
                                 <table class="table table-hover">

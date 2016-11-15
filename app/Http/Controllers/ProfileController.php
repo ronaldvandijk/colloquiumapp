@@ -86,7 +86,7 @@ class ProfileController extends Controller
 
     /**
      * Upload an avatar
-     * @param file $file The file that should be uploaded
+     * @param $avatar The file that should be uploaded
      * @return boolean
      */
     private function uploadAvatar($avatar) {

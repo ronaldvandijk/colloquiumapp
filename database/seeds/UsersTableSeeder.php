@@ -28,16 +28,16 @@ class UsersTableSeeder extends Seeder
 
         // Create a default "user" account!
         \App\Models\User::create([
-            'first_name' => 'User',
-            'insertion' => '',
-            'last_name' => 'Normal User',
+            'first_name' => 'Sander',
+            'insertion' => 'van',
+            'last_name' => 'Doorn-Kasteel',
             'email' => 'user@colloquium.app',
             'password' => bcrypt('123123123'),
             'verified' => '1',
             'role_id' => '1',
             'enabled' => '1',
             'prefered_language' => 'nl',
-            'image' => ''
+            'image' => '/images/users/IMG_20161115_112951.jpg'
         ]);
 
         \App\Models\User::create([

@@ -133,7 +133,8 @@ class BuildingController extends Controller
     /**
      * Remove the specified building from storage.
      *
-     * @param  int  $id
+     * @param  Request $request
+     * @param  Building $building
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Building $building)

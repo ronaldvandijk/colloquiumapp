@@ -31,6 +31,7 @@ class ColloquiumTheme extends Model
     ];
 
     /**
+     * Returns all colloquia that match this theme
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function colloquium()
@@ -39,6 +40,7 @@ class ColloquiumTheme extends Model
     }
 
     /**
+     * Return all themes that belongs to this colloquiumtheme
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function theme()

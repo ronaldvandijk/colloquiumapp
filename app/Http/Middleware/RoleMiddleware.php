@@ -1,4 +1,9 @@
 <?php
+/**
+ * RoleMiddleware
+ *
+ * @author       Sander van Kasteeel <info@sandervankasteel.nl>
+ */
 namespace App\Http\Middleware;
 
 use Closure;

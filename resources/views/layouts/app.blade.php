@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Colloquia - @yield('title')</title>
+    <title>Colloquia @yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ url('/') }}/css/app.css" rel="stylesheet">
@@ -50,11 +50,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::guest())
                             <!-- Authentication Links -->
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">{{ trans('auth.login') }}</a></li>
+                            <li><a href="{{ url('/register') }}">{{ trans('auth.register') }}</a></li>
                         @else
                             @if(Auth::user()->hasRole('user'))
-                                <li><a href="{{url('/mycolloquia')}}">Mijn Colloquia</a></li>
+                                <li><a href="{{url('/mycolloquia')}}">{{ trans('common.my_colloquia') }}</a></li>
                             @endif
                             <li><a href="{{ url('/agenda') }}">Agenda</a></li>
                             <li class="dropdown">
@@ -89,9 +89,9 @@
         <div class="container">
 	        <div class="row">
 		        <div class="col-md-12">
-		            @if(request()->session()->has('custom_error'))
+		            @if(Session::has('custom_error'))
 			            <div class="alert alert-{{ request()->session()->get('custom_error')['type'] }}">
-			                {{ request()->session()->get('custom_error')['message'] }}
+			                {!! request()->session()->get('custom_error')['message'] !!}
 			            </div>
 			        @endif
 		        </div>

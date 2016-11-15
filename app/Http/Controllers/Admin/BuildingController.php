@@ -4,14 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 //use App\Http\Controllers\BaseTypeController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BuildingRequest;
+use App\Models\Building;
+use App\Models\Location;
 use App\Models\Theme;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Models\Building;
-use App\Models\Location;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
-use App\Http\Requests\BuildingRequest;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class BuildingController extends Controller
@@ -121,9 +122,20 @@ class BuildingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Building $building)
     {
-        Building::findOrFail($id)->delete();
-        return redirect()->back();
+    	if($building->rooms->count() === 0 || $request->force){
+    		$building->rooms()->delete();
+    		$building->delete();
+    	
+    		return redirect()->back();
+    	} 
+
+		Session::flash('custom_error', [
+            'type' => 'warning',
+            'message' => trans('common.stillhasroomsforcedelete', ['link' => view('admin.building.force_delete', ['building' => $building])]),
+        ]);
+    	
+		return redirect()->back();
     }
 }

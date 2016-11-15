@@ -1,15 +1,15 @@
 <tr>
 	<td>
-		{{ $colloquium->start_date }}
+		{{ $colloquium->start_date->format('H:i d F Y') }}
 	</td>
 	<td>
-		{{ $colloquium->end_date }}
+		{{ $colloquium->end_date->format('H:i d F Y') }}
 	</td>
 	<td>
 		{{ $colloquium->title }}
 	</td>
 	<td>
-		{{ $colloquium->user->present()->full_name() }}
+		{{ $colloquium->user->present()->full_name }}
 	</td>
 	<td>
 		{{ $colloquium->room->building->name }} {{ $colloquium->room->name }}
@@ -18,6 +18,8 @@
 		{{ $colloquium->language->name }}
 	</td>
 	<td>
-		{{ $colloquium->theme[0]->name or 'No themes found'}}
+		@foreach($colloquium->themes as $theme)
+			{!! $theme->render() !!}
+		@endforeach
 	</td>
 </tr>

@@ -4,6 +4,7 @@
     'btnText' => '<i class="fa fa-plus"></i> ' . trans('admin/building/create.addbuilding-capt'),
 ])
 
+
 @section('panel-body')
     <table class="table">
         <thead>

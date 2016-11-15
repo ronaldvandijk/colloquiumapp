@@ -32,6 +32,5 @@
         </div>
     </div>
 </div>
-  <p></p>
 
 @endsection

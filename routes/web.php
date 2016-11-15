@@ -73,14 +73,12 @@ Route::group(['prefix' => 'agenda'], function () {
     Route::get('/show/{colloquium}', 'AgendaController@show');
 });
 
-<<<<<<< HEAD
 Route::group(['prefix' => 'mailtemplates', 'middleware' => 'role:planner|administrator'], function(){
   Route::get('/', 'MailTemplatesController@overview');
+});
 
-=======
 Route::group(['prefix' => 'search'], function () {
     Route::post('/', 'SearchController@index');
->>>>>>> refs/remotes/ronaldvandijk/master
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administrator'], function() {

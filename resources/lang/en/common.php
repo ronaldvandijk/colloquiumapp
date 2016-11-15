@@ -39,5 +39,8 @@ return [
     'deleted_msg' => 'Successfully deleted!',
     'overview' => 'Overview',
     'houses_people_in' => ':name - Houses :capacity people in :building',
+    'colloquia_found' => 'Colloquia found on this location',
+    'save' => 'Save',
+    'my_colloquia' => 'My Colloquia',
     'stillhasroomsforcedelete' => 'Building still has rooms. Force delete? :link'
 ];

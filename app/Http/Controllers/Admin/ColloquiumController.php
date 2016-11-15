@@ -15,15 +15,25 @@ use Illuminate\Http\Request;
 class ColloquiumController extends Controller
 {
 
-    public function index(Request $request, $status = '')
+    public function index($status = null)
     {
-        if(!$status) {
-            $colloquia = Colloquium::orderBy('start_date')->get();
-        } else {
-            $colloquia = Colloquium::where('approved', $status)->orderBy('start_date')->get();
+
+        switch ($status){
+            case null:
+                $colloquia = Colloquium::orderBy('start_date')->get();
+                break;
+            case 0:
+                $colloquia = Colloquium::orderBy('start_date')->where('approved', 0)->get();
+                break;
+            case 1:
+                $colloquia = Colloquium::orderBy('start_date')->where('approved', 1)->get();
+                break;
+            case 2:
+                $colloquia = Colloquium::orderBy('start_date')->whereNull('approved')->get();
+                break;
         }
 
-        return view('admin.colloquia.overview', compact('colloquia'));
+        return view('admin.colloquia.overview', compact('colloquia', 'status'));
     }
 
     public function edit(Colloquium $colloquium)
@@ -45,7 +55,7 @@ class ColloquiumController extends Controller
         $colloquium->end_date = str_replace('/', '-', $request->date_start ) . " " . $request->time_end;
         $colloquium->update($request->input());
 
-        return redirect(url('/admin/colloquia'));
+        return redirect(url('/planner/colloquia'));
     }
 
     public function destroy(Colloquium $colloquium)
@@ -58,13 +68,13 @@ class ColloquiumController extends Controller
     {
         $colloquium->approved = 1;
         $colloquium->update();
-        return redirect(url('/admin/colloquia'));
+        return redirect(url('/planner/colloquia'));
     }
 
     public function deny(Colloquium $colloquium)
     {
         $colloquium->approved = 0;
         $colloquium->update();
-        return redirect(url('/admin/colloquia'));
+        return redirect(url('/planner/colloquia'));
     }
 }

@@ -27,6 +27,7 @@
                                 <th>{{ trans('admin/location.id') }}</th>
                                 <th>{{ trans('admin/location.name') }}</th>
                                 <th>{{ trans('admin/location.city') }}</th>
+                                <th>{{ trans('admin/location.buildings_amount') }}</th>
                                 <th>{{ trans('admin/general.edit') }}</th>
                                 <th>{{ trans('admin/general.delete') }}</th>
                             </tr>
@@ -37,6 +38,7 @@
                                     <td>{{ $location->id }}</td>
                                     <td>{{ $location->name }}</td>
                                     <td>{{ $location->city->name }}</td>
+                                    <td><a href="{{ route("buildings.index") }}">{{ $location->buildings->count() }}</a></td>
                                     <td><a href="/admin/locations/{{ $location->id }}/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{ trans('admin/general.edit') }}</a></td>
                                     <td>
                                         <form method="post" action="/admin/locations/{{ $location->id }}">

@@ -19,6 +19,7 @@
                                 <th>{{trans('admin/building/create.building-capt') }}</th>
                                 <th>{{trans('admin/building/create.city-capt')}}</th>
                                 <th>{{trans('admin/building/create.abbreviation-capt')}}</th>
+                                <th>{{trans('admin/building/create.rooms_amount') }}</th>
                                 <th>{{trans('admin/building/create.edit-capt')}}</th>
                                 <th>{{trans('admin/building/create.delete-capt')}}</th>
                             </tr>
@@ -30,6 +31,7 @@
                                     <td>{{ $building->location->name }}</td>
                                     <td>{{ $building->location->city->name }}</td>
                                     <td>{{ $building->abbreviation }}</td>
+                                    <td><a href="/admin/rooms">{{ $building->rooms->count() }}</a></td>
                                     <td><a href="/admin/buildings/{{$building->id}}/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{trans('admin/building/create.edit-capt')}}</a></td>
                                     <td>
                                         <form method="post" action="/admin/building/{{$building->id}}">

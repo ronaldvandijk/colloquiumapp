@@ -84,6 +84,12 @@
 				@include('/tv/table', ['colloquium' => $colloquium])
 			@endforeach
 		</table>
+		<div class="advert">
+			<img src="/images/logoTransparentNarrow.png" height="100%"/>
+			<img src="/images/realtime.jpg" height="100%"/>
+			<img src="/images/glitch.jpg" height="100%"/>
+			<img src="/images/kic.png" height="100%"/>
+		</div>
 </div>
 </body>
 </html>

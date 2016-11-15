@@ -33,7 +33,7 @@ class HomeController extends Controller
         $query->with(['user','room','room.building','language']);
 
         // Return first 20 colloquia to view
-        $colloquia = $query->take(20)->get();
+        $colloquia = $query->take(8)->get();
 
         return view('tv/tv', [
             'colloquia' => $colloquia,

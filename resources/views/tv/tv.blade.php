@@ -34,7 +34,7 @@
         }, 150000);
     </script>
 </head>
-<body>
+<body style="background-color: ;">
 
 	@foreach( $colloquia->shuffle() as $colloquium)
 		@if($loop->iteration >= 4)
@@ -46,11 +46,11 @@
 
 	@for($i = $colloquia->count(); $i < 3; $i++)
 		<div class="quarter">
-			<img class="img-responsive" src="/images/logoHD.png" width="100%" height="100%" />
+			<img class="img-responsive" src="http://i.imgur.com/VTEqXt6.png" width="100%" height="100%" />
 		</div>
 	@endfor
 
-	<div class="quarter" style="overflow:hidden">
+	<div class="quarter smaller" style="overflow:hidden">
 		<table class="table table-striped ">
 			<tr>
 				<th>
@@ -59,19 +59,19 @@
 				<th>
 					<i class="fa fa-clock-o" aria-hidden="true"></i> End
 				</th>
-				<th>
+				<th style="width: 700px;">
 					<i class="fa fa-lightbulb-o" aria-hidden="true"></i> Title
 				</th>
 				<th>
-					<i class="fa fa-address-card" aria-hidden="true"></i> Speaker
+					<i class="fa fa-user" aria-hidden="true"></i> Speaker
 				</th>
 				<th>
 					<i class="fa fa-map-marker" aria-hidden="true"></i> Room
 				</th>
-				<th>
+				<th style="width: 200px;">
 					<i class="fa fa-language" aria-hidden="true"></i> Language
 				</th>
-				<th>
+				<th style="width: 120px;">
 				<i class="fa fa-info" aria-hidden="true"></i> Theme
 				</th>
 			</tr>

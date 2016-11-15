@@ -15,6 +15,7 @@ body {
 	height: 50%;
 	float: left;
 	overflow: hidden;
+	background: #F3F3F3;	
 }
 .description {
 	font-size: 15px;
@@ -27,4 +28,45 @@ body {
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+/*.quarter *{
+	font-size: 35px;	
+}
+
+.smaller *{
+	font-size: 20px !important;
+}	*/
+.title-bar{
+	background-color: #FA8212;
+	color:white;
+}
+.title-bar h1{
+	margin:0;
+	padding:20px;
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+}
+.table-holder{
+	margin-bottom:-1px;
+}
+.table-holder *{
+	font-size: 40px;
+}
+.smaller *{
+	font-size: 25px;	
+}
+.company-image{
+	margin-left: 100px;
+	margin-top: 90px;
+}
+.table-holder{
+	background: #f7f7f7;
+	box-shadow: 3px 5px 1	5px rgba(0,0,0,0.1);
+	border-radius: 20px;
+}
+.table-holder .panel-body{
+	padding-top: 0;	
+	margin-bottom: -30px;	
 }

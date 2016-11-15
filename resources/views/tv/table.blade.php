@@ -19,9 +19,7 @@
 	</td>
 	<td>
 		@foreach($colloquium->themes as $theme)
-			<span class="label label-primary">
-				{{ $theme->name }}
-			</span>
+			{!! $theme->render() !!}
 		@endforeach
 	</td>
 </tr>

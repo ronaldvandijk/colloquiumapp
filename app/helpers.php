@@ -23,6 +23,8 @@
     }
 
     /**
+     *
+     *
      * @param $in
      * @param $length
      * @return string

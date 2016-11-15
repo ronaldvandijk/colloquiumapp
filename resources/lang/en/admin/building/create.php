@@ -17,4 +17,5 @@ return [
     'delete-capt' => 'Delete',
     'confirm' => 'Confirm',
     'not-unique' => 'Er bestaat al een combinatie van de naam en afkorting van dit gebouw.',
+    'rooms_amount' => 'Rooms',
 ];

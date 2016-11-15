@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index');
-Route::get('/test', 'TestController@overview');
 
 // TV Screen
 Route::get('/tv/{location_id?}', 'HomeController@tv');
@@ -51,8 +50,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
     Route::resource('cities', 'Admin\CityController');
 
     Route::resource('mailtemplates', 'Admin\MailtemplateController');
+});
 
-    Route::group(['prefix' => 'colloquia', 'middleware' => 'role:administrator|planner'], function () {
+Route::group(['prefix' => 'planner', 'middleware' => 'role:administrator|planner'], function () {
+    Route::group(['prefix' => 'colloquia'], function () {
         Route::get('/', 'Admin\ColloquiumController@index');
         Route::get('/{status}', 'Admin\ColloquiumController@index');
         Route::get('edit/{colloquium}', 'Admin\ColloquiumController@edit');
@@ -61,6 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
         Route::get('/approve/{colloquium}', 'Admin\ColloquiumController@approve');
         Route::get('/deny/{colloquium}', 'Admin\ColloquiumController@deny');
     });
+
 });
 
 Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function () {
@@ -75,6 +77,10 @@ Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function 
 Route::group(['prefix' => 'agenda'], function () {
     Route::get('/', 'AgendaController@index');
     Route::get('/show/{colloquium}', 'AgendaController@show');
+});
+
+Route::group(['prefix' => 'mailtemplates', 'middleware' => 'role:planner|administrator'], function(){
+  Route::get('/', 'MailTemplatesController@overview');
 });
 
 Route::group(['prefix' => 'search'], function () {

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Edit user')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -33,7 +35,7 @@
                                     <label>Taal</label>
                                     <select name="language_id">
                                         @foreach($languages as $lang)
-                                            <option value="{{ $lang->id }}">{{ $lang->name }}</option>
+                                            <option value="{{ $lang->id }}" {{ $lang->id == $colloquium->language_id ? 'selected' : '' }}>{{ $lang->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

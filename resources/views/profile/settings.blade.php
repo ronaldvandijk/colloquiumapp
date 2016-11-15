@@ -13,7 +13,7 @@
                         <div class="col-sm-10">
                             <div class="col-sm-2">
                                 <h4>{{ trans('profile.avatar') }}</h4>
-                                <img src="{{ Auth::user()->image }}" alt="*" /><br />
+                                <img src="{{ Auth::user()->image }}" alt="{{ trans('profile.avatar') }}" /><br />
                                 <a href="/profile/avatar" target="_self" />{{ trans('profile.avatar_edit') }}</a>
                             </div>
                             <div class="col-sm-7">

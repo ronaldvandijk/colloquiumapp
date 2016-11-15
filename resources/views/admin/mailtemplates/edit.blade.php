@@ -1,6 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.panel', [
+    'title' => trans('admin/mailtemplate.edit_title'),
+    'btnText' => trans('common.overview'),
+    'btnUrl' => url('/admin/mailtemplates'),
+])
 
-@section('content')
+@section('title','Admin - ' . trans('admin/mailtemplate.edit_title'))
+
+@section('panel-body')
     <div class="container">
         <div class="row">
             @foreach($errors->all() as $error)

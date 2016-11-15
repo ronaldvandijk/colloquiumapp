@@ -13,6 +13,7 @@ class CitiesTableSeeder extends Seeder
     {
         DB::table('cities')->insert([
             'name' => 'Groningen',
+            'name' => 'Leeuwarden',
         ]);
 
         DB::table('cities')->insert([

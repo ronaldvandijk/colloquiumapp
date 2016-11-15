@@ -1,4 +1,9 @@
 <?php
+/**
+ * Profile Controller
+ *
+ * @author       Robert
+ */
 
 namespace App\Http\Controllers;
 
@@ -9,10 +14,22 @@ use \Auth;
 use App\SoftwareLanguages;
 use Illuminate\Foundation\Auth\User;
 
+/**
+ * Class ProfileController
+ * @package App\Http\Controllers
+ */
 class ProfileController extends Controller
 {
 
+    /**
+     * ????
+     * @var
+     */
     private $_importantFields;
+    /**
+     * Directory to upload?
+     * @var
+     */
     private $_dir;
 
     /**

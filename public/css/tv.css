@@ -114,4 +114,6 @@ html, body {
 
 .advert img {
 	max-height: 237px;
+	padding-left: 15px;
+	padding-right: 15px;
 }

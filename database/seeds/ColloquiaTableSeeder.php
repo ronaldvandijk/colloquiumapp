@@ -133,6 +133,21 @@ class ColloquiaTableSeeder extends Seeder
             'room_id' => 5,
         ]);
 
+        DB::table('colloquia')->insert([
+            'title' => 'Professional in control',
+            'description' => 'Project management is the discipline of initiating, planning, executing, controlling, and closing the work of a team to achieve specific goals and meet specific success criteria. A project is a temporary endeavor designed to produce a unique product, service or result with a defined beginning and end (usually time-constrained, and often constrained by funding or deliverables) undertaken to meet unique goals and objectives, typically to bring about beneficial change or added value.',
+            'user_id' => 8,
+            'start_date' => '2016-11-19 16:15:00',
+            'end_date' => '2016-11-19 17:00:00',
+            'type_id' => 1,
+            'invite_email' => '',
+            'company_image' => '',
+            'company_url' => '',
+            'language_id' => 2,
+            'approved' => 1,
+            'room_id' => 3,
+        ]);
+
 
     }
 }

@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
         \App\Models\User::create([
             'first_name' => 'Sander',
             'insertion' => 'van',
-            'last_name' => 'Doorn-Kasteel',
+            'last_name' => 'Doorn',
             'email' => 'user@colloquium.app',
             'password' => bcrypt('123123123'),
             'verified' => '1',

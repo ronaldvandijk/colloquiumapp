@@ -10,20 +10,15 @@
                     <div class="panel-heading"><b>Alle gebruikers</b></div>
 
                     <div class="panel-body">
-                        @if(request()->session()->has('custom_error'))
-                        <div class="alert alert-danger }}">
-                            {{ request()->session()->get('custom_error') }}
-                        </div>
-                        @endif
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Voornaam</th>
-                                    <th>Tussenvoegsel</th>
-                                    <th>Achternaam</th>
-                                    <th>Email</th>
-                                    <th>Bewerken</th>
-                                    <th>Verwijderen</th>
+                                    <th>{{ trans('profile.first_name') }}</th>
+                                    <th>{{ trans('profile.insertion') }}</th>
+                                    <th>{{ trans('profile.last_name') }}</th>
+                                    <th>{{ trans('profile.email') }}</th>
+                                    <th>{{ trans('admin.edit') }}</th>
+                                    <th>{{ trans('admin.delete') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

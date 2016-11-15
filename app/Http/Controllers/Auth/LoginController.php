@@ -47,10 +47,20 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if($user->hasRole('Administrator')) {
-            return redirect()->intended('/admin');
+        // Redirect user to specified page
+        switch ($user->role->name) {
+            case 'Planner':
+                return redirect('/planner/colloquia');
+                break;
+            case 'Administrator':
+                return redirect('/admin');
+                break;
+            case 'User':
+                return redirect('/agenda');
+                break;
+            default:
+                return redirect()->intended($this->redirectTo);
         }
-        return redirect()->intended($this->redirectTo);
     }
 
 

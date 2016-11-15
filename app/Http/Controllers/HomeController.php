@@ -9,18 +9,6 @@ class HomeController extends Controller
 {
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home', [
-            'colloquia' => Colloquium::all(),
-        ]);
-    }
-
-    /**
      * This is the action which will display the TV screen with relevant colloquia for this location
      * @param null $location_id The location to filter on
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

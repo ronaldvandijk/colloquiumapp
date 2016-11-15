@@ -10,10 +10,10 @@
                     <div class="panel-heading">{{ trans('addColloquium.accept-colloquium') }}</div>
                     <div class="panel-body">
                         <div class="btn-group btn-group-xs pull-right">
-                            <a href="{{ url('/admin/colloquia') }}" class="btn btn-{{ is_null($status) ? 'primary' : 'default'}}">{{ trans('') }}</a>
-                            <a href="{{ url('/admin/colloquia/2') }}" class="btn btn-{{ $status === '2' ? 'primary' : 'default'}}">Onbeslist</a>
-                            <a href="{{ url('/admin/colloquia/0') }}" class="btn btn-{{ $status === '0' ? 'primary' : 'default'}}">Geweigerd</a>
-                            <a href="{{ url('/admin/colloquia/1') }}" class="btn btn-{{ $status === '1' ? 'primary' : 'default'}}">Geaccepteerd</a>
+                            <a href="{{ url('/planner/colloquia') }}" class="btn btn-{{ is_null($status) ? 'primary' : 'default'}}">{{ trans('admin/colloquia.all_col') }}</a>
+                            <a href="{{ url('/planner/colloquia/2') }}" class="btn btn-{{ $status === '2' ? 'primary' : 'default'}}">{{ trans('admin/colloquia.pending_col') }}</a>
+                            <a href="{{ url('/planner/colloquia/0') }}" class="btn btn-{{ $status === '0' ? 'primary' : 'default'}}">{{ trans('admin/colloquia.refused_col') }}</a>
+                            <a href="{{ url('/planner/colloquia/1') }}" class="btn btn-{{ $status === '1' ? 'primary' : 'default'}}">{{ trans('admin/colloquia.approved_col') }}</a>
                         </div>
                         <table class="table table-responsive table-striped">
                             <thead>
@@ -41,12 +41,16 @@
                                     <td>{{ $colloquium->start_date }}</td>
                                     <td>{{ $colloquium->end_date }}</td>
                                     <td>
-                                        <a href="{{ url('/planner/colloquia/deny/' . $colloquium->id) }}">
-                                            <i class="fa fa-ban text-danger"></i>
+                                        @if (is_null($colloquium->approved) || $colloquium->approved)
+                                        <a href="{{ url('/planner/colloquia/deny/' . $colloquium->id) }}" class="btn btn-danger">
+                                            <i class="fa fa-ban"></i>
                                         </a>
-                                        <a href="{{ url('/planner/colloquia/approve/' . $colloquium->id) }}">
-                                            <i class="fa fa-check text-success"></i>
+                                        @endif
+                                        @if (is_null($colloquium->approved) || !$colloquium->approved)
+                                        <a href="{{ url('/planner/colloquia/approve/' . $colloquium->id) }}" class="btn btn-success">
+                                            <i class="fa fa-check"></i>
                                         </a>
+                                            @endif
                                     </td>
                                 </tr>
                             @endforeach

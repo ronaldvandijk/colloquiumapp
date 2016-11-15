@@ -1,9 +1,19 @@
 <?php
+/**
+ * BuildingRequest
+ *
+ * @author       Rens Santing
+ * @author       Jamie Schouten
+ */
 
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class BuildingRequest
+ * @package App\Http\Requests
+ */
 class BuildingRequest extends FormRequest
 {
     /**

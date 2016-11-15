@@ -23,7 +23,7 @@
     }
 
     /**
-     *
+     * Truncates string to allow "Bla bla bl..."
      *
      * @param $in
      * @param $length

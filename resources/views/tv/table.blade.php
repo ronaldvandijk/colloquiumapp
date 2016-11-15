@@ -1,9 +1,9 @@
 <tr>
 	<td>
-		{{ $colloquium->start_date->format('H:i d F Y') }}
+		{!! $colloquium->start_date->format('H:i \<\b\r\> d M Y') !!}
 	</td>
 	<td>
-		{{ $colloquium->end_date->format('H:i d F Y') }}
+		{!! $colloquium->end_date->format('H:i \<\b\r\> d M Y') !!}
 	</td>
 	<td>
 		{{ $colloquium->title }}
@@ -19,7 +19,7 @@
 	</td>
 	<td>
 		@foreach($colloquium->themes as $theme)
-			{!! $theme->render() !!}
+			{!! $theme->render(null, 5) !!} <div style="margin-top: 12px;"></div>
 		@endforeach
 	</td>
 </tr>

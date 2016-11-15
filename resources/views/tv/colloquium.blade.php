@@ -1,14 +1,20 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <div class="quarter" >
-	<div class="title-bar">
-		<h1>{{ $colloquium->title }}</h1>
+	<div class="title-bar box" style="width: 100%;text-align: center; height: 95px;">
+		{{ $colloquium->title }}
 	</div>
 	
 	<br>
 	
 	<div class="row">
 		<div class="col-md-4">
-			<img style="display:block; margin:auto; width: 100%;" class="img-responsive" src="{{ $colloquium->user->imagez or '/images/realtime.jpg'}}" />
-		</div>
+			<div style="background-image: url('{{ $colloquium->user->image or '/images/realtime.jpg'}}'); background-size: cover;" class="user-image-holder">
+			</div>
+			<div class="qr-code">
+				{!! QrCode::size(150)->generate(url('agenda/show/' . $colloquium->id)); !!}
+			</div>
+		</div>	
 		
 		<div class="col-md-8">
 			<div style="margin: 15px;" class="table-holder panel">
@@ -71,27 +77,62 @@
 							</td>
 							<td>
 								@foreach($colloquium->themes as $theme)
-									{!! $theme->render(30) !!}
+									{!! $theme->render(30, 25) !!}
 								@endforeach
 							</td>
 						</tr>			
 					</table>
 				</div>
 			</div>
-			
-			<div class="company-image">
-				@if ( strlen($colloquium->company_image) > 0 )
-					<img style="max-height: 252px" class="img-responsive" src="{{ $colloquium->company_image }}" width="auto" />
-				@else
-					<img  class="img-responsive" src="/images/logoTransparentNarrow.png" width="1000px" />
-				@endif
+			<h1 class="desc-title"><b>Description</b></h1>
+			<br>
+			<div class="table-holder panel">
+				<div class="panel-body">
+					<div class="description">
+						<p>
+							{{ $colloquium->description }}
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="spacer"></div>
+				<center>
+					<div class="img-responsive company-image">
+						@if ( strlen($colloquium->company_image) > 0 )
+							<img style="max-height: 145px" class="" src="{{ $colloquium->company_image }}" width="auto" />
+						@else
+							<img style="max-height: 145px" class="" src="/images/logoTransparentNarrow.png" width="auto" />
+						@endif
+					</div>
+				</center>
 			</div>
 		</div>
 	</div>
-	
-	<div class="row">
-		<div class="qr">
-			{!! QrCode::size(300)->generate(url('agenda/show/' . $colloquium->id)); !!}
-		</div>
-	</div>
 </div>
+
+<script type="text/javascript">
+	$(function(){
+		$( '.box' ).each(function ( i, box ) {
+
+			    var width = $( box ).width(),
+			        html = '<span style="white-space:nowrap"></span>',
+			        line = $( box ).wrapInner( html ).children()[ 0 ],
+			        n = 74;
+
+			    $( box ).css( 'font-size', n );
+
+			    while ( $( line ).width() > width - 100) {
+			    	console.log($( line ).width() + " " + width)
+			        $( box ).css( 'font-size', --n );
+			    }
+
+			    $( box ).text( $( line ).text() );
+
+			});
+	})
+	
+</script>

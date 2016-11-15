@@ -5,6 +5,13 @@
 @section('scripts')
     <script src="https://unpkg.com/axios/dist/axios.min.js" async></script>
     <script src="{{ url('/js/colloquia_locations.js') }}" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet">
+
+    <script>
+        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+    </script>
 @endsection
 
 @section('content')
@@ -50,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <label>{{ trans('addColloquium.date') }}</label>
-                            <input type="date" class="form-control" name="date_start" value="{{ explode(' ', $colloquium->start_date)[0] }}">
+                            <input type="text" class="form-control datepick" data-provide="datepicker"  name="date_start" value="{{ explode(' ', $colloquium->start_date)[0] }}">
                         </div>
                         <div class="form-group form-inline">
                             <label>{{ trans('addColloquium.time') }}</label>

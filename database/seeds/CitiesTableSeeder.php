@@ -16,7 +16,7 @@ class CitiesTableSeeder extends Seeder
         ]);
 
         DB::table('cities')->insert([
-            'name' => 'Leuwarden',
+            'name' => 'Leeuwarden',
         ]);
     }
 }

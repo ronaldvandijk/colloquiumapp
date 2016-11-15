@@ -1,19 +1,20 @@
 @extends('layouts.app')
 
+@section('title','Admin room create')
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-push-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>{{ trans('common.modelcreate', ['modelName' => trans('common.room')])  }}</b></div>
-
+                    <div class="panel-heading">
+                    	@include('layouts.panel_heading', [
+                    		'title' => trans('common.modelcreate', ['modelName' => trans('common.room')]),
+                    		'button' => trans('common.overview'),
+                    		'url' => url('/admin/rooms'),
+                    	])
+                    </div>
                     <div class="panel-body">
-                        @foreach ($errors->all() as $error)
-                            <div>
-                                {{ $error }}
-                            </div>
-                        @endforeach
-
                         <form method="post" action="{{ url('/admin/rooms') }}">
                             {{ csrf_field() }}
                             <div class="col-md-6">
@@ -38,7 +39,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-success pull-right">Save</button>
+                                    <button type="submit" class="btn btn-success pull-right">{{ trans('common.save') }}</button>
                                 </div>
                             </div>
                         </form>

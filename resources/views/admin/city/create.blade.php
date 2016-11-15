@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin city create')
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -11,7 +13,7 @@
                     <div class="panel-heading"><b>{{ trans('admin/city.create_title') }}</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/city">
+                        <form method="post" action="/admin/cities">
                             {{ csrf_field() }}
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -26,7 +28,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12" style="padding: 20px 15px 0 30px;">
-                                    <a class="btn btn-default pull-left" href="{{ url('/admin/city') }}">{{ trans('admin/city.goback') }}</a>
+                                    <a class="btn btn-default pull-left" href="{{ url('/admin/cities') }}">{{ trans('admin/city.goback') }}</a>
                                     <button type="submit" class="btn btn-success pull-right">{{ trans('admin/city.save') }}</button>
                                 </div>
                             </div>

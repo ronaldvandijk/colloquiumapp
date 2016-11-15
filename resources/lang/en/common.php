@@ -19,7 +19,7 @@ return [
     'update' => 'Update',
     'delete' => 'Delete',
     'create' => 'Create',
-    'edit'   => 'Edit',
+    'edit' => 'Edit',
 
     'submit' => 'Submit',
 
@@ -27,13 +27,20 @@ return [
 
     'title' => 'Title',
     'name' => 'Name',
+    'forceDelete' => 'Force delete',
     'capacity' => 'Capacity',
     'building' => 'Building',
     'room' => 'Room',
+    'rooms' => 'Rooms',
     'modelupdate' => 'Update :modelName',
     'modeldelete' => 'Delete :modelName',
     'modelcreate' => 'Create :modelName',
     'modelupdated' => ':modelName Updated',
     'deleted_msg' => 'Successfully deleted!',
     'overview' => 'Overview',
+    'houses_people_in' => ':name - Houses :capacity people in :building',
+    'colloquia_found' => 'Colloquia found on this location',
+    'save' => 'Save',
+    'my_colloquia' => 'My Colloquia',
+    'stillhasroomsforcedelete' => 'Building still has rooms. Force delete? :link'
 ];

@@ -1,19 +1,21 @@
 @extends('layouts.app')
 
+@section('title','Admin room edit')
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-push-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Edit room</b></div>
+                    <div class="panel-heading">
+                    	@include('layouts.panel_heading', [
+                    		'title' => trans('common.modelupdate', ['modelName' => trans('common.room')]),
+                    		'button' => trans('common.overview'),
+                    		'url' => url('/admin/rooms'),
+                    	])
+                    </div>
 
                     <div class="panel-body">
-                        @foreach ($errors->all() as $error)
-                            <div>
-                                {{ $error }}
-                            </div>
-                        @endforeach
-
                         <form method="post" action="{{ url('/admin/room/update/' . $data->id) }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="room_id" value="{{ $data->id }}" />
@@ -33,18 +35,14 @@
                                     <label>{{ trans('common.building') }}</label>
                                     <select class="form-control" name="building_id">
                                         @foreach(App\Models\Building::all() as $building)
-                                            @if($building->id === $data->building_id)
-                                                <option value="{{ $building->id }}" selected>{{ $building->name }}</option>
-                                            @else
-                                                <option value="{{ $building->id }}">{{ $building->name }}</option>
-                                            @endif
+                                            <option value="{{ $building->id }}" {{ $building->id === $data->building_id ? 'selected' : null }}>{{ $building->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-success pull-right">Save</button>
+                                    <button type="submit" class="btn btn-success pull-right">{{ trans('common.save') }}</button>
                                 </div>
                             </div>
                         </form>

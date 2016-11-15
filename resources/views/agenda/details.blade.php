@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Details')
+
 @section('content')
     <div class="container-fluid">
         <a href="{{ url('agenda') }}" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ trans('agenda.back') }}</a>

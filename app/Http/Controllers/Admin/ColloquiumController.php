@@ -55,7 +55,7 @@ class ColloquiumController extends Controller
         $colloquium->end_date = str_replace('/', '-', $request->date_start ) . " " . $request->time_end;
         $colloquium->update($request->input());
 
-        return redirect(url('/admin/colloquia'));
+        return redirect(url('/planner/colloquia'));
     }
 
     public function destroy(Colloquium $colloquium)
@@ -68,13 +68,13 @@ class ColloquiumController extends Controller
     {
         $colloquium->approved = 1;
         $colloquium->update();
-        return redirect(url('/admin/colloquia'));
+        return redirect(url('/planner/colloquia'));
     }
 
     public function deny(Colloquium $colloquium)
     {
         $colloquium->approved = 0;
         $colloquium->update();
-        return redirect(url('/admin/colloquia'));
+        return redirect(url('/planner/colloquia'));
     }
 }

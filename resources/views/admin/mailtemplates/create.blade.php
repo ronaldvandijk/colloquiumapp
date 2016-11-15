@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin mail create')
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -8,8 +10,13 @@
             @endforeach
             <div class="col-md-10 col-md-push-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>{{ trans('admin/mailtemplate.create_title') }}</b></div>
-
+                    <div class="panel-heading">
+                    	@include('layouts.panel_heading', [
+                    		'title' => trans('admin/mailtemplate.create_title'),
+                    		'button' => trans('common.overview'),
+                    		'url' => url('/admin/mailtemplates'),
+                    	])
+                    </div>
                     <div class="panel-body">
                         <form method="post" action="/admin/mailtemplates">
                             {{ csrf_field() }}

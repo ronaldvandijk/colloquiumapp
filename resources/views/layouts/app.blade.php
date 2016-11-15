@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Colloquia - @yield('title')</title>
+    <title>Colloquia @yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ url('/') }}/css/app.css" rel="stylesheet">
@@ -17,12 +17,12 @@
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
 
-
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+    'csrfToken' => csrf_token(),
+]); ?>
     </script>
+
 </head>
 <body>
     <div id="app">
@@ -50,11 +50,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::guest())
                             <!-- Authentication Links -->
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">{{ trans('auth.login') }}</a></li>
+                            <li><a href="{{ url('/register') }}">{{ trans('auth.register') }}</a></li>
                         @else
                             @if(Auth::user()->hasRole('user'))
-                                <li><a href="{{url('/mycolloquia')}}">Mijn Colloquia</a></li>
+                                <li><a href="{{url('/mycolloquia')}}">{{ trans('common.my_colloquia') }}</a></li>
                             @endif
                             <li><a href="{{ url('/agenda') }}">Agenda</a></li>
                             <li class="dropdown">
@@ -63,7 +63,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/profile') }}">Profiel</a></li>
+                                    <li><a href="{{ url('/profile') }}">{{ trans('profile.profile') }}</a></li>
                                     @if (Auth::user()->hasRole('administrator'))
                                         <li><a href="{{ url('/admin') }}">Dashboard</a></li>
                                     @endif
@@ -86,11 +86,24 @@
             </div>
         </nav>
 
+        <div class="container">
+	        <div class="row">
+		        <div class="col-md-12">
+		            @if(Session::has('custom_error'))
+			            <div class="alert alert-{{ request()->session()->get('custom_error')['type'] }}">
+			                {!! request()->session()->get('custom_error')['message'] !!}
+			            </div>
+			        @endif
+		        </div>
+	        </div>
+        </div>
+
         @yield('content')
     </div>
 
     <!-- Scripts -->
-    <script src="{{ url('/') }}/js/app.js"></script>
     @yield('scripts')
+    <script src="{{ url('/') }}/js/app.js"></script>
+
 </body>
 </html>

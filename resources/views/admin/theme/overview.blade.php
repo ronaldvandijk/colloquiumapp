@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin theme overview')
+
 @section('content')
     <div class="container">
         <a class="btn btn-success" href="{{ action('Admin\ThemeController@create') }}">{{ trans('common.modelcreate', ['modelName' => trans('admin/theme.modelname')]) }}</a>

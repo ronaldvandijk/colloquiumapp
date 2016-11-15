@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Admin city edit')
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -11,7 +13,7 @@
                     <div class="panel-heading"><b>{{ trans('admin/city.edit_title') }}</b></div>
 
                     <div class="panel-body">
-                        <form method="post" action="/admin/city/{{ $data->id }}">
+                        <form method="post" action="/admin/cities/{{ $data->id }}">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
                             <div class="col-md-6">
@@ -27,7 +29,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12" style="padding: 20px 15px 0 30px;">
-                                    <a class="btn btn-default pull-left" href="{{ url('/admin/city') }}">{{ trans('admin/city.goback') }}</a>
+                                    <a class="btn btn-default pull-left" href="{{ url('/admin/cities') }}">{{ trans('admin/city.goback') }}</a>
                                     <button type="submit" class="btn btn-success pull-right">{{ trans('admin/city.save') }}</button>
                                 </div>
                             </div>

@@ -1,21 +1,19 @@
 @extends('layouts.app')
 
+@section('title','Admin users overview')
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Alle gebruikers</b></div>
+                    <div class="panel-heading"><b>{{ trans('admin/general.all }} {{ trans('admin/general.users') }}</b></div>
 
                     <div class="panel-body">
-                        @if (!empty($failure))
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Er is iets misgegaan bij het verwijderen van de gebruiker:</strong><br />{{ $errors->first('deletion') }}
-                            </div>
-                        @elseif (!empty($success))
-                            <div class="alert alert-success" role="alert">
-                                De gebruiker is succesvol verwijderd.
-                            </div>
+                        @if(request()->session()->has('custom_error'))
+                        <div class="alert alert-danger }}">
+                            {{ request()->session()->get('custom_error') }}
+                        </div>
                         @endif
                         <table class="table">
                             <thead>

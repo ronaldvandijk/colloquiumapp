@@ -1,4 +1,4 @@
-@extends('layouts.app')
+ @extends('layouts.app')
 
 @section('title','Admin colloquia overview')
 
@@ -10,10 +10,10 @@
                     <div class="panel-heading">{{ trans('addColloquium.accept-colloquium') }}</div>
                     <div class="panel-body">
                         <div class="btn-group btn-group-xs pull-right">
-                            <a href="{{ url('/admin/colloquia') }}" class="btn btn-default">Alles</a>
-                            <a href="{{ url('/admin/colloquia/null') }}" class="btn btn-default">Onbeslist</a>
-                            <a href="{{ url('/admin/colloquia/0') }}" class="btn btn-default">Geweigerd</a>
-                            <a href="{{ url('/admin/colloquia/1') }}" class="btn btn-default">Geaccepteerd</a>
+                            <a href="{{ url('/admin/colloquia') }}" class="btn btn-{{ is_null($status) ? 'primary' : 'default'}}">{{ trans('') }}</a>
+                            <a href="{{ url('/admin/colloquia/2') }}" class="btn btn-{{ $status === '2' ? 'primary' : 'default'}}">Onbeslist</a>
+                            <a href="{{ url('/admin/colloquia/0') }}" class="btn btn-{{ $status === '0' ? 'primary' : 'default'}}">Geweigerd</a>
+                            <a href="{{ url('/admin/colloquia/1') }}" class="btn btn-{{ $status === '1' ? 'primary' : 'default'}}">Geaccepteerd</a>
                         </div>
                         <table class="table table-responsive table-striped">
                             <thead>
@@ -23,7 +23,7 @@
                             <th>{{ trans('addColloquium.type') }}</th>
                             <th>{{ trans('addColloquium.date') }}</th>
                             <th>{{ trans('addColloquium.untill') }}</th>
-                            <th>Status</th>                 
+                            <th>Status</th>
                             </thead>
                             <tbody>
                             @foreach($colloquia as $colloquium)

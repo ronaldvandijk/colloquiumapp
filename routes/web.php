@@ -81,11 +81,9 @@ Route::group(['prefix' => 'search'], function () {
     Route::post('/', 'SearchController@index');
 });
 
-Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administrator'], function() {
-    Route::get('/', 'ProfileController@index');
+Route::group(['prefix' => 'profile'], function() {
+    Route::get('/', 'ProfileController@profile');
     Route::get('/settings', 'ProfileController@settings');
     Route::post('/settings', 'ProfileController@save');
-    Route::post('profile', 'ProfileController@profile');
     Route::get('/avatar', 'ProfileController@avatar');
-    Route::get('profile', 'ProfileController@profile');
 });

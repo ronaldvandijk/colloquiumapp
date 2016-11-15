@@ -90,6 +90,8 @@
 	</div>
 	
 	<div class="row">
-		<!-- QR CODE COMES HERE -->
+		<div class="qr">
+			{!! QrCode::size(300)->generate(url('agenda/show/' . $colloquium->id)); !!}
+		</div>
 	</div>
 </div>

@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    /**
+     * Displays colloquia based on search input.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $query = Colloquium::search($request->input('Searchbar'))

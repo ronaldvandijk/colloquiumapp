@@ -17,6 +17,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-Route::get('/buildings/{city}', 'API\BuildingsController@getBuildingsBasedOnCity');
+Route::get('/buildings/{city}', 'API\BuildingController@getBuildingsBasedOnCity');
 
-Route::get('/rooms/{building}', 'API\RoomsController@getRoomsBasedOnBuilding');
+Route::get('/rooms/{building}', 'API\RoomController@getRoomsBasedOnBuilding');

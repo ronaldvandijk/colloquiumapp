@@ -12,15 +12,15 @@ class LanguagesTableSeeder extends Seeder
     public function run()
     {
         DB::table('languages')->insert([
-            'name' => 'Nederlands',
+            'name' => 'Dutch',
         ]);
 
         DB::table('languages')->insert([
-            'name' => 'Engels',
+            'name' => 'English',
         ]);
 
         DB::table('languages')->insert([
-            'name' => 'Frans',
+            'name' => 'French',
         ]);
     }
 }

@@ -67,8 +67,8 @@
                                     @if (Auth::user()->hasRole('administrator'))
                                         <li><a href="{{ url('/admin') }}">Dashboard</a></li>
                                     @endif
-                                    @if (Auth::user()->hasRole('administrator') || Auth::user()->hasRole('planner'))
-                                        <li><a href="{{ url('/admin/colloquia') }}">Colloquia Planner</a></li>
+                                    @if (Auth::user()->hasRole('planner'))
+                                        <li><a href="{{ url('/planner/colloquia') }}">Colloquia Planner</a></li>
                                     @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"

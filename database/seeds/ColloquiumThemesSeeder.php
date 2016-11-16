@@ -12,23 +12,18 @@ class ColloquiumThemesSeeder extends Seeder
     public function run()
     {
         $allColloquia = \App\Models\Colloquium::all();
-        $allThemes = \App\Models\Theme::all();
+        $allThemes = \App\Models\Theme::all()->toArray();
 
-        for($i = 0; $i <= rand(0, 24); $i++)
+        foreach ($allColloquia as $colloquia) 
         {
-            $coll = $allColloquia[rand(0, count($allColloquia) -1)];
-            $theme = $allThemes[rand(0, count($allThemes) -1)];
-
-            \App\Models\ColloquiumTheme::create([
-                'colloquium_id' => $coll->id,
-                'theme_id' => $theme->id
-            ]);
-
-//            try {
-//
-//            } catch(Exception $e) {
-//                dd($e);
-//            }
+            shuffle($allThemes);
+            for($i = 0; $i <= rand(0, count($allThemes) -1); $i++)
+            {
+                \App\Models\ColloquiumTheme::create([
+                    'colloquium_id' => $colloquia->id,
+                    'theme_id' => $allThemes[$i]['id']
+                ]);
+            }
         }
     }
 }

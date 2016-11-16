@@ -27,8 +27,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ColloquiumTypesTableSeeder::class);
         $this->call(ColloquiaTableSeeder::class);
+        $this->call(ColloquiumThemesSeeder::class);
 
         $this->call(MailtemplateTableSeeder::class);
+        $this->call(SoftwareLanguagesTableSeeder::class);
     }
 
     private function truncateTables()

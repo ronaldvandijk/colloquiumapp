@@ -3,8 +3,10 @@
 @section('content')
     <div class="container-fluid">  
         <div class="row">
+        <div class="col-md-2">
             @include('user/profileSidebar')
-            <div class="col-md-10">
+        </div>
+            <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="col-sm-3">

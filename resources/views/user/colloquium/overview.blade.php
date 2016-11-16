@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <b>Colloquia</b>
+                        <b style="display: inline-block; padding: 8px 0;">Colloquia</b>
 
                         <div class="pull-right">
                             <a href="{{ action('MyColloquiaController@create') }}" class="btn btn-primary">{{ trans('user/colloquium/general.colloquium_request') }}</a>

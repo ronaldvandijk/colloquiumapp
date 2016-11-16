@@ -3,7 +3,7 @@
  * City Controller
  * @author       Sander van Kasteel
  */
-namespace app\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseTypeController;
 use Illuminate\Database\QueryException;

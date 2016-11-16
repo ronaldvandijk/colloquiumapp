@@ -4,7 +4,7 @@
  *
  * @author       Sander van Kasteel
  */
-namespace app\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 

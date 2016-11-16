@@ -11,3 +11,10 @@
 .panel-activity-stream {
     padding: 5px;
 }
+
+.banner {
+    background-image: url('../images/hanze.jpg');
+    background-position: 50% 75%;
+    background-size: cover;
+    height: 150px;
+}

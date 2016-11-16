@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * ColloquiumType
+ *
+ * @author       Sander van Doorn
+ */
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -16,8 +20,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ColloquiumType extends Model
 {
+    /**
+     * $timestamps is for instructing Eloquent that the table has updated_at and created_at fields
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * Return the colloquia that belongs to this type
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function colloquia()
     {
         return $this->hasMany(Colloquium::class);

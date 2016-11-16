@@ -1,9 +1,18 @@
 <?php
+/**
+ * LocationRequest
+ *
+ * @author       Maarten Oosting
+ */
 
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class LocationRequest
+ * @package App\Http\Requests
+ */
 class LocationRequest extends FormRequest
 {
     /**

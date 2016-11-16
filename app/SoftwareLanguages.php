@@ -1,9 +1,18 @@
 <?php
+/**
+ * Instance of a SoftwareLanguage
+ *
+ * @author       Robert
+ */
 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class SoftwareLanguages
+ * @package App
+ */
 class SoftwareLanguages extends Model
 {
     /**

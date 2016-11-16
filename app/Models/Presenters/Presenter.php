@@ -1,15 +1,25 @@
 <?php
+/**
+ * Base class of a presenter
+ * @author       Jamie Schouten
+ */
 
 namespace App\Models\Presenters;
 
+/**
+ * Class Presenter
+ * @package App\Models\Presenters
+ */
 abstract class Presenter
 {
     /**
+     * The instance of the class
      * @var mixed
      */
     protected $entity;
 
     /**
+     * Constructor
      * @param $entity
      */
     public function __construct($entity)

@@ -1,10 +1,18 @@
 <?php
-
+/**
+ * RequestColloquiaRequest
+ *
+ * @author       Sander van Kasteel
+ */
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
 
+/**
+ * Class RequestColloquiaRequest
+ * @package App\Http\Requests
+ */
 class RequestColloquiaRequest extends FormRequest
 {
     /**

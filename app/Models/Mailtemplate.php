@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Mailtemplte
+ * @author       Sam Lakerveld
+ * @author       Marco
+ */
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -19,8 +23,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Mailtemplate extends Model
 {
+    /**
+     * Let Eloquent know if the created_at and updated_at fields exists
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * All properties that should be filled
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'subject',

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Login Controller, provided by Laravel
+ *
+ * @author       Sander van Kasteel
+ */
 
 namespace App\Http\Controllers\Auth;
 
@@ -8,6 +13,10 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
+/**
+ * Class LoginController
+ * @package App\Http\Controllers\Auth
+ */
 class LoginController extends Controller
 {
     /*
@@ -41,6 +50,7 @@ class LoginController extends Controller
     }
 
     /**
+     * Redirect the user, based on a certain role
      * @param Request $request
      * @param $user User
      * @return \Illuminate\Http\RedirectResponse

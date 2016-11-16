@@ -18,6 +18,6 @@
 		{{ $colloquium->language->name }}
 	</td>
 	<td style="background: white" >
-		{!! QrCode::size(50)->generate(url('agenda/show/' . $colloquium->id)); !!}
+		{!! QrCode::size(75)->generate(url('agenda/show/' . $colloquium->id)); !!}
 	</td>
 </tr>

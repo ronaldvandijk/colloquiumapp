@@ -20,5 +20,10 @@ class ThemesTableSeeder extends Seeder
             'name' => 'AI',
             'color' => '#f4d942',
         ]);
+
+        DB::table('themes')->insert([
+            'name' => 'TI',
+            'color' => '#86f442',
+        ]);
     }
 }

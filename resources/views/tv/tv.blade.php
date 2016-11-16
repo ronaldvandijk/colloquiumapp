@@ -77,7 +77,7 @@
 					<i class="fa fa-language" aria-hidden="true"></i> Language
 				</th>
 				<th style="width: 120px;">
-				<i class="fa fa-info" aria-hidden="true"></i> Theme
+				<i class="fa fa-qrcode" aria-hidden="true"></i> QR
 				</th>
 			</tr>
 			@foreach( $colloquia as $colloquium )

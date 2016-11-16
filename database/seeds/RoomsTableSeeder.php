@@ -40,5 +40,11 @@ class RoomsTableSeeder extends Seeder
             'capacity' => 30,
             'building_id' => 1,
         ]);
+
+        DB::table('rooms')->insert([
+            'name' => 'H006',
+            'capacity' => 35,
+            'building_id' => 2,
+        ]);        
     }
 }

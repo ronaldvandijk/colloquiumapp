@@ -13,25 +13,27 @@
 
         <form action="{{url('/')}}/search" method="POST">
             {{ csrf_field() }}
-            <div class="input-group">
+            <div>
+                <div class="col-sx-12 col-sm-3 input-group pull-left" style="margin: 0 0 5px 0">
 
-                <select class="selectpicker" data-selected-text-format="count > 1" data-width="25%" Title="Locaties" name="Locations" multiple>
-                   @foreach($locations as $location)
-                       <option>{{ $location->name }}</option>
-                   @endforeach
-                </select>
+                    <select class="selectpicker" data-selected-text-format="count > 1" Title="Locaties" name="Locations" multiple>
+                       @foreach($locations as $location)
+                           <option>{{ $location->name }}</option>
+                       @endforeach
+                    </select>
 
-                <!-- Date Picker -->
-                <div id="sandbox-container">
-                    <input type="text" data-provide="datepicker" name="Date" placeholder="Datum" class="form-control">
+                    <!-- Date Picker -->
+                    <div id="sandbox-container">
+                        <input type="text" data-provide="datepicker" name="Date" placeholder="Datum" class="form-control">
+                    </div>
                 </div>
-            </div>
-            <div class="input-group">
+                <div class="input-group col-xs-12 col-sm-9">
 
-                <input type="text" name="Searchbar"  class=" form-control " placeholder="Search for...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
-                </span>
+                    <input type="text" name="Searchbar"  class=" form-control " placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                    </span>
+                </div>
             </div>
         </form>
 

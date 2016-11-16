@@ -11,5 +11,6 @@ return [
     'company_url' => 'Website of the company',
     'colloquia_not_approved' => 'Colloquia not approved',
     'colloquia_await_approval' => 'Colloquia awaiting approval',
-    'colloquia_accepted' => 'Colloquia is approved'
+    'colloquia_accepted' => 'Colloquia is approved',
+    'date' => 'Date'
 ];

@@ -31,6 +31,13 @@
                                         <label>{{ trans('user/colloquium/edit.company_image') }}</label>
                                         <input type="text" class="form-control" name="company_image">
                                     </div>
+                                    <div>
+                                        <label>{{ trans('user/colloquium/edit.date') }}</label>
+                                        <input type="date" name="start_date"  class="form-control">
+                                    </div>
+                                    <div>
+                                        <input type="hidden" name="room_id" value="1" class="form-control">
+                                    <div>
                                     <div class="form-group">
                                         <label>{{ trans('user/colloquium/edit.type') }}</label>
                                         <select name="type_id">

@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-
 Auth::routes();
 
 Route::get('/', 'AgendaController@index');
@@ -20,7 +18,6 @@ Route::get('/tv/{location_id?}', 'HomeController@tv');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
     Route::get('/', 'Admin\HomeController@index');
-
     Route::get('/profile', 'Admin\UsersController@profile');
     Route::get('profile', 'UserController@profile');
 
@@ -35,23 +32,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], functi
 
     Route::get('user/delete/{id}', 'Admin\UsersController@destroy');
     Route::patch('user/update/{user}', 'Admin\UsersController@update');
-
     Route::get('rooms', 'Admin\RoomController@index');
     Route::post('rooms', 'Admin\RoomController@store');
     Route::get('room/edit/{id}', 'Admin\RoomController@edit');
     Route::delete('room/destroy/{id}', 'Admin\RoomController@destroy');
     Route::post('room/update/{id}', 'Admin\RoomController@update');
     Route::get('room/create', 'Admin\RoomController@create');
-
     Route::resource('locations', 'Admin\LocationController');
     Route::resource('themes', 'Admin\ThemeController');
     Route::resource('buildings', 'Admin\BuildingController');
-
     Route::resource('cities', 'Admin\CityController');
-
     Route::resource('mailtemplates', 'Admin\MailtemplateController');
 });
-
 Route::group(['prefix' => 'planner', 'middleware' => 'role:administrator|planner'], function () {
     Route::group(['prefix' => 'colloquia'], function () {
         Route::get('/{status?}', 'Admin\ColloquiumController@index');
@@ -61,9 +53,7 @@ Route::group(['prefix' => 'planner', 'middleware' => 'role:administrator|planner
         Route::get('/approve/{colloquium}', 'Admin\ColloquiumController@approve');
         Route::get('/deny/{colloquium}', 'Admin\ColloquiumController@deny');
     });
-
 });
-
 Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function () {
     Route::get('/', 'MyColloquiaController@index');
     Route::get('/edit/{colloquium}', 'MyColloquiaController@edit');
@@ -85,10 +75,9 @@ Route::group(['prefix' => 'search'], function () {
     Route::post('/', 'SearchController@index');
 });
 
-Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administrator'], function() {
+Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administrator'], function () {
     Route::get('/', 'ProfileController@index');
     Route::get('/settings', 'ProfileController@settings');
     Route::post('/settings', 'ProfileController@save');
     Route::get('/avatar', 'ProfileController@avatar');
-    Route::post('/avatar', 'ProfileController@update_avatar');
 });

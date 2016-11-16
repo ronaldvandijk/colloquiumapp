@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <div class="container">
+        <div class="row">
     @include('profile.profileSidebar')
     <div class="col-md-10">
         <div class="panel panel-default">
@@ -17,8 +18,6 @@
                         <div class="col-sm-2">
                         </div>
                     @endif
-    <div class="container">
-        <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <img src="/avatars/{{ Auth::user()->image }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
                 <h2>{{ Auth::user()->first_name }}'s Profile</h2>
@@ -29,6 +28,8 @@
                     <input type="submit" class="pull-right btn btn-sm btn-primary">
                 </form>
             </div>
+        </div>
+    </div>
         </div>
     </div>
 @endsection

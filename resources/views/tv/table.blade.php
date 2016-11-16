@@ -17,7 +17,7 @@
 	<td>
 		{{ $colloquium->language->name }}
 	</td>
-	<td style="background: white" >
-		{!! QrCode::size(75)->generate(url('agenda/show/' . $colloquium->id)); !!}
+	<td>
+		<img src="data:image/png;base64,{!! base64_encode(QrCode::format('png')->size(75)->generate(url('agenda/show/' . $colloquium->id))) !!}">
 	</td>
 </tr>

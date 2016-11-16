@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateProfileRequest;
 use App\SoftwareLanguages;
-use Request;
+use Illuminate\Http\Request;
 use Auth;
 use Image;
 
@@ -17,20 +17,22 @@ class ProfileController extends Controller
     public function update_avatar(Request $request){
 
         // Handle the user upload of avatar
-        if($request->hasFile('avatar')){
-            $avatar = $request->file('avatar');
+        if($request->hasFile('image')){
+            $avatar = $request->file('image');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+            Image::make($avatar)->resize(300, 300)->save( public_path('/avatars/' . $filename ) );
 
             $user = Auth::user();
-            $user->avatar = $filename;
+            $user->image = $filename;
             $user->save();
         }
 
-        return view('profile', array('user' => Auth::user()) );
+        return view('profile/profile', array('user' => Auth::user()) );
 
     }
-
+    public function index() {
+        return view('profile/profile');
+    }
     private $_importantFields;
     private $_dir;
 

@@ -1,8 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+    </style>
     <div class="container-fluid">  
         <div class="row">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
             @include('profile.profileSidebar')
             <div class="col-md-10">
                 <div class="panel panel-default">
@@ -16,7 +26,7 @@
                         <div class="col-sm-10">
                             @if(!empty(Auth::user()->image))
                             <div class="col-sm-2">
-                                <img src="{{ Auth::user()->image }}" alt="{{ trans('profile.avatar') }}" />
+                                <img src="/avatars/{{ Auth::user()->image }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
                             </div>
                             @endif
                             <div class="col-sm-8">

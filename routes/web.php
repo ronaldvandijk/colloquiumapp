@@ -91,4 +91,5 @@ Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administ
     Route::get('/settings', 'ProfileController@settings');
     Route::post('/settings', 'ProfileController@save');
     Route::get('/avatar', 'ProfileController@avatar');
+    Route::post('/avatar', 'ProfileController@update_avatar');
 });

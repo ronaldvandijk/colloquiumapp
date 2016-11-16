@@ -12,7 +12,7 @@ use App\Models\Room;
 
 /**
  * Class RoomController
- * @package app\Http\Controllers\API
+ * @package App\Http\Controllers\API
  */
 class RoomController extends Controller
 {

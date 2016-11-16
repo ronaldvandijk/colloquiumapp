@@ -10,7 +10,7 @@ use Illuminate\Database\QueryException;
 
 /**
  * Class CityController
- * @package app\Http\Controllers\Admin
+ * @package App\Http\Controllers\Admin
  */
 class CityController extends BaseTypeController
 {

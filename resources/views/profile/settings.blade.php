@@ -1,22 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">  
         <div class="row">
-            @include('profile.profileSidebar')
-            <div class="col-md-10">
+        <div class="col-md-2">
+            @include('profile/profileSidebar')
+        </div>
+            <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <strong>{{ trans('profile.profile') }}</strong>
                     </div>
                     <div class="panel-body">
-                        <div class="col-sm-12">
-                            <div class="col-sm-6">
+                        <div class="col-sm-10">
+                            <div class="col-sm-2">
                                 <h4>{{ trans('profile.avatar') }}</h4>
-                                <img src="/avatars/{{ Auth::user()->image }}" alt="{{ trans('profile.avatar') }}" /><br /><br>
-                                <a class="btn btn-default" href="/profile/avatar" target="_self" />{{ trans('profile.avatar_edit') }}</a>
+                                <img src="{{ Auth::user()->image }}" alt="{{ trans('profile.avatar') }}" /><br />
+                                <a href="/profile/avatar" target="_self" />{{ trans('profile.avatar_edit') }}</a>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-7">
                                 <form action="/profile/settings" method="post">
                                     {{ csrf_field() }}
                                     <h4>{{ trans('profile.userinfo') }}</h4>

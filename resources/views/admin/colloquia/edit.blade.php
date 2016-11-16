@@ -57,11 +57,11 @@
                         </div>
                         <div class="form-group">
                             <label>{{ trans('addColloquium.date') }}</label>
-                            <input type="text" class="form-control datepick" data-provide="datepicker"  name="date_start" value="{{ explode(' ', $colloquium->start_date)[0] }}">
+                            <input type="text" class="form-control datepick" data-provide="datepicker"  name="date_start" @if(!empty($colloquium->start_date)) value="{{ explode(' ', $colloquium->start_date)[0] }}" @endif>
                         </div>
                         <div class="form-group form-inline">
                             <label>{{ trans('addColloquium.time') }}</label>
-                            <input type="time" class="form-control" name="time_start" value="{{ explode(' ', $colloquium->start_date)[1] }}"> {{ trans('addColloquium.untill') }} <input type="time" class="form-control" name="time_end" value="{{ explode(' ', $colloquium->end_date)[1] }}">
+                            <input type="time" class="form-control" name="time_start" @if(!empty($colloquium->start_date)) value="{{ explode(' ', $colloquium->start_date)[1] }}" @endif> {{ trans('addColloquium.untill') }} <input type="time" class="form-control" name="time_end" @if(!empty($colloquium->end_date)) value="{{ explode(' ', $colloquium->end_date)[1] }}" @endif>
                         </div>
                         <div class="form-group form-inline">
 

@@ -10,9 +10,9 @@ namespace App\Http\Controllers;
 use \App\Http\Requests\UpdateProfileRequest;
 use \Auth;
 use App\Models\SoftwareLanguages;
+use Intervention\Image\Image;
 use View;
 use Illuminate\Http\Request;
-use Image;
 
 /**
  * Class ProfileController
@@ -39,21 +39,6 @@ class ProfileController extends Controller
 
         return view('profile/profile', array('user' => Auth::user()) );
 
-    }
-
-    private $_importantFields;
-    /**
-     * Directory to upload?
-     * @var
-     */
-    private $_dir;
-
-    /**
-     * Create a new controller instance.
-     * @return void
-     */
-    public function __construct() {
-        // Do nothing
     }
 
     /**

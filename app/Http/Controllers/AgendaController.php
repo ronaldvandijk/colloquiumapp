@@ -1,4 +1,8 @@
 <?php
+/**
+ * Agenda Controller
+ * @author       Arjen
+ */
 
 namespace App\Http\Controllers;
 
@@ -9,6 +13,10 @@ use App\Models\Location;
 use App\Models\User;
 use DB;
 
+/**
+ * Class AgendaController
+ * @package App\Http\Controllers
+ */
 class AgendaController extends Controller
 {
     /**

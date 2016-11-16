@@ -1,9 +1,18 @@
 <?php
+/**
+ * ColloquiaUpdateRequest
+ *
+ * @author       Sander van Kasteel <info@sandervankasteel.nl>
+ */
 
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class ColloquiaUpdateRequest
+ * @package App\Http\Requests
+ */
 class ColloquiaUpdateRequest extends FormRequest
 {
     /**

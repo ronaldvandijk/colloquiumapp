@@ -1,14 +1,27 @@
 <?php
-namespace app\Http\Controllers\Admin;
+/**
+ * BaseController
+ */
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Colloquium;
 use DateTime;
 use Illuminate\Http\Request;
 
+/**
+ * Class BaseController
+ * @package App\Http\Controllers\Admin
+ */
 class BaseController extends Controller
 {
 
+    /**
+     * Overview
+     *
+     * @param $type
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|null
+     */
     public function overview($type)
     {
         $acceptedTypes = ['colloquia', 'locations', 'users'];
@@ -19,16 +32,36 @@ class BaseController extends Controller
         }
     }
 
+    /**
+     * Create
+     *
+     * @param $type
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create($type)
     {
         return view('admin/create', compact('type'));
     }
 
+    /**
+     * Update
+     *
+     * @param $type
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function update($type, $id)
     {
         return view('admin/edit', compact('type', 'id'));
     }
 
+    /**
+     * Store
+     *
+     * @param $type
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store($type, Request $request)
     {
         $colloquium = new Colloquium;

@@ -1,10 +1,17 @@
 <?php
-
+/**
+ * The kernel for the console side of the application. Like scheduled tasks and stuff like that.
+ * @author       Sander van Kasteel
+ */
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+/**
+ * Class Kernel
+ * @package App\Console
+ */
 class Kernel extends ConsoleKernel
 {
     /**

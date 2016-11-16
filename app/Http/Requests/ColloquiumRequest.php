@@ -1,10 +1,19 @@
 <?php
+/**
+ * ColloquiumRequest.php
+ *
+ * @author       Sander van Kasteel <info@sandervankasteel.nl>
+ */
 
 namespace App\Http\Requests;
 
+use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-use Auth;
+/**
+ * Class ColloquiumRequest
+ * @package App\Http\Requests
+ */
 class ColloquiumRequest extends FormRequest
 {
     /**
@@ -24,7 +33,7 @@ class ColloquiumRequest extends FormRequest
      */
     public function rules()
     {
-        switch($this->method()) {
+        switch ($this->method()) {
             case "GET":
                 return [];
             case "POST":

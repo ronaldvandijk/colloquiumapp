@@ -1,25 +1,27 @@
 <?php
+/**
+ * BuildingController
+ * @author       Rens Santing
+ */
+
 
 namespace App\Http\Controllers\Admin;
 
-//use App\Http\Controllers\BaseTypeController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BuildingRequest;
 use App\Models\Building;
 use App\Models\Location;
-use App\Models\Theme;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Validation\Rule;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class BuildingController
+ * @package App\Http\Controllers\Admin
+ */
 class BuildingController extends Controller
 {
-
-  //  protected $modelClass = 'App\Models\Building';
-
 
     /**
      * Create a new controller instance.
@@ -44,7 +46,7 @@ class BuildingController extends Controller
      */
     public function create()
     {
-        return view('admin.building.create', ['locations' =>  Location::all()]);
+        return view('admin.building.create', ['locations' => Location::all()]);
     }
 
     /**
@@ -63,6 +65,12 @@ class BuildingController extends Controller
                 return redirect()->action('Admin\BuildingController@create');
             }
         }
+
+        Session::flash('custom_error', [
+            'type' => 'success',
+            'message' => trans('common.modelcreated', ['modelName' => trans('common.building')]),
+        ]);
+
         return view('admin.building.list', ['buildings' => Building::all()]);
     }
 
@@ -107,35 +115,46 @@ class BuildingController extends Controller
             $building->abbreviation = $request->get('abbreviation');
             $building->location_id = $request->get('location_id');
             $building->save();
-        }catch (QueryException $exception) {
+        } catch (QueryException $exception) {
             if ($exception->getCode() == 23000) {
                 $request->session()->flash('error', '{{ trans(\'admin/building/create.not-unique\') }}');
                 //redirect()->back();
             }
         }
+
+        Session::flash('custom_error', [
+            'type' => 'success',
+            'message' => trans('common.modelupdated', ['modelName' => trans('common.building')]),
+        ]);
+
         return redirect()->action('Admin\BuildingController@index');
     }
 
     /**
      * Remove the specified building from storage.
      *
-     * @param  int  $id
+     * @param  Request $request
+     * @param  Building $building
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Building $building)
     {
-    	if($building->rooms->count() === 0 || $request->force){
-    		$building->rooms()->delete();
-    		$building->delete();
-    	
-    		return redirect()->back();
-    	} 
+        if ($building->rooms->count() === 0 || $request->force) {
+            $building->rooms()->delete();
+            $building->delete();
 
-		Session::flash('custom_error', [
+            Session::flash('custom_error', [
+                'type' => 'success',
+                'message' => trans('common.modeldeleted', ['modelName' => trans('common.building')]),
+            ]);
+            return redirect()->back();
+        }
+
+        Session::flash('custom_error', [
             'type' => 'warning',
             'message' => trans('common.stillhasroomsforcedelete', ['link' => view('admin.building.force_delete', ['building' => $building])]),
         ]);
-    	
-		return redirect()->back();
+
+        return redirect()->back();
     }
 }

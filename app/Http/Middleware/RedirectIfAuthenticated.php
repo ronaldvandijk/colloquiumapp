@@ -1,10 +1,19 @@
 <?php
+/**
+ * RedirectIfAuthenticated Middleware
+ *
+ * @author       Sander van Kasteel
+ */
 
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class RedirectIfAuthenticated
+ * @package App\Http\Middleware
+ */
 class RedirectIfAuthenticated
 {
     /**

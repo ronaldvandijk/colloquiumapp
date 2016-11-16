@@ -1,10 +1,17 @@
 <?php
-
+/**
+ * Search controller
+ * @author       Timothy de Jong
+ */
 namespace App\Http\Controllers;
 
 use App\Models\Colloquium;
 use Illuminate\Http\Request;
 
+/**
+ * Class SearchController
+ * @package App\Http\Controllers
+ */
 class SearchController extends Controller
 {
     /**

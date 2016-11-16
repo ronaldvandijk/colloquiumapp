@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Model of a location
+ * @author       F Bloggs <gbloggs@email.com>
+ */
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -19,19 +22,38 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Location extends Model
 {
+    /**
+     * Let Eloquent know if there are created_at and updated_at fields in the table
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * Fields that Eloquent needs to fill
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'city_id',
     ];
 
-    public function buildings() 
+    /**
+     * Return all buildings that belong to this location
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function buildings()
     {
     	return $this->hasMany(Building::class);
     }
 
-    public function city() 
+    /**
+     * Return a city that belongs to this location
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function city()
     {
     	return $this->belongsTo(City::class);
     }

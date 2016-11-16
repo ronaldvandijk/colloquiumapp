@@ -23,7 +23,7 @@
                 <td><a href="{{ route("locations.index") }}">{{ $city->locations->count() }}</a></td>
                 <td><a href="/admin/cities/{{ $city->id }}/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> {{ trans('common.edit') }}</a></td>
                 <td style="text-align: right">
-                    <form method="post" action="/admin/city/{{ $city->id }}">
+                    <form method="post" action="/admin/cities/{{ $city->id }}">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                         <button class="btn btn-danger"

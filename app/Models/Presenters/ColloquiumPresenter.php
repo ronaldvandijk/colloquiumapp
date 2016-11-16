@@ -1,14 +1,26 @@
 <?php
+/**
+ * A simple presenter for a colloquim
+ * @author       Sander van Kasteel <info@sandervankasteel.nl
+ */
+
 namespace App\Models\Presenters;
 
+/**
+ * Class ColloquiumPresenter
+ * @package App\Models\Presenters
+ */
 class ColloquiumPresenter extends Presenter
 {
     /**
+     * An exploded array based on end_date and the charater ' '
      *
      * @var array
      */
     private $endDateArray = [];
     /**
+     * An exploded array based on start_date and the charater ' '
+     *
      * @var array
      */
     private $startDateArray = [];

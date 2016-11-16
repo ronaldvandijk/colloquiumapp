@@ -1,10 +1,18 @@
 <?php
+/**
+ * BroadcastServiceProvider, provided by Laravel
+ * @author       F Bloggs <gbloggs@email.com>
+ */
 
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
 
+/**
+ * Class BroadcastServiceProvider
+ * @package App\Providers
+ */
 class BroadcastServiceProvider extends ServiceProvider
 {
     /**

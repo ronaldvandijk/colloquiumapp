@@ -8,9 +8,9 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 .banner {
     background-image: url('../images/hanze.jpg');
-    background-position: 50% 75%;
+    background-position: 50% 88%;
     background-size: cover;
-    height: 150px;
+    height: 200px;
 }
 html {
   font-family: sans-serif;

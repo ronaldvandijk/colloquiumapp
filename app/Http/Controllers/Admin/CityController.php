@@ -6,7 +6,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseTypeController;
+use App\Http\Requests\BuildingRequest;
+use App\Http\Requests\CityRequest;
 use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 
 /**
  * Class CityController
@@ -62,5 +65,20 @@ class CityController extends BaseTypeController
                 return redirect('/admin/city');
             }
         }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+           'name' => 'required|unique:cities,name,' . $id
+        ]);
+        return parent::update($request, $id);
+    }
+
+    public function store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|unique:cities,name'
+        ]);
+        return parent::store($request);
     }
 }

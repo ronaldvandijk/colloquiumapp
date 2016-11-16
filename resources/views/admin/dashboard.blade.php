@@ -18,8 +18,7 @@
             <div class="col-sm-6 col-md-4">
                 <a href="{{ action('Admin\LocationController@index') }}" ><div class="panel panel-default panel-admin"><i class="fa fa-map-pin"></i> {{ trans('admin/dashboard.locations') }}</div></a>
             </div>
-        </div>
-        <div class="row">
+
             <div class="col-sm-6 col-md-4">
                 <a href="{{ action('Admin\RoomController@index') }}" ><div class="panel panel-default panel-admin"><i class="fa fa-square-o"></i> {{ trans('admin/dashboard.rooms') }}</div></a>
             </div>

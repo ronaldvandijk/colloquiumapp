@@ -7,12 +7,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateProfileRequest;
-use App\SoftwareLanguages;
+use \App\Http\Requests\UpdateProfileRequest;
+use \Auth;
+use App\Models\SoftwareLanguages;
+use View;
 use Illuminate\Http\Request;
-use Auth;
 use Image;
 
+/**
+ * Class ProfileController
+ * @package App\Http\Controllers
+ */
 class ProfileController extends Controller
 {
     public function profile(){
@@ -35,9 +40,7 @@ class ProfileController extends Controller
         return view('profile/profile', array('user' => Auth::user()) );
 
     }
-    public function index() {
-        return view('profile/profile');
-    }
+
     private $_importantFields;
     /**
      * Directory to upload?
@@ -55,17 +58,19 @@ class ProfileController extends Controller
 
     /**
      * Show the user's profile
-     * @return view
+     * @return View
      */
-
+    public function index() {
+        return view('profile/profile');
+    }
 
     /**
      * Allow the user to edit his/her account settings
-     * @return view
+     * @return View
      */
     public function settings() {
         $languages = SoftwareLanguages::all();
-        return view('profile/settings')->with('languages', $languages);
+        return view('profile/settings', ['languages' => $languages]);
     }
 
     /**
@@ -76,13 +81,12 @@ class ProfileController extends Controller
     public function save(UpdateProfileRequest $request) {
 
         // If we have chosen a language, make sure it exists. If not, use English
-        $language = SoftwareLanguages::get()->where('directory', $request['prefered_language']);
+        $language = SoftwareLanguages::where('directory', $request['prefered_language'])->get();
         if (count($language) == 0)
             $request['prefered_language'] = 'en';
 
         // Update the user's profile
         $user = Auth::user();
-        $request['email'] = $user->email;
         $user->update($request->input());
 
         return redirect('/profile/settings');
@@ -96,9 +100,4 @@ class ProfileController extends Controller
         return view('profile/avatar');
     }
 
-    /**
-     * Upload an avatar
-     * @param file $file The file that should be uploaded
-     * @return boolean
-     */
-    } 
+}

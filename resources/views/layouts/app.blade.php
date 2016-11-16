@@ -26,6 +26,7 @@
 
 </head>
 <body>
+<div class="banner"></div>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">

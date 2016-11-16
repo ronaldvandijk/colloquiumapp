@@ -25,8 +25,13 @@ class BuildingController extends Controller
      */
     public function getBuildingsBasedOnCity(City $city)
     {
-        $location = Location::where('city_id', $city->id)->first();
-        return Building::where('location_id', $location->id)->get()->toJson();
+        try {
+            $location = Location::where('city_id', $city->id)->first();
+            return Building::where('location_id', $location->id)->get()->toJson();
+        } catch(\ErrorException $e) {
+            return json_encode([]);
+        }
+
     }
 
 }

@@ -28,14 +28,17 @@ html, body {
 .title-bar{
 	background-color: #FA8212;
 	color:white;
+	max-height: 95px;
+	vertical-align: middle;
 }
 
 .title-bar h1{
 	margin:0;
 	padding:20px;
-	font-size: 50px;
+	font-size: 70px;
 	font-weight: bold;
 	text-align: center;
+	overflow: hidden;
 }
 
 .table-holder{
@@ -78,13 +81,7 @@ html, body {
 	max-width: 100%;
 	width: 100%;
 }
-.title-bar{
-	max-height: 95px;
-	vertical-align: middle;
-}
-.title-bar h1{
-	overflow: hidden;
-}
+
 .desc-title{
 	font-size: 45px;
 	margin-left: 14px;

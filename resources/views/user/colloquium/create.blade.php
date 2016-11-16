@@ -12,9 +12,6 @@
                     </div>
                     <div class="panel-body">
                         <div class="panel-body">
-                            <div>
-                                If you like my profile Kurosawa I'm just a regular guy short-term dating. Too many to list vinyl records my cats parallel parking my height and shoulders, Murakami my eyes crossfit Sunday funday listening to music. Only looking for something casual Kurosawa local sports teams someone who shares my sense of humor outdoor activities but then it wouldn't be private.
-                            </div>
                             <form method="post" action="/mycolloquia/store">
                                 {{ csrf_field() }}
                                 <div class="col-md-6">

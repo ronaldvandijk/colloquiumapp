@@ -10,8 +10,6 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div style="background-image: url('{{ $colloquium->user->image or '/images/realtime.jpg'}}'); background-size: cover;" class="user-image-holder">
-			</div>
-			<div class="qr-code">
 				{!! QrCode::size(150)->generate(url('agenda/show/' . $colloquium->id)); !!}
 			</div>
 		</div>	

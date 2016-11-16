@@ -78,8 +78,9 @@ class ColloquiumController extends Controller
      */
     public function update(ColloquiaUpdateRequest $request, Colloquium $colloquium)
     {
+
         $colloquium->start_date = str_replace('/', '-', $request->date_start ). " " . $request->time_start;
-        $colloquium->end_date = str_replace('/', '-', $request->date_start ) . " " . $request->time_end;
+        $colloquium->end_date = str_replace('/', '-', $request->date_start ) . " " . ($request->time_end != "") ? $request->time_end : '00:00:00';
         $colloquium->update($request->input());
 
         return redirect(url('/planner/colloquia'));

@@ -6,8 +6,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseTypeController;
-use App\Http\Requests\BuildingRequest;
-use App\Http\Requests\CityRequest;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 

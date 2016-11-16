@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 
 /**
  * Class HomeController
- * @package app\Http\Controllers\Admin
+ * @package App\Http\Controllers\Admin
  */
 class HomeController extends Controller
 {

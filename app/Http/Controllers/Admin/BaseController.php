@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 /**
  * Class BaseController
- * @package app\Http\Controllers\Admin
+ * @package App\Http\Controllers\Admin
  */
 class BaseController extends Controller
 {

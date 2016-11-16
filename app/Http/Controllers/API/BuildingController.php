@@ -12,7 +12,7 @@ use App\Models\Location;
 
 /**
  * Class BuildingController
- * @package app\Http\Controllers\API
+ * @package App\Http\Controllers\API
  */
 class BuildingController extends Controller
 {

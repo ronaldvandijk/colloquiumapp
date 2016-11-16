@@ -11,5 +11,6 @@ return [
     'company_url' => 'Website van het bedrijf',
     'colloquia_not_approved' => 'Colloquia afgewezen',
     'colloquia_await_approval' => 'Colloquia wacht op acco',
-    'colloquia_accepted' => 'Colloquia is approved'
+    'colloquia_accepted' => 'Colloquia is approved',
+    'date' => 'Datum'
 ];

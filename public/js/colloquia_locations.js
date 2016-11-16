@@ -27,16 +27,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
         showLoadingIcon();
         axios.get('/api/buildings/' + cities.value)
             .then(function(res) {
-                res.data.forEach(function(item) {
-                    console.log(item);
+                if(res.data.length > 0) {
+                    res.data.forEach(function(item) {
 
-                    var option = document.createElement('option');
-                    option.value = item.id;
-                    option.innerText = item.name;
+                        var option = document.createElement('option');
+                        option.value = item.id;
+                        option.innerText = item.name;
 
-                    buildings.appendChild(option);
+                        buildings.appendChild(option);
 
-                });
+                    });
+                } else {
+                    alert("Geen gebouwen beschikbaar");
+                }
                 hideLoadingIcon();
             }).catch(function(err) {
             console.log(err);
@@ -56,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         axios.get('/api/rooms/' + buildings.value)
             .then(function(res) {
                 res.data.forEach(function(item) {
-                   console.log(item);
 
                     var option = document.createElement('option');
                     option.value = item.id;

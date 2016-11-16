@@ -4,7 +4,7 @@
     <div class="container-fluid">  
         <div class="row">
         <div class="col-md-2">
-            @include('user/profileSidebar')
+            @include('profile/profileSidebar')
         </div>
             <div class="col-md-8">
                 <div class="panel panel-default">
@@ -12,10 +12,10 @@
                         <strong>{{ trans('profile.profile') }}</strong>
                     </div>
                     <div class="panel-body">
-                        <div class="col-sm-10">
-                            <div class="col-sm-2">
+                        <div class="col-md-10">
+                            <div class="col-md-4">
                                 <h4>{{ trans('profile.avatar') }}</h4>
-                                <img src="{{ Auth::user()->image }}" alt="{{ trans('profile.avatar') }}" /><br />
+                                <img src="/avatars/{{ Auth::user()->image }}" style="width:150px; height:150px; border-radius:50%; margin-right:25px;"><br>
                                 <a href="/profile/avatar" target="_self" />{{ trans('profile.avatar_edit') }}</a>
                             </div>
                             <div class="col-sm-7">

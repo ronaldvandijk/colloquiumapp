@@ -2,7 +2,7 @@
 /**
  * Profile Controller
  *
- * @author       Robert
+ * @author       Robert / Moubarak Hayal
  */
 
 namespace App\Http\Controllers;
@@ -10,7 +10,9 @@ namespace App\Http\Controllers;
 use \App\Http\Requests\UpdateProfileRequest;
 use \Auth;
 use App\Models\SoftwareLanguages;
+use Intervention\Image\Image;
 use View;
+use Illuminate\Http\Request;
 
 /**
  * Class ProfileController
@@ -18,19 +20,33 @@ use View;
  */
 class ProfileController extends Controller
 {
+    public function profile(){
+        return view('profile/profile', array('user' => Auth::user()) );
+    }
 
-    /**
-     * Directory to upload?
-     * @var
-     */
-    private $_dir;
+    public function update_avatar(Request $request){
+
+        // Handle the user upload of avatar
+        if($request->hasFile('image')){
+            $avatar = $request->file('image');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save( public_path('/avatars/' . $filename ) );
+
+            $user = Auth::user();
+            $user->image = $filename;
+            $user->save();
+        }
+
+        return view('profile/profile', array('user' => Auth::user()) );
+
+    }
 
     /**
      * Show the user's profile
      * @return View
      */
     public function index() {
-        return view('user/profile');
+        return view('profile/profile');
     }
 
     /**
@@ -39,7 +55,7 @@ class ProfileController extends Controller
      */
     public function settings() {
         $languages = SoftwareLanguages::all();
-        return view('user/settings', ['languages' => $languages]);
+        return view('profile/settings', ['languages' => $languages]);
     }
 
     /**
@@ -66,7 +82,7 @@ class ProfileController extends Controller
      * @return view
      */
     public function avatar() {
-        return view('user/avatar');
+        return view('profile/avatar');
     }
 
 }

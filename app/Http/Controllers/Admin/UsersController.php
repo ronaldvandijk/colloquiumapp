@@ -5,6 +5,7 @@
  * @author       Sander van Kasteel <info@sandervankasteel.nl>
  * @author       Robert
  * @author       Jamie Schouten
+ * @author       Moubarak Hayal
  */
 namespace App\Http\Controllers\Admin;
 

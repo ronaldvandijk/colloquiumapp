@@ -19,10 +19,17 @@ Route::get('/tv/{location_id?}', 'HomeController@tv');
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
     Route::get('/', 'Admin\HomeController@index');
     Route::get('/profile', 'Admin\UsersController@profile');
+    Route::get('profile', 'UserController@profile');
+
     Route::get('users', 'Admin\UsersController@overview');
     Route::post('users', 'Admin\UsersController@store');
     Route::get('users/create', 'Admin\UsersController@create');
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
+    Route::get('user/delete/{userId}', 'Admin\UsersController@delete');
+    Route::post('user/update', 'Admin\UsersController@edit');
+    Route::get('users/edit/{user}', 'Admin\UsersController@edit');
+    Route::post('users/edit/{user}', 'Admin\UsersController@saveeditprofile');
+
     Route::get('user/delete/{id}', 'Admin\UsersController@destroy');
     Route::patch('user/update/{user}', 'Admin\UsersController@update');
     Route::get('rooms', 'Admin\RoomController@index');
@@ -73,4 +80,6 @@ Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administ
     Route::get('/settings', 'ProfileController@settings');
     Route::post('/settings', 'ProfileController@save');
     Route::get('/avatar', 'ProfileController@avatar');
+    Route::post('/avatar', 'ProfileController@update_avatar');
+
 });

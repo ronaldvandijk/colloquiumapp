@@ -4,7 +4,7 @@
  *
  * @author       Sander van Kasteel
  */
-namespace app\Http\Controllers\API;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Building;

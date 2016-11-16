@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('styles')
+    <link href="{{ url('/') }}/css/admin.css" rel="stylesheet">
+@endsection
 
 @section('title','Home')
 

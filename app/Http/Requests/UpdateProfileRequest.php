@@ -1,10 +1,17 @@
 <?php
-
+/**
+ * UpdateProfileRequest
+ * @author       Robert
+ */
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use \Auth;
 
+/**
+ * Class UpdateProfileRequest
+ * @package App\Http\Requests
+ */
 class UpdateProfileRequest extends FormRequest
 {
     /**

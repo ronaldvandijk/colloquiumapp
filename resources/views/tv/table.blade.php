@@ -1,9 +1,9 @@
 <tr>
 	<td>
-		{{ $colloquium->start_date->format('H:i d F Y') }}
+		{!! $colloquium->start_date->format('H:i \<\b\r\> d M Y') !!}
 	</td>
 	<td>
-		{{ $colloquium->end_date->format('H:i d F Y') }}
+		{!! $colloquium->end_date->format('H:i') !!}
 	</td>
 	<td>
 		{{ $colloquium->title }}
@@ -17,9 +17,7 @@
 	<td>
 		{{ $colloquium->language->name }}
 	</td>
-	<td>
-		@foreach($colloquium->themes as $theme)
-			{!! $theme->render() !!}
-		@endforeach
+	<td style="background: white" >
+		{!! QrCode::size(75)->generate(url('agenda/show/' . $colloquium->id)); !!}
 	</td>
 </tr>

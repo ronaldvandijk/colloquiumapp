@@ -15,4 +15,6 @@ return [
     'cannot_delete_has_colloquia' => 'The user cannot be deleted, as one or more colloquia are assigned to the user.',
     'dashboard' => 'Dashboard',
     'colloquia_planner' => 'Colloquia Planner',
+    'delete' => 'Delete',
+    'edit' => 'Edit'
 ];

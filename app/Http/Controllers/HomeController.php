@@ -1,24 +1,24 @@
 <?php
+/**
+ * Home Controller
+ *
+ * Used for the TV view
+ * @author       Sander van Kasteel <info@sandervankasteel.n>
+ * @author       Melle Dijkstra
+ * @author       Rik van den Top
+ */
 
 namespace App\Http\Controllers;
 
 use App\Models\Colloquium;
 use Carbon\Carbon;
 
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home', [
-            'colloquia' => Colloquium::all(),
-        ]);
-    }
 
     /**
      * This is the action which will display the TV screen with relevant colloquia for this location
@@ -45,7 +45,7 @@ class HomeController extends Controller
         $query->with(['user','room','room.building','language']);
 
         // Return first 20 colloquia to view
-        $colloquia = $query->take(20)->get();
+        $colloquia = $query->take(8)->get();
 
         return view('tv/tv', [
             'colloquia' => $colloquia,

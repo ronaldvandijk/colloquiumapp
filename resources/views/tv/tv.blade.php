@@ -21,7 +21,7 @@
 
     <link href="{{ url('/') }}/css/font-awesome.css" rel="stylesheet">
 
-	<link href="css/tv.css" rel="stylesheet" type="text/css">
+	<link href="{{ url('/') }}/css/tv.css" rel="stylesheet" type="text/css">
 
     <!-- Scripts -->
     <script>
@@ -51,7 +51,12 @@
 	@endfor
 
 	<div class="quarter smaller" style="overflow:hidden">
-		<table class="table table-striped ">
+		<div class="title-bar" style="width: 100%;text-align: center; height: 95px">
+			<h1>
+				Upcoming Public Colloquia
+			</h1>
+		</div>
+		<table class="table table-striped">
 			<tr>
 				<th>
 					<i class="fa fa-clock-o" aria-hidden="true"></i> Start
@@ -79,6 +84,12 @@
 				@include('/tv/table', ['colloquium' => $colloquium])
 			@endforeach
 		</table>
+		<div class="advert">
+			<img src="/images/logoTransparentNarrow.png" height="100%"/>
+			<img src="/images/realtime.jpg" height="100%"/>
+			<img src="/images/glitch.jpg" height="100%"/>
+			<img src="/images/kic.png" height="100%"/>
+		</div>
 </div>
 </body>
 </html>

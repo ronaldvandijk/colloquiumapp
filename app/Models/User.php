@@ -1,4 +1,11 @@
 <?php
+/**
+ * A model that represents an instance of the user
+ * @author       Sander van Kasteel
+ * @author       Sander van Doorn
+ * @author       Melle Dijkstra
+ *
+ */
 namespace App\Models;
 
 use App\Models\Presenters\UserPresenter;
@@ -47,6 +54,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
+    /**
+     * All properties that can be filled in by Eloquent
+     * @var array
+     */
     protected $fillable = [
         'first_name',
         'insertion',
@@ -60,18 +71,29 @@ class User extends Authenticatable
         'password',
     ];
 
+    /**
+     * All fields that should be hidden
+     * @var array
+     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
     use SoftDeletes;
 
+    /**
+     * Returns all colloquia that belongs to the user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function colloquia()
     {
         return $this->hasMany(Colloquium::class);
     }
 
     /**
+     * Check if this user has a particular role
+     *
      * @param $role string The role you want to check as a string
      * @return bool If user has the role
      */
@@ -89,26 +111,51 @@ class User extends Authenticatable
         return strtolower($this->role()->first()->name) == strtolower($role);
     }
 
+    /**
+     * Return the role that this user has
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role()
     {
         return $this->belongsTo(Role::class);
     }
 
+    /**
+     * Return the themes that belong to this user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function themes()
     {
         return $this->belongsToMany(Theme::class);
     }
 
+    /**
+     * Return the interests of this user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function interest()
     {
         return $this->belongsToMany(Colloquium::class);
     }
 
+    /**
+     * Return the examinates of this user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function examinates()
     {
         return $this->belongsToMany(Colloquium::class, 'colloquium_examinators', 'user_id', 'colloquium_id');
     }
 
+    /**
+     * Return the UserPresenter of this user
+     *
+     * @return UserPresenter
+     */
     public function present()
     {
         return new UserPresenter($this);

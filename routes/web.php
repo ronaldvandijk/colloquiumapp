@@ -14,15 +14,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', 'HomeController@index');
+
+Route::get('/', 'AgendaController@index');
 // TV Screen
 Route::get('/tv/{location_id?}', 'HomeController@tv');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'role:administrator'], function () {
     Route::get('/', 'Admin\HomeController@index');
     Route::get('/profile', 'Admin\UsersController@profile');
     Route::get('users', 'Admin\UsersController@overview');
+    Route::post('users', 'Admin\UsersController@store');
+    Route::get('users/create', 'Admin\UsersController@create');
     Route::get('user/edit/{user}', 'Admin\UsersController@edit');
-    Route::get('user/delete/{userId}', 'Admin\UsersController@delete');
-    Route::post('user/update', 'Admin\UsersController@edit');
+    Route::get('user/delete/{id}', 'Admin\UsersController@destroy');
+    Route::patch('user/update/{user}', 'Admin\UsersController@update');
     Route::get('rooms', 'Admin\RoomController@index');
     Route::post('rooms', 'Admin\RoomController@store');
     Route::get('room/edit/{id}', 'Admin\RoomController@edit');
@@ -52,16 +57,20 @@ Route::group(['prefix' => 'mycolloquia', 'middleware' => 'role:user'], function 
     Route::get('/request', 'MyColloquiaController@create');
     Route::post('/store', 'MyColloquiaController@store');
 });
+
 Route::group(['prefix' => 'agenda'], function () {
     Route::get('/', 'AgendaController@index');
     Route::get('/show/{colloquium}', 'AgendaController@show');
 });
-Route::group(['prefix' => 'mailtemplates', 'middleware' => 'role:planner|administrator'], function(){
+
+Route::group(['prefix' => 'mailtemplates', 'middleware' => 'role:planner|administrator'], function () {
     Route::get('/', 'MailTemplatesController@overview');
 });
+
 Route::group(['prefix' => 'search'], function () {
     Route::post('/', 'SearchController@index');
 });
+
 Route::group(['prefix' => 'profile', 'middleware' => 'role:user|planner|administrator'], function () {
     Route::get('/', 'ProfileController@index');
     Route::get('/settings', 'ProfileController@settings');

@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * RoomController
+ * @author       Jamie Schouten
+ */
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseTypeController;
@@ -7,12 +10,33 @@ use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+/**
+ * Class RoomController
+ * @package App\Http\Controllers\Admin
+ */
 class RoomController extends BaseTypeController
 {
+    /**
+     * The model to use
+     * @var string
+     */
     protected $modelClass = 'App\Models\Room';
 
+    /**
+     * The edit view to load
+     * @var string
+     */
     protected $editView = 'admin.room.edit';
+    /**
+     * The create view to load
+     * @var string
+     */
     protected $createView = 'admin.room.create';
+    /**
+     * The overview view to load
+     *
+     * @var string
+     */
     protected $overviewView = 'admin.room.overview';
 
     /**
@@ -27,6 +51,11 @@ class RoomController extends BaseTypeController
             'name' => 'required',
             'capacity' => 'required|numeric|min:0',
             'building_id' => 'required|exists:buildings,id',
+        ]);
+
+        Session::flash('custom_error', [
+            'type' => 'success',
+            'message' => trans('common.modelcreated', ['modelName' => trans('common.room')]),
         ]);
 
         return parent::store($request);
@@ -47,13 +76,17 @@ class RoomController extends BaseTypeController
             'building_id' => 'required|exists:buildings,id',
         ]);
 
+        Session::flash('custom_error', [
+            'type' => 'success',
+            'message' => trans('common.modelupdated', ['modelName' => trans('common.room')]),
+        ]);
+
         return parent::update($request, $id);
     }
 
     /**
      * Remove the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -66,6 +99,11 @@ class RoomController extends BaseTypeController
             ]);
             return back();
         }
+
+        Session::flash('custom_error', [
+            'type' => 'success',
+            'message' => trans('common.modeldeleted', ['modelName' => trans('common.room')]),
+        ]);
 
         return parent::destroy($id);
     }

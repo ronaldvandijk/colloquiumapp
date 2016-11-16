@@ -1,4 +1,9 @@
 <?php
+/**
+ * Login Controller, provided by Laravel
+ *
+ * @author       Sander van Kasteel
+ */
 
 namespace App\Http\Controllers\Auth;
 
@@ -8,6 +13,10 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
+/**
+ * Class LoginController
+ * @package App\Http\Controllers\Auth
+ */
 class LoginController extends Controller
 {
     /*
@@ -41,16 +50,27 @@ class LoginController extends Controller
     }
 
     /**
+     * Redirect the user, based on a certain role
      * @param Request $request
      * @param $user User
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function authenticated(Request $request, $user)
     {
-        if($user->hasRole('Administrator')) {
-            return redirect()->intended('/admin');
+        // Redirect user to specified page
+        switch ($user->role->name) {
+            case 'Planner':
+                return redirect('/planner/colloquia');
+                break;
+            case 'Administrator':
+                return redirect('/admin');
+                break;
+            case 'User':
+                return redirect('/agenda');
+                break;
+            default:
+                return redirect()->intended($this->redirectTo);
         }
-        return redirect()->intended($this->redirectTo);
     }
 
 

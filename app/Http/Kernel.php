@@ -1,9 +1,18 @@
 <?php
+/**
+ * HTTP Kernel.php provided by Laravel
+ *
+ * @author       Sander van Kasteel
+ */
 
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
+/**
+ * Class Kernel
+ * @package App\Http
+ */
 class Kernel extends HttpKernel
 {
     /**

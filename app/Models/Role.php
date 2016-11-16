@@ -1,4 +1,9 @@
 <?php
+/**
+ * A instance of a role
+ * @author       Sander van Doorn
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -15,9 +20,19 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Role extends Model
 {
+    /**
+     * Let Eloquent know if there are created_at and updated_at fields in the database
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
-    public function users() 
+    /**
+     * Return all users that are associated with this role
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function users()
     {
     	return $this->hasMany(User::class);
     }

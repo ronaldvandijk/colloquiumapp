@@ -1,8 +1,18 @@
 <?php
+/**
+ * A instance of the model Room
+ * @author       Sander van Doorn
+ * @author       Maarten Oosting
+ * @author       Sander van Kasteel
+ */
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Room
+ * @package App\Models
+ */
 class Room extends Model
 /**
  * App\Models\Room
@@ -21,19 +31,38 @@ class Room extends Model
  */
 
 {
+    /**
+     * All properties Eloquent can fill
+     * @var array
+     */
     protected $fillable = [
         'name',
         'capacity',
         'building_id',
     ];
 
+    /**
+     * Let Eloquent know if there are any created_at and updated_at fields
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * Return all colloquia that belong to this rooms
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function colloquia()
     {
         return $this->hasMany(Colloquium::class);
     }
 
+    /**
+     * Return the building that belong to this room
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function building()
     {
         return $this->belongsTo(Building::class);

@@ -1,10 +1,19 @@
 <?php
+/**
+ * Reset Password Controller
+ *
+ * @author       Sander van Kasteel <info@sandervankasteel.nl>
+ */
 
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
+/**
+ * Class ResetPasswordController
+ * @package App\Http\Controllers\Auth
+ */
 class ResetPasswordController extends Controller
 {
     /*

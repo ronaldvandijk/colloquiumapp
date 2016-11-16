@@ -1,20 +1,54 @@
 <?php
-namespace app\Http\Controllers\Admin;
+/**
+ * City Controller
+ * @author       Sander van Kasteel
+ */
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseTypeController;
 use Illuminate\Database\QueryException;
 
+/**
+ * Class CityController
+ * @package App\Http\Controllers\Admin
+ */
 class CityController extends BaseTypeController
 {
+    /**
+     * The model to load
+     * @var string
+     */
     protected $modelClass = 'App\Models\City';
 
+    /**
+     * The basic endpoint
+     * @var string
+     */
     protected $baseUrl = '/admin/city';
 
-    // Views
+    /**
+     * The filename of the overview view
+     *
+     * @var string
+     */
     protected $overviewView = 'admin/city/index';
+    /**
+     * The filename of a edit view
+     * @var string
+     */
     protected $editView     = 'admin/city/edit';
+    /**
+     * The filename of a create view
+     * @var string
+     */
     protected $createView   = 'admin/city/create';
 
+    /**
+     * Removes a certain entry in the database
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function destroy($id)
     {
         try {

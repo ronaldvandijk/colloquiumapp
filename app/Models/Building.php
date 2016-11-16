@@ -1,4 +1,11 @@
 <?php
+/**
+ * Instance of a Building
+ *
+ * @author       Sander van Doorn
+ * @author       Maarten Oosting
+ * @author       Sander van Kasteel
+ */
 
 namespace App\Models;
 
@@ -21,8 +28,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Building extends Model
 {
+    /**
+     * Let Eloquent know if there are created_at and updated_at fields
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * All properties Eloquent should fill
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'abbreviation',

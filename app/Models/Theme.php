@@ -1,4 +1,12 @@
 <?php
+/**
+ * Instance of a theme
+ *
+ * @author       Sander van Doorn
+ * @author       Maarten Oosting
+ * @author       Melle Dijkstra
+ * @author       Rik van den Top
+ */
 
 namespace App\Models;
 
@@ -19,6 +27,11 @@ use Illuminate\Validation\Rule;
  */
 class Theme extends Model
 {
+    /**
+     * Let Eloquent know if there are any created_at and updated_at fields
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
     /**
@@ -42,11 +55,12 @@ class Theme extends Model
     /**
      * This renders the Theme as a bootstrap label
      * @param null $fontsize The fontsize for the label
+     * @param int $ellipse The amount of character after which the ellipse function should work
      * @return string The label as html
      */
-    public function render($fontsize = null) {
+    public function render($fontsize = null, $ellipse = 255) {
         $fontsize = (is_int($fontsize)) ? 'font-size: '.$fontsize.'px;' : '';
-        return "<div style=\"background-color: {$this->color};{$fontsize}\" class=\"label\">{$this->name}</div>";
+        return "<div style=\"background-color: {$this->color};{$fontsize}\" class=\"label\">" . ellipsis($this->name, $ellipse) . "</div>";
     }
 
     /**

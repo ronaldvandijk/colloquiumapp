@@ -80,6 +80,7 @@ html, body {
 }
 .title-bar{
 	max-height: 95px;
+	vertical-align: middle;
 }
 .title-bar h1{
 	overflow: hidden;
@@ -108,13 +109,13 @@ html, body {
 }
 
 .advert {
-	height: 237px;
+	height: 210px;
 	width: 1920px;
 	padding-bottom: 25px;
 }
 
 .advert img {
-	max-height: 237px;
+	max-height: 210px;
 	padding-left: 15px;
 	padding-right: 15px;
 }
